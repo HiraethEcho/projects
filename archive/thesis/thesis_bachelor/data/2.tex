@@ -1,0 +1,187 @@
+\chapter{曲线及曲线族}
+这一章说明分类的对象，即曲线的基本性质，包括初始观点的光滑射影曲线和后续填充边界的稳定曲线，以及它们的曲线族的性质。这些结论在后续的构造中都有重要应用。
+\section{光滑曲线}
+首先讨论黎曼面在代数几何意义下对应的对象，及代数闭域上的光滑连通射影曲线。除了它的基本性质，还用相对初等的方法分析了一些例子。在这一节中，曲线指代数闭域上的一维不可约簇；当曲线完全（complete）时曲线是射影的。特别的，复数域$ \mathbb{C} $上的光滑射影曲线的范畴与紧黎曼面的范畴等价，此时的曲线模空间的问题就和黎曼的工作是一致的。这一节主要参考\cite{GTM52}。
+\subsection{基本定义和结论}
+在光滑射影曲线上$ X $的典范层记为$ \omega_X $，对应典范除子记为$ K_X $，则其上最经典和重要的是黎曼洛赫（Riemann-Roch）定理，简称为R-R定理：
+\begin{theorem}\label{R-R}
+	令$ D $是光滑射影曲线$ X $上除子，$ \deg D=d $，曲线亏格为$ g $，典范除子记为$ K_X $，有：
+	$$ l(D)-l(K_X-D)=1+d-g $$
+	其中$ l(D)=h^0(X,D) $。
+\end{theorem}
+
+从R-R定理容易得到一系列推论，如亏格$ g=0 $的光滑射影曲线全部同构于$ \mathbb{P}^1 $（光滑有理射影曲线），这样亏格$ 0 $的曲线等价类分类就完全清楚了；而$ g=1 $时对应的是椭圆曲线的理论，是相对独立且丰富的一部分内容，本文并不过多涉及；因此本文讨论的是亏格$ g\geqslant2 $的曲线，也称为一般型曲线（of general type）。
+
+当光滑射影曲线$ X $的亏格$ g\geqslant 2 $时，典范丛$ \omega_X $是丰沛且无基点的，因此可以定义典范态射$ |K_X|:X\to \mathbb{P}^r $，其中$ r=h^0(X,\omega_X)-1=g-1 $。取$ n\gg0 $，则$ \omega_X^{\otimes n} $是极丰丛，所以可以定义$ n $-典范嵌入$ |nK_X|:X\hookrightarrow \mathbb{P}^{R} $，此时$ R=(2n-1)(g-1)-1=l(nK_X)-1 $。
+
+若$ \omega_X $不是极丰丛，那么典范态射是到$ \mathbb{P}^1 $的$ 2:1 $态射$ f $和$ \mathbb{P}^1 $的$ (g-1)$-重分量嵌入的复合，且这个$ 2:1 $态射是唯一的。此时的曲线被称为超椭圆曲线（hyperelliptic curves），从Hurwitz定理可以得到$ f $恰在$ \mathbb{P}^1 $上有$ 2g+2 $个分歧点（branch point），并且被这些点完全决定。可以在$ \mathbb{P}^1 $上做坐标变换而不改变曲线的等价类，不妨设其中三个分歧点是$ [0:1],[1:0],[1:1] $。这样粗糙地说，超椭圆曲线的模空间由$ 2g-1 $个$ \mathbb{P}^1 $上的点参数化，模空间维数为$ 2g-1 $。或者对于$ 2g+2 $个点的参数空间商去$ \mathbb{P}^1 $的自同构群$ \mathrm{PGL}(2) $，而$ \dim \mathrm{PGL}(2)=3 $，因此模空间维数为$ 2g+2-3=2g-1 $。
+
+当$ \omega_X $极丰时，典范态射就是嵌入，其像是$ \mathbb{P}^r $中$ \deg X=\deg \omega_X=2g-2 $的闭子概型，称为典范模型。但线性空间$ H^0(X,\omega_X) $不同基的选取对应曲线的不同嵌入，刚好对应$ \mathbb{P}^r $的自同构，每个曲线等价类在$ \mathbb{P}^r $有一族对应的典范模型。
+\subsection{低亏格的例子}
+在这一小节将在低亏格的情况通过典范模型粗糙地讨论光滑射影曲线的模空间和维数，
+\subsubsection{ g=3 }
+对$ g=3 $的光滑射影曲线的典范模型$ i:X\hookrightarrow\mathbb{P}^2 $，有$ \deg X=\deg K_X=4 $，即射影平面的4次光滑曲线，反之亦然。由Bertini定理，这样的曲线可以被$ \mathbb{P}\left (H^0\left (\mathbb{P}^2,\mathscr{O}_{\mathbb{P}^2}\left (4\right )\right )\right ) $的稠密开集参数化。
+
+考虑曲线的同构类，即把同一曲线的不同嵌入合并起来，在$ \mathbb{P}(H^0(\mathbb{P}^2,\mathscr{O}_{\mathbb{P}^2}(4))) $上商去$ \mathbb{P}^2 $的自同构$ \mathrm{PGL}(3) $，那么得到的“模空间”维数应为$ (\dim H^0(\mathbb{P}^2,\mathscr{O}_{\mathbb{P}^2}(4))-1)-\dim \mathrm{PGL}(3)=6 $。
+
+\subsubsection{ g=4 }
+对$ g=4 $的光滑射影曲线的典范模型$ i:X\hookrightarrow\mathbb{P}^3 $，记定义理想层为$ \mathscr{I}_X $，有$ i^*\mathscr{O}_{\mathbb{P}^3}(1)=\omega_X,\deg X=\deg K_X=6 $和正合列:
+$$ 0\to \mathscr{I}_X(n)\to \mathscr{O}_{\mathbb{P}^3}(n) \to i_*\mathscr{O}_X(n)\to 0 $$
+
+$ n=2 $时有上同调的长正合列:
+$$0\to H^0(\mathbb{P}^3,\mathscr{I}_X(2)) \to  H^0(\mathbb{P}^3,\mathscr{O}_{\mathbb{P}^3}(2)) \to  H^0(X,\omega_{X}^{\otimes 2}) $$
+其中，由R-R定理可以计算$ \dim H^0(X,\omega_{X}^{\otimes 2}) =l(2K)=9 $，而$ \dim H^0(\mathbb{P}^3,\mathscr{O}_{\mathbb{P}^3}(2))=\binom{2+3}{2}=10  $，于是$ H^0(\mathbb{P}^3,\mathscr{I}_X(2))\neq 0 $，即存在一个二次齐次多项式$ f\in H^0(\mathbb{P}^3,\mathscr{I}_X(2)) \subset H^0(\mathbb{P}^3,\mathscr{O}_{\mathbb{P}^3}(2)) $，定义了一个包含$ X $的二次曲面$ Q=\mathrm{V}(f) $。
+
+$ n=3 $时上同调的正合列：
+$$0\to H^0(\mathbb{P}^3,\mathscr{I}_X(3)) \to  H^0(\mathbb{P}^3,\mathscr{O}_{\mathbb{P}^3}(3)) \to  H^0(X,\omega_{X}^{\otimes 3}) $$
+同样由R-R可以计算$ \dim H^0(X,\omega_{X}^{\otimes 3}) =l(3K)=15 $，而$ \dim H^0(\mathbb{P}^3,\mathscr{O}_{\mathbb{P}^3}(3))=\binom{3+3}{3}=20  $，于是$\dim H^0(\mathbb{P}^3,\mathscr{I}_X(3))\geqslant 5 $。显然$ \{ fg|g\in H^0(\mathbb{P}^3,\mathscr{O}_{\mathbb{P}^3}(1))\}\subset \dim H^0(\mathbb{P}^3,\mathscr{I}_X(3)) $，这个子空间维数为$ \dim H^0(\mathbb{P}^3,\mathscr{O}_{\mathbb{P}^3}(1))=4 $，所以存在不包含$ Q $但包含$ X $的三次曲面$ C $。
+
+因为$ 6=\deg X=\deg Q\cdot \deg C$，从相交理论可知$ X=Q\cap C $是两个曲面的交，反之亦然。从这个角度出发，再考虑$ \mathrm{Aut}\, \mathbb{P}^3=\mathrm{PGL}(4) $，可以得到对应“模空间”维数是6。
+
+
+\subsubsection{g $\geqslant$ 5}
+$ g=5 $时，仿照$ g=4 $的例子，可以得到典范模型是三个二次超曲面的交，“模空间”维数是12。
+
+但当$ g\geqslant 6 $时这样的思路就无法进行：如果$ X $是$ \mathbb{P}^{g-1} $中$ g-2 $个超曲面的交，则超曲面的次数至少是$ 2 $，这是因为曲线通过完全线性系嵌入，是$ \mathbb{P}^r $中非退化的曲线。这$ g-2 $个超曲面的交的次数至少为$ 2^{g-2} $，但实际上曲线的次数是$ 2g-2 $。当$ g\geqslant6 $时$ 2^{g-2} > 2g-2$，因此曲线不会是$ \mathbb{P}^{g-1} $上的完全交。
+
+
+\section{稳定曲线}
+在这一节中，我们首先定义DM稳定曲线，它们是GIT和叠两个思路中分别对$ \mathcal{M}_g $和$ \mathscr{M}_g $做紧化时添加的曲线，接着给出一些重要性质。在结尾我们还简单介绍了一些其他稳定性的定义。这一节主要参考\cite{DM69,StabilityofProjectiveVarieties,ModuliofCurves}
+\subsection{DM稳定曲线}
+DM稳定曲线是“接近”光滑曲线的一类曲线，具有相似的性质：存在与典范丛性质接近的对偶化层，且自同构群有限。我们从结点曲线（nodal curve）开始：
+\begin{definition}
+	一条连通约化的完全曲线（connected reduced complete curve）$ C $，如果它的奇异点只有结点（node），则称为是\dotuline{结点曲线}，并且记$ g=h^1(C,\mathscr{O}_C) $为其算术亏格。其中奇异点$ P\in C $称为\dotuline{结点}，如果局部环的完备化与平面中形如$ xy=0 $定义的奇异点的局部环完备化相同。
+\end{definition}
+
+结点曲线的奇异点的特殊性使它成为局部完全交（locally complete intersecton， l.c.i.），因此有容易定义的对偶化层：
+\begin{proposition}[\cite{GTM52}\uppercase\expandafter{\romannumeral3}.Theorem7.11]
+	对于余维数$ r $的射影概型$ X\hookrightarrow \mathbb{P}^n $，有\dotuline{对偶化层}
+	$$ \omega_X=\mathscr{E}\!xt^r(\Omega_{\mathbb{P}^n},\mathscr{O}_X) $$
+	当$ X $是l.c.i.时，记理想层$ \mathscr{I} $，则$ \mathscr{I}/\mathscr{I}^2 $是秩$ r $局部自由层，且有同构
+	$$ \omega_X\cong \bigwedge^{n-r}\Omega_{\mathbb{P}^n}\otimes (\mathscr{I}/\mathscr{I}^2)^\vee $$
+	并且此时$ \omega_X $是可逆层（或者可以视为线丛）。
+\end{proposition}
+
+特别的，光滑射影概型的典范层就是对偶化层。具体到结点曲线$ C $的情形，设正规化（normalization）$ f:C'\to C $（这时$ C'  $不是连通曲线）把$ C $的每个结点$ P_i \in C $分为两个：$ f^{-1}(P_i)=\{Q_i,R_i\} $，此时对偶化层$ \omega_C $就可以定义为$ \omega_{C^\prime}(\sum Q_i+\sum R_i) $的子层的推出：任意开集$ U\subset C $ ，$ P_{j_l} $是$ U $中结点，则 $\omega_C(U)$是$ n^{-1}(U) $上除去$ Q_{j_l},R_{j_l} $外正则的微分形式$ \eta $，满足$ \mathrm{Res}_{Q_{j_l}} (\eta)+\mathrm{Res}_{R_{j_l}} (\eta)=0$。
+
+通过对偶化层可以在结点曲线$ C $上得到Serre对偶：对于任意凝聚层$ \mathscr{F}\in \mathfrak{Coh}(C) $，有对偶
+$$ \mathrm{Hom}(\mathscr{F},\omega_C)\cong H^1(C,\mathscr{F})^\vee $$
+特别的，当$ \mathscr{F} $是局部自由层时，有
+$$ H^0(C,\mathscr{F}^\vee\otimes \omega_C)\cong H^1(C,\mathscr{F})^\vee $$
+因此结点曲线$ C $有算术亏格$ g=h^1(C,\mathscr{O}_C=h^0(C,\omega_C)) $。记结点曲线$ C $的不可约分支为$ C_1,\ldots,C_\nu $，对应的算术亏格为$ g_1,\ldots,g_\nu $，结点为$ P_1,\ldots,P_\delta $。借助Serre对偶可以得到亏格公式：
+$$ g=\sum_{\nu}^{i=1}g_i +\delta -\nu+1  $$
+
+在结点曲线上再加一些限制可以得到DM稳定曲线的定义：
+\begin{definition}
+	结点曲线$ C $称为\dotuline{DM稳定}的，如果下列等价条件之一满足：
+	\begin{enumerate}
+		\item $ C $的任意不可约分支$ i:Y\to C$，其对偶化层的限制有正的次数：$ \deg \omega_C|_{Y} >0 $。
+		\item $ C $的光滑有理不可约分支$ \mathbb{P}^1\cong Y \subset C $与其他部分（指$ \overline{C-Y}\subset C $）有至少三个交点；
+		\item $ C $的自同构群$ \mathrm{Aut}\,C $是有限群。
+	\end{enumerate}
+\end{definition}
+
+对于结点曲线的不可约分支$ Y\subset C $，设与其他部分的交点为$ Y\cap \overline{C-Y}=\{ T_j\} $，注意到$ \omega_C|_{Y}=\omega_Y(\sum T_j) $，于是前两条的等价性是容易得到的。对于后两条的等价性，先考虑光滑射影曲线的自同构群：$ g\geqslant2 $时自同构群有限；$ g=1 $且有标记点时（椭圆曲线）同构群有限；$ g=0 $时（即光滑有理射影曲线，同构于$ \mathbb{P}^1 $）当且仅当有三个及以上标记点时自同构群有限（实际上平凡）。对于不可约结点曲线，通过正规化有相应的结论。有因此一般的结点曲线$ C $的自同构不有限，只会发生在光滑有理不可约分支$ Y \cong \mathbb{P}^1 $上。此时$\omega_C|_{Y}\cong \mathscr{O}_{\mathbb{P}^1}(-2)(\sum T_j) $次数为正意味着$ \deg\mathscr{O}_{\mathbb{P}^1}(-2)(\sum T_j)=\sharp\{T_j\}-2>0 $交点个数至少为3，即说明$ C $的自同构群有限，反之亦然。如果在减弱前两个条件的要求，有理不可约分支与其他部分交点个数为至少2个，或者层的次数为非负，则称为DM半稳定曲线。这一概念只在GIT构造的过程中作为过渡出现。
+
+显然，亏格$ g\geqslant2 $的光滑射影曲线$ C $是DM稳定曲线；反之，前一节光滑射影曲线和典范层的一些性质对DM稳定曲线和对偶化层也成立：
+\begin{proposition}[\cite{DM69}Theorem1.2]
+	对于亏格$ g \geqslant2$的DM稳定曲线，$ n\geqslant 2$ 时， $H^1(C,\omega_C^{\otimes n})=0$ ; $n\geqslant 3$ 时， $ \omega_C^{\otimes n}$是极丰丛。
+\end{proposition} 
+
+这样给定$ n\geqslant 3 $，可以通过极丰丛 $ \omega_C^{\otimes n}$可以把抽象的DM稳定曲线具体地嵌入射影空间中$ i:C\hookrightarrow \mathbb{P}^r$ ，其中 $i^*\mathscr{O}_{\mathbb{P}^r}(1)=\omega_C^{\otimes n},r+1=h^0(C,\omega_C^{\otimes n}) $，并且作为$ \mathbb{P}^r $中的子概型，有$ \deg C=\deg \omega_C^{\otimes n}= 2n(g-1)$和Hilbert多项式$ p(t)=dt+1-g $。这样的嵌入和光滑曲线的嵌入是一致的，我们也称为\dotuline{$ n $-典范嵌入}。\label{pluricanonical}
+
+
+\subsection{其他稳定性}
+在GIT的构造中，直接处理的并不是抽象的DM代数曲线，而是像之前类似$ n $-典范嵌入的射影空间中有特定Hilbert多项式的曲线，和它们的稳定性，称为潜稳定曲线（potentially stable curve）：
+\begin{definition}[\cite{ModuliofCurves}Definition4.44]
+	记$ s=r+1=d-g+1 $，则射影空间$ \mathbb{P}^r $中亏格$ g $、次数$ d $的连通曲线$ C\subset \mathbb{P}^r$ ，满足如下6条时称为\dotuline{潜稳定曲线}：
+	\begin{enumerate}
+		\item $ C $在$ \mathbb{P}^r $中非退化（degenerate），即不含在任何超平面中；
+		\item $ C $为DM半稳定曲线；
+		\item 嵌入的线性系是完全（complete）且非特殊（nonspecial）的，即上同调群$ h^0(C,\mathscr{O}_C(1))=s$， 且 $h^1(C,\mathscr{O}_C(1))=0 $；
+		\item 任何与其他部分交点恰为2个的光滑有理不可约分支链的长度为1；
+		\item 如果有与其他部分交点个数恰为2的光滑有理不可约分支$ R $，则$ \deg \mathscr{O}_C|_R (1)=1$，即$ R $在$ \mathbb{P}^r $中是直线；
+		\item 如果$ Y $是$ C $完全子曲线（complete subcurve），并且算术亏格为$ g_Y $，并与其他部分有$\sharp Y\cap \overline{C-Y}=k_Y $个交点，则有不等式
+		$$ \left|\deg\mathscr{O}_C|_Y(1)-\frac{d}{g-1}(g_Y-1+\frac{k_Y}{2})  \right |\leqslant\frac{k_Y}{2}  $$
+	\end{enumerate}
+\end{definition}
+可以看出6可以推出4、5，而6中实际上只有$ \deg\mathscr{O}_C|_Y(1) $一项与嵌入有关，其他都是曲线自身的性质。潜稳定曲线实际是一条DM稳定曲线$ n $-典范嵌入在具体射影空间时应有的性质，而潜稳定性又与Hilbert概型对应点的GIT稳定性相关，在GIT构造中这些概念联系在了一起。
+
+但历史上GIT思路构造曲线模空间时，首先是在Chow 簇上作商，而不是Hilbert概型。在Mumford在\cite{StabilityofProjectiveVarieties}中讨论了这些问题，并介绍了Chow稳定（Chow stable）和线性稳定（linearly stable）的概念。对于线性稳定性：
+\begin{definition}[\cite{StabilityofProjectiveVarieties}Definition2.16]
+	射影空间中的非退化射影曲线$ C\subset \mathbb{P}^r $，如果从任意线性子空间$ \mathbb{P}^{r-s-1} $的投影$ C_s\subset \mathbb{P}^s $有不等式
+	$$ \frac{\deg C}{r}\leqslant \frac{\deg C_s}{s} $$
+	则称$ C $为\dotuline{线性半稳定的}；如果不等式严格，则称为\dotuline{线性稳定的}。
+\end{definition}
+以光滑射影曲线为例子，说明这样的定义是合适的：对于亏格$ g\geqslant 2 $的光滑射影曲线和非退化的嵌入$ i:C\hookrightarrow \mathbb{P}^r$，记$i^*\mathscr{O}_{\mathbb{P}^r}(1)=\mathscr{L}$，则$ h^0(C,\mathscr{L})=r+1 $。于是$ C $线性稳定就等价于任意$ \mathscr{L} $的可逆子层$ \mathscr{M} $，都有
+$$  \frac{\deg \mathscr{L}}{ h^0(C,\mathscr{L})-1} < \frac{\deg \mathscr{M}}{ h^0(C,\mathscr{M})-1} $$
+当$ \deg \mathscr{L}>2g $时，通过Clifford和R-R定理，讨论$ \deg \mathscr{M}\geqslant2g-1 $和$ \deg \mathscr{M}\leqslant 2g-2 $，可以得到$ C $是线性稳定的。特别的，当$ \mathscr{L}=\omega_C^{\otimes n},n\geqslant3 $时成立。
+
+另外，对于DM稳定的曲线，$ n\geqslant5 $时其在$ \mathbb{P}^{(2n-1)(g-1)-1} $中的$ n $-典范嵌入的像是Chow稳定的。
+
+\section{曲线族}
+最后来看“一族”曲线的情况，主要参考\cite{DM69,GITandModuliofstablecurve}。域$ k $上的曲线实际上是一个态射$ C\to \mathrm{Spec}\,k $， 这样一次考虑的是一条曲线；如果要同时考虑许多曲线并且参数化它们，方法是改变“底空间”$ \mathcal{C}\to S $，同时要求这一族曲线在$ S $上“连续”的变化，严格来说：
+\begin{definition}
+	概型$ S $上的亏格$ g $的\dotuline{光滑曲线族}指光滑本征平坦态射$ \mathcal{C}\to S $，使得每个纤维都是亏格$ g $的连通光滑射影曲线；概型$ S $上的亏格$ g $的\dotuline{DM稳定曲线族}指本征平坦态射$ \mathcal{C}\to S $，使得每个纤维都是亏格$ g $的DM稳定曲线；
+\end{definition}
+在$ S $上的DM稳定曲线$ \pi:\mathcal{C}\to S $，同样有对偶化层 $ \omega_{\mathcal{C}/ S} $，且对于任意$ f:T\to S $和拉回
+$$ \xymatrix{
+	\mathcal{C}\times_ST \ar[d]\ar[r]^-{f'} & \mathcal{C} \ar[d] \\
+	T \ar[r]_-{f} & S
+} $$
+有典范同构
+$$ \omega_{\mathcal{C}\times_ST/T}\cong f'^*\omega_{\mathcal{C}/S} $$
+特别的，在几何纤维也成立，即对于几何点$ s\in S $和剩余域$ k(s) $，几何纤维
+$$ \xymatrix{
+	\mathcal{C}_s \ar[d]\ar[r]^-{f'} & \mathcal{C} \ar[d] \\
+	\mathrm{Spec}\,k(s) \ar[r]_-{f} & S
+} $$
+上有同构
+$$ \omega_{\mathcal{C}_s}\cong f'^*\omega_{\mathcal{C}/S} $$
+并且$ n\geqslant3 $时$ \omega_{\mathcal{C}/ S}^{\otimes n} $是$ S $上相对极丰丛，$ \pi_*\omega_{\mathcal{C}/ S}^{\otimes n} $是$ S $上秩$( 2n-1)(g-1) $的局部自由层（或者可以视为向量丛）。
+
+对于亏格$ g\geqslant 2 $的$ 0 $特征代数闭域$ k $上的DM稳定曲线族，可以应用形变理论研究其性质，这里列举一些结论\cite{DM69,GeometryAlgCurvesII,LecturesonModuliofCurves}。
+
+比较重要且相对容易计算的是一阶形变（first ordered deformation）:记
+$$ k[\epsilon]=k[x]/\langle x^2\rangle , \Sigma=\mathrm{Spec}\,k[\epsilon]  $$
+令$ X $是$ Y $的闭子概型，则\dotuline{$ X\text{在}Y $中的一阶形变}是指平坦族
+$$  Y\times \Sigma\supset X'\to \Sigma $$
+满足纤维积：
+$$ \xymatrix{
+	X \ar[d] \ar[r] & X' \ar[d] \\
+	Y \ar[d]\ar[r] & Y\times \Sigma\ar[d]\\
+	\mathrm{Spec}\,k\ar[r]&\Sigma
+} $$
+$ X $在$ Y $中一阶形变的集合自然的一一对应于$ H^0(X,\mathscr{N}_{X/Y}) $，其中$ \mathscr{N}_{X/Y} $是$ X $在$ Y $中的法层（normal sheaf），群中的单位（$ 0 $元素）对应于平凡的形变。
+
+完备局部$ k $-代数$ A $上的$ X $的\dotuline{平坦形变}是指平坦态射
+$$ \mathcal{X}\to \mathrm{Spec}\,A $$
+使得特殊纤维（special fiber）为$ X $。当$ A=k[\epsilon] $时称\dotuline{$ X $的一阶形变}，它们的构成集合记为$ \mathrm{Def}_1(X) $。当$ X $是 l.c.i.时，$ \mathrm{Def}_1(X) $与$ \mathrm{Ext}^1(\Omega_X,\mathscr{O}_X) $有典范的一一对应。
+
+对于DM稳定曲线$ C $，可以证明$ \mathrm{Ext}^0(\Omega_C,\mathscr{O}_C)=\mathrm{Ext}^2(\Omega_C,\mathscr{O}_C)=0 $，并且有一个特殊的形式概型的形变（被称为versal formal deformation） $ \mathcal{C}\to \mathcal{M}  $，其中$ \mathcal{M}=\mathrm{Spec}\,k[[t_1,\ldots,t_N]],N=\dim \mathrm{Ext}^1(\Omega_C,\mathscr{O}_C) $，$ k[[t_1,\ldots,t_N]] $是形式幂级数环，使得$ C $的形变都从这个族诱导，即若$ A $是以$ k $为剩余域的局部Artin $ k $-代数，$ Y\to A $是本征平坦态射，并且在$ k $的纤维是$ C $，则有唯一的$ f:A\to \mathcal{M} $，拉回得到$ Y $：
+$$ \xymatrix{
+	C \ar[d] \ar[r] & Y=\mathcal{C}\times \mathrm{Spec}\,A\ar[d]\ar[r]&\mathcal{C}\ar[d] \\
+	\mathrm{Spec}\,k \ar[r] & \mathrm{Spec}\,A\ar[r]^{f}&\mathcal{M}
+} $$
+并且这个形式概型的族是代数的\upcite{GeometryAlgCurvesII}。
+
+如果亏格$ g $的光滑射影曲线同构类的集合$ \mathrm{M}_g $上有概型结构，那么给定一条光滑射射影曲线$ C $，在$ \mathrm{M}_g $中的点记为$ [C] $，那么$ C $的形变$ \mathcal{C}\to S $描述了$ \mathrm{M}_g $在$ [C] $点“附近”的情形。而一阶形变时$ \Sigma \to \mathrm{M}_g $对应$ [C] $点处的一个切向量，$ \mathrm{Def}_1(X) = \mathrm{Ext}^1(\Omega_X,\mathscr{O}_X) $就对应了切空间，由R-R定理可以计算维数为$ \dim \mathrm{Ext}^1(\Omega_X,\mathscr{O}_X)=3g-3$，因此可以猜测$ \mathrm{M}_g $有$ [C] $处有维数$ 3g-3 $。
+
+形变理论还把DM稳定曲线和光滑曲线联系起来，称为“光滑化”：
+\begin{lemma}\label{smoothing}
+	记$ R=k[[t]]$，其中$ k $是代数闭域，$ \eta $为一般点（generic point）。令 $ C $为$ k $上DM稳定曲线，则存在一个曲线族$ \mathcal{C}\to \mathrm{Spec}\,R $，使得特殊纤维（special fiber） $ \mathcal{C}_0\cong C $，而一般纤维（generic fiber） $ \mathcal{C}_\eta $是光滑曲线。
+\end{lemma}
+虽然基域从$ k $改为了$ K=k((t)) $，但是依然说明某种意义下DM稳定曲线是在某个光滑曲线“附近”的；另一方面，这个光滑曲线的“附近”是唯一的：
+\begin{lemma}[\cite{DM69}Lemma1.12]\label{DeformationforCurves}
+	设离散赋值环$ R $的剩余域为代数闭域，记$ \eta $为其一般点（generic point）。其上两条DM稳定曲线$ \mathcal{C},\mathcal{C}' $，如果它们的一般纤维$ \mathcal{C}_\eta,\mathcal{C}_\eta ' $光滑，则一般纤维的同构$ \phi_\eta :\mathcal{C}_\eta \to \mathcal{C}_\eta'  $可以唯一的延拓到同构$ \phi :\mathcal{C} \to \mathcal{C}'  $。
+\end{lemma}
+事实上，一般纤维光滑的条件可以去掉，只要求DM稳定就可以。
+
+除了形变理论，DM稳定曲线上还有约化理论的结论，这与$ \overline{\mathrm{M}_g} $作为叠的性质有关：
+\begin{lemma}[\cite{DM69}Corollary2.7]\label{reduction}
+	令$ R $是离散赋值环，$ K $是其分式域，$ C $是$ K $上亏格$ g\geqslant2 $的光滑的几何不可约的（ geometrically irreducible）曲线，则存在有限代数扩张$ L/K $，和$ R_L $上的DM稳定曲线$ \mathcal{C}_L\to R_L $，使得一般纤维有同构
+	$$ \mathcal{C}_{L,\eta}\cong C\times_KL  $$
+	其中$ R_L $是$ R $在$ L $中的整闭包。
+\end{lemma}
+
+

@@ -1,0 +1,439 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{geometry}
+\geometry{a4paper,top=3.2cm,bottom=3.2cm,left=2.5cm,right=2.5cm}
+%\usepackage{soul}
+
+%\setcounter{tocdepth}{3}
+
+%\usepackage[pagewise]{lineno}\linenumbers
+%\usepackage[inline]{showlabels}
+
+\hyphenpenalty=5000
+\tolerance=1000
+
+\usepackage{todonotes}
+ \newcommand\liu[1]{\todo[color=green!40]{#1}} %Liu
+ \newcommand\liuinline[1]{\todo[inline,color=green!40]{#1}} %Liu inline
+ \newcommand\han[1]{\todo[color=yellow!40]{#1}} %Hacon
+ \newcommand\haninline[1]{\todo[inline,color=yellow!40]{#1}} %Hacon inline
+\newcommand\chen[1]{\todo[color=pink!40]{#1}} %Hacon
+ \newcommand\cheninline[1]{\todo[inline,color=pink!40]{#1}} %Hacon inline
+
+
+\usepackage{amsfonts, adjustbox, amssymb, amscd}
+\numberwithin{equation}{section}
+
+%\usepackage[symbol]{footmisc}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thepart}{\Roman{part}}
+
+\usepackage{bm}
+\usepackage{verbatim}
+%\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{subfiles}
+\usepackage[toc,page]{appendix}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage[all]{xy}
+
+\usepackage{graphicx}
+\usepackage{appendix}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    citecolor=red,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=red,
+}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\newcommand{\bir}{\dashrightarrow}
+
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\oE}{\overline{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\LD}{\mathcal{LD}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bb}{\bm{b}}
+\newcommand{\Mm}{{\bf{M}}}
+\newcommand{\Nn}{{\bf{N}}}
+\newcommand{\PP}{{\bf{P}}}
+\newcommand{\Pp}{{\bf{P}}}
+\newcommand{\NN}{{\bf{N}}}
+\newcommand{\Dd}{{\bf{D}}}
+\newcommand{\oY}{\overline{Y}}
+\newcommand{\oL}{\overline{L}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\ind}{\mathrm{ind}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\exc}{\mathrm{exc}}
+
+
+
+\newcommand{\Cc}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Zz}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+
+
+
+
+\newcommand{\zz}{\mathbf{z}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\ww}{\mathbf{w}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\kk}{\mathbf{k}}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\alct}{a\operatorname{LCT}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Center}{\operatorname{center}}
+\newcommand{\Cone}{\operatorname{Cone}}
+\newcommand{\Exc}{\operatorname{Exc}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Fr}{\operatorname{Fr}}
+\newcommand{\Conv}{\operatorname{Conv}}
+\newcommand{\Bir}{\operatorname{Bir}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\glct}{\operatorname{glct}}
+\newcommand{\ct}{\operatorname{ct}}
+\newcommand{\GLCT}{\operatorname{GLCT}}
+\newcommand{\HH}{\operatorname{H}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\red}{\operatorname{red}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\ninv}{{\operatorname{ninv}}}
+\newcommand{\Nklt}{\operatorname{Nklt}}
+\newcommand{\mld}{{\operatorname{mld}}}
+\newcommand{\Bs}{{\operatorname{Bs}}}
+\newcommand{\Src}{{\operatorname{Src}}}
+\newcommand{\Spr}{{\operatorname{Spr}}}
+\newcommand{\num}{{\operatorname{num}}}
+\newcommand{\tang}{{\operatorname{tang}}}
+\newcommand{\pld}{{\operatorname{pld}}}
+\newcommand{\tmld}{{\operatorname{tmld}}}
+\newcommand{\relin}{\operatorname{relin}}
+
+\newcommand{\loc}{\operatorname{loc }}
+\newcommand{\expsing}{\mathrm{exp}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\lct}{\operatorname{lct}}
+\newcommand{\LCT}{\operatorname{LCT}}
+\newcommand{\fol}{\operatorname{fol}}
+\newcommand{\CR}{\operatorname{CR}}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\pet}{\operatorname{pet}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ngklt}{\operatorname{Ngklt}}
+\newcommand{\Nlc}{\operatorname{Nlc}}
+\newcommand{\ld}{\operatorname{ld}}
+\newcommand{\Diff}{\operatorname{Diff}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\mult}{\operatorname{mult}}
+\newcommand{\Rct}{\operatorname{Rct}}
+\newcommand{\RCT}{\operatorname{RCT}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\cont}{\operatorname{cont}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lf}{\lfloor}
+\newcommand{\rf}{\rfloor}
+
+
+\newcommand{\Aa}{{\bf{A}}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\Bb}{{\bf{B}}}
+\newcommand{\Ff}{\mathcal{F}}
+\newcommand{\Gg}{\mathcal{G}}
+\newcommand{\LCP}{\mathcal{LCP}}
+\newcommand{\Oo}{\mathcal{O}}
+\newcommand{\Ii}{\Gamma}
+\newcommand{\Jj}{\mathcal{J}}
+\newcommand{\Ee}{\mathcal{E}}
+\newcommand{\Hh}{\mathcal{H}}
+\newcommand{\Ll}{\mathcal{L}}
+\newcommand{\me}{\mathcal{E}}
+\newcommand{\mo}{\mathcal{O}}
+\newcommand{\nN}{\mathcal{N}}
+\newcommand{\anN}{\mathcal{AN}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Xx}{\mathcal{X}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Yy}{\mathcal{Y}}
+
+
+\newcommand{\BB}{\mathfrak{B}}
+\newcommand{\mm}{\mathfrak{m}}
+
+\newcommand{\NE}{\mathrm{NE}}
+\newcommand{\Nef}{\mathrm{Nef}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\reg}{\mathrm{reg}}
+\newcommand{\creg}{\mathrm{creg}}
+\newcommand\MLD{{\rm{MLD}}}
+\newcommand\FT{{\rm{FT}}}
+\newcommand{\crt}{{\rm{crt}}}
+\newcommand{\CRT}{{\rm{CRT}}}
+\newcommand{\Coeff}{{\rm{Coeff}}}
+\newcommand\coeff{{\rm{coeff}}}
+\newcommand{\rank}{\mathrm{rank}}
+
+\makeatletter
+\newenvironment{subtheorem}[1]{%
+  \def\subtheoremcounter{#1}%
+  \refstepcounter{#1}%
+  \protected@edef\theparentnumber{\csname the#1\endcsname}%
+  \setcounter{parentnumber}{\value{#1}}%
+  \setcounter{#1}{0}%
+  \expandafter\def\csname the#1\endcsname{\theparentnumber.\Alph{#1}}%
+  \ignorespaces
+}{%
+  \setcounter{\subtheoremcounter}{\value{parentnumber}}%
+  \ignorespacesafterend
+}
+\makeatother
+\newcounter{parentnumber}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{exprop}[thm]{Example-Proposition}
+\newtheorem{claim}[thm]{Claim}
+
+\newtheorem{alphthm}{Theorem}
+\renewcommand{\thealphthm}{\Alph{alphthm}}
+\newtheorem{alphcor}{Corollary}
+\renewcommand{\thealphcor}{\Alph{alphthm}}
+
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{mythm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
+  \newtheorem{innercustomcor}{Corollary}
+\newenvironment{mycor}[1]
+  {\renewcommand\theinnercustomcor{#1}\innercustomcor}
+  {\endinnercustomcor}
+
+%\newtheorem{theorempart}{Theorem B.}[alphthm]
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ques}[thm]{Question}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remdef}[thm]{Remark-Definition}
+\newtheorem{deflem}[thm]{Definition-Lemma}
+\newtheorem{defthm}[thm]{Definition-Theorem}
+\newtheorem{setup}[thm]{Set-up}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{sce}[thm]{Scenario}
+\newtheorem{nota}[thm]{Notation}
+\newtheorem{exlem}[thm]{Example-Lemma}
+\newtheorem{cons}[thm]{Construction}
+\newtheorem{code}[thm]{Code}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{notation}{Notation ($\star$)}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\FM}[1]{{\textcolor{red}{[Fanjun: #1]}}}
+
+\begin{document}
+
+\title{Flop between algebraically integrable foliations}
+\author{Yifei Chen, Jihao Liu, and Yanze Wang}
+
+\subjclass[2020]{14E30, 37F75}
+\keywords{minimal model program, algebraically integrable foliations}
+\date{\today}
+
+\begin{abstract}
+We show that any two minimal models of lc algebraically integrable foliated triples on $\Qq$-factorial klt varieties are connected by a sequence of flops.
+\end{abstract}
+
+\address{Department of Mathematics, Northwestern University, 2033 Sheridan Road, Evanston, IL 60208, USA}
+\email{jliu@northwestern.edu}
+
+
+
+\maketitle
+
+\pagestyle{myheadings}\markboth{\hfill Yifei Chen, Jihao Liu, and Yanze Wang \hfill}{\hfill Flop between algebraically integrable foliations\hfill}
+
+\tableofcontents
+
+
+\section{Introduction}\label{sec:Introduction}
+We work over the field of complex numbers $\mathbb C$. 
+
+\begin{lem}\label{lem: minimal model iso in codimension 1}
+Let $(X,\Ff,B)$ be a projective lc algebraically integrable foliated triple such that $X$ is $\Qq$-factorial klt. For $i\in\{1,2\}$, let $\phi_i: (X,\Ff,B)\dashrightarrow (X_i,\Ff_i,B_i)$ be a sequence of steps of a $(K_{\Ff}+B)$-MMP such that $K_{\Ff_i}+B_i$ is nef. Then $(X_1,\Ff_1,B_1)$ and $(X_2,\Ff_2,B_2)$ are isomorphic in codimension $1$.
+\end{lem}
+\begin{proof}
+Suppose that $(X_1,\Ff_1,B_1)$ and $(X_2,\Ff_2,B_2)$ are not isomorphic in codimension $1$, then possibly switching $i$, we may assume that there exists a prime divisor $D$ on $X_1$ such that $D$ is exceptional$/X_2$. Then $D$ is a prime divisor on $X$, so
+$$a(D,\Ff_1,B_1)=a(D,\Ff,B)<a(D,\Ff_2,B_2).$$
+Let $p: W\rightarrow X_1$ and $q: W\rightarrow X_2$ be a common resolution.  By \cite[Lemma 4.7]{LMX24}, $p^*(K_{\Ff_1}+B_1)=q^*(K_{\Ff_2}+B_2)$. Thus $a(D,\Ff_1,B_1)=a(D,\Ff_2,B_2)$, a contradiction.
+\end{proof}
+
+\begin{thm}
+Let $(X,\Ff,B)$ be a projective lc algebraically integrable foliated triple. Let $\phi_i: (X,\Ff,B)\dashrightarrow (X_i,\Ff_i,B_i)$ be a sequence of steps of a $(K_{\Ff}+B)$-MMP such that $K_{\Ff_i}+B_i$ is nef. Then $(X_1,\Ff_1,B_1)$ and $(X_2,\Ff_2,B_2)$ are connected by a sequence of flops.
+\end{thm}
+\begin{proof}
+By Lemma \ref{lem: minimal model iso in codimension 1}, $(X_1,\Ff_1,B_1)$ and $(X_2,\Ff_2,B_2)$ are isomorphic in codimension $1$. Let $\alpha: X_1\dashrightarrow X_2$ be the induced birational map.
+
+Let $h_i: X'\rightarrow X_i$ and $h: X'\rightarrow X$ be birational morphisms such that $h_i$ is a foliated log resolution of $(X_i,\Ff_i,B_i)$ and $h$ is a foliated log resolution of $(X,\Ff,B)$. Let $B':=h^{-1}_*B+\sum_E\epsilon_{\Ff}(E)E$ where the sum runs through all $h$-exceptional prime divisors. Then $(X',\Ff',B')$ is foliated log smooth model of $(X,\Ff,B)$ and $B'=(h_i^{-1})_*B+F_i$ for some $F_i\geq 0$ that are exceptional$/X_i$. By \cite[Lemma 4.13]{LMX24}, we may run a $(K_{\Ff'}+B')$-MMP$/X_i$ which terminates with a good minimal model $(X_i',\Ff_i',B_i')/X_i$ of $(X',\Ff',B')$ with induced birational morphism $g_i: X_i'\rightarrow X_i$ and birational map $\phi_i': X'\dashrightarrow X_i'$, such that $K_{\Ff_i'}+B_i'=g_i^*(K_{\Ff_i}+B_i)$. In particular, $(X_i',\Ff_i',B_i')$ is a minimal model of $(X',\Ff',B')$. By  Lemma \ref{lem: minimal model iso in codimension 1}, $(X_1',\Ff_1',B_1')$ and $(X_2',\Ff_2',B_2')$ are isomorphic in codimension $1$. Therefore, the divisors extracted by $g_1$ are exactly the divisors extracted by $g_2$. Let $E_1,\dots,E_m$ be these divisors. Then each $E_j$ is an lc center of $(X_i,\Ff_i,B_i)$ for $i\in\{1,2\}$, so each $E_j$ is also an lc center of $(X,\Ff,B)$. Therefore, $\phi_i$ is an isomorphism near $\Center_XE_j$ for $i\in\{1,2\}$ and any $j$, so $\alpha$ (resp. $\alpha^{-1}$ is an isomorphism near $\Center_{X_1}E_j$ (resp. $\Center_{X_2}E_j$) for each $j$.
+
+Let $L\geq 0$ be a general ample divisor on $X_2$ such that $L$ does not contain the generic point of $\Center_{X_2}E_j$ for any $j$. Then $\alpha^{-1}_*L$ does not contain the generic point of $\Center_{X_1}E_j$ for any $j$. Since $L$ is ample, $(X_2,\Ff_2,B_2,s\bar L)$ is lc and is the ample model of itself for any $s>0$. Thus $(X_2,\Ff_2,B_2,s\bar L)$ is the ample model of $(X',\Ff',B',s\bar L)$ for any $s>0$. Moreover, for any $0<s\ll 1$, $\phi_1'$ is a sequence of steps of a $(K_{\Ff'}+B'+s\bar L)$-MMP, so $(X_1',\Ff_1',B_1',s\bar L)$ is lc for any $0<s\ll 1$. Since  $\alpha^{-1}_*L$ does not contain the generic point of $\Center_{X_1}E_j$ for any $j$, we have $$(\bar L)_{X_1'}=g_1^*(\alpha^{-1}_*L)=g_1^*(\bar L)_{X_1},$$
+so
+$$K_{\Ff_1'}+B_1'+s(\bar L)_{X_1'}=g_1^*(K_{\Ff_1}+B_1+s(\bar L)_{X_1}).$$
+Therefore, $(X_1,\Ff_1,B_1,s\bar L)$ is lc for any $0<s\ll 1$. We let $s_0$ be a positive real number such that  $(X_1,\Ff_1,B_1,s\bar L)$ is lc for any $0<s\leq s_0$.
+
+Since $h_1$ is a foliated log resolution of $(X_1,\Ff_1,B_1)$ and $\bar L$ descends to $X'$, $h_1$ is a foliated log resolution of $(X_1,\Ff_1,B_1,s\bar L)$ and $(X',\Ff',B',s\bar L)$ is a foliated log smooth model of $(X_1,\Ff_1,B_1,s\bar L)$ for any $0<s\leq s_0$. Since $(X_2,\Ff_2,B_2,s\bar L)$ is the ample model of $(X',\Ff',B',s\bar L)$, $(X_2,\Ff_2,B_2,s\bar L)$ is a bs-semi-ample model of $(X',\Ff',B',s\bar L)$ for any $0<s\leq s_0$. By \cite[Lemma 4.11]{LMX24}, $(X_2,\Ff_2,B_2,s\bar L)$ is a bs-semi-ample model of $(X_1,\Ff_1,B_1,s\bar L)$ for any $0<s\leq s_0$. Thus $(X_2,\Ff_2,B_2,s\bar L)$ is the good minimal model of $(X_1,\Ff_1,B_1,s\bar L)$ for any $0<s\leq s_0$. In particular,  $(X_1,\Ff_1,B_1,s\bar L)$ has a good minimal model for any $0<s\leq s_0$. 
+
+By \cite[Theorem 7.2]{LMX24}, $X_1$ is $\Qq$-factorial klt. By \cite[Theorem 1.11, Lemma 4.7]{LMX24}, for any $0<s\leq s_0$, we may run a $(K_{\Ff_1}+B_1+s(\bar L)_{X_1})$-MMP which terminates with a good minimal model $(X'',\Ff'',B'',s\bar L)$ of $(X_1,\Ff_1,B_1,s\bar L)$, such that $X''$ is $\Qq$-factorial klt, and there exists an induced morphism $\psi_s: X''\rightarrow X_2$. Since $\alpha$ is small and the induced birational map $\beta_s: X_1\dashrightarrow X''$ does not extract any divisor, $\psi_s$ and $\beta_s$ are small. However, since $X_2''$ is also $\Qq$-factorial klt, $\psi_s$ is the identity morphism and $X''=X_2$.
+
+By \cite[Theorem 1.12]{LMX24}, $K_{\Ff_1}+B_1$ is NQC. For any $0<s\ll s_0$, since $\beta_s$ is a sequence of steps of a
+$$\left((K_{\Ff_1}+B_1+s_0(\bar L)_{X_1})+\left(\frac{s_0}{s}-1\right)(K_{\Ff_1}+B_1)\right)\text{-MMP},$$
+by \cite[Lemma B.6]{LMX24}, $\beta_s$ is $(K_{\Ff_1}+B_1)$-trivial, so $\beta_s: X_1\dashrightarrow X_2$ is a sequence of $(K_{\Ff_1}+B_1)$-flops.
+\end{proof}
+
+
+
+
+
+
+
+\begin{thebibliography}{99}
+\bibitem[ACSS21]{ACSS21} F. Ambro, P. Cascini, V. V. Shokurov, and C. Spicer, \textit{Positivity of the moduli part}, arXiv:2111.00423.
+
+\bibitem[AD13]{AD13} C. Araujo and S. Druel, \textit{On Fano foliations}, Adv. Math. \textbf{238} (2013), 70--118.
+
+\bibitem[AD16]{AD16} C. Araujo and S. Druel, \textit{On Fano Foliations 2}, in: P. Cascini, J. M\textsuperscript{c}Kernan, J. V. Pereira (eds), Foliation Theory in Algebraic Geometry, Simons Symposia, Springer, Cham. (2016).
+
+
+\bibitem[Bir12]{Bir12} C. Birkar, \textit{Existence of log canonical flips and a special LMMP}, Publ. Math. Inst. Hautes \'Etudes Sci. \textbf{115} (2012), 325--368.
+
+\bibitem[BZ16]{BZ16} C. Birkar and D.-Q. Zhang, \textit{Effectivity of Iitaka fibrations and pluricanonical systems of polarized pairs}, Publ. Math. Inst. Hautes \'Etudes Sci. \textbf{123} (2016), 283--331.
+
+\bibitem[Bru15]{Bru15} M. Brunella, \textit{Birational geometry of foliations}, IMPA Monographs \textbf{1} (2015), Springer, Cham.
+
+\bibitem[BCHM10]{BCHM10} C. Birkar, P. Cascini, C. D. Hacon and J. M\textsuperscript{c}Kernan, \textit{Existence of minimal models for varieties of log general type}, J. Amer. Math. Soc. \textbf{23} (2010), no. 2, 405--468.
+
+\bibitem[CHLX23]{CHLX23} G. Chen, J. Han, J. Liu, and L. Xie, \textit{Minimal model program for algebraically integrable foliations and generalized pairs}, arXiv:2309.15823. 
+
+
+\bibitem[CS20]{CS20} P. Cascini and C. Spicer, \textit{On the MMP for rank one foliations on threefolds}, arXiv:2012.11433.
+
+\bibitem[CS21]{CS21} P.~Cascini and C. Spicer, \textit{MMP for co-rank one foliations on threefolds}, Invent. Math. \textbf{225} (2021), no. 2, 603–690.
+
+\bibitem[CS23a]{CS23a} P. Cascini and C. Spicer, \textit{On the MMP for algebraically integrable foliations}, to appear in Shokurov's 70th birthday's special volume, arXiv:2303.07528.
+
+\bibitem[CS23b]{CS23b} P. Cascini and C. Spicer, \textit{Foliation adjunction}, arXiv:2309.10697.
+
+
+
+\bibitem[DH23]{DH23} O. Das and C. D. Hacon, \textit{On the Minimal Model Program for K\"ahler 3-folds}, arXiv:2306.11708.
+
+\bibitem[DHY23]{DHY23} O. Das, C. D. Hacon, and J. Y\'a\~nez, \textit{MMP for generalized pairs on K\"ahler 3-folds}, arXiv:2305.00524.
+
+\bibitem[DLM23]{DLM23} O. Das, J. Liu, and R. Mascharak, \textit{ACC for lc thresholds for algebraically integrable foliations}, arXiv:2307.07157.
+
+\bibitem[dFKX17]{dFKX17} T. de Fernex, J. Koll\'ar, and C. Xu, \textit{The dual complex of singularities}, in \textit{Higher dimensional algebraic geometry: in honor of Professor Yujiro Kawamata’s sixtieth birthday}, Adv. Stud. Pure Math. \textbf{74} (2017), Math. Soc. Japan, Tokyo, 103--129. 
+
+\bibitem[Dru21]{Dru21} S. Druel, \textit{Codimension 1 foliations with numerically trivial canonical class on singular spaces}, Duke Math. J. \textbf{170} (2021), no. 1, 95--203.
+
+
+
+\bibitem[HL23]{HL23} C. D. Hacon and J. Liu, \textit{Existence of flips for generalized lc pairs}, Camb. J. Math. \textbf{11} (2023), no. 4, 795--828.  
+
+
+\bibitem[HL22]{HL22} J. Han and Z. Li, \textit{Weak Zariski decompositions and log terminal models for generalized polarized pairs}, Math. Z. \textbf{302} (2022), 707--741.
+
+\bibitem[HLS19]{HLS19} J. Han, J. Liu, and V. V. Shokurov, \textit{ACC for minimal log discrepancies of exceptional singularities}, arXiv:1903.04338.
+
+
+\bibitem[HH20]{HH20}  K. Hashizume and Z. Hu, \textit{On minimal model theory for log abundant lc pairs}, J. Reine Angew. Math. \textbf{767} (2020), 109--159. 
+
+\bibitem[Kol23]{Kol23} J. Koll\'ar, \textit{Families of varieties of general type}, Cambridge Tracts in Math. \textbf{231} (2023), Cambridge Univ. Press. With the collaboration of Klaus Altmann and S\'andor Kov\'acs.
+
+
+\bibitem[KM98]{KM98} J. Koll\'{a}r and S. Mori, \textit{Birational geometry of algebraic varieties}, Cambridge Tracts in Math. \textbf{134} (1998), Cambridge Univ. Press.
+
+
+\bibitem[LLM23]{LLM23} J. Liu, Y. Luo, and F. Meng, \textit{On global ACC for foliated threefolds},  Trans. of Amer. Math. Soc. \textbf{376} (2023), no. 12, 8939--8972
+
+
+\bibitem[LMX23]{LMX23} J. Liu, F. Meng, and L. Xie, \textit{Uniform rational polytope of foliated threefolds and the global ACC}, arXiv:2306.00330.
+
+
+\bibitem[LMX24]{LMX24} J. Liu, F. Meng, and L. Xie, \textit{Minimal model program for algebraically integrable foliations on klt varieties}, arXiv:2404.01559.
+
+\bibitem[LX23a]{LX23a} J. Liu and L. Xie, \textit{Relative Nakayama-Zariski decomposition and minimal models of generalized pairs}, Peking Math. J. (2023).
+
+
+\bibitem[McQ08]{McQ08} M. McQuillan, \textit{Canonical models of foliations}, Pure Appl. Math. Q. \textbf{4} (2008), no. 3, Special Issue: In honor of Fedor Bogomolov, Part 2, 877--1012.
+
+\bibitem[MZ23]{MZ23} F. Meng and Z. Zhuang, \textit{MMP for locally stable families and wall crossing for moduli of stable pairs}, arXiv:2311.01319.
+
+\bibitem[Miy87]{Miy87} Y. Miyaoka, \textit{Deformations of a morphism along a foliation and applications}, Algebraic geometry, Bowdoin, Proc. Sympos. Pure Math. \textbf{46} (1985) (Brunswick, Maine, 1985), Amer. Math. Soc., Providence, RI (1987), 245--268.
+
+
+\bibitem[Sho96]{Sho96} V.V. Shokurov, \textit{3-fold log models}, J. Math. Sci. \textbf{81} (1996), no. 3, 2667--2699.
+
+\bibitem[Spi20]{Spi20} C. Spicer, \textit{Higher dimensional foliated Mori theory}, Compos. Math. \textbf{156} (2020), no. 1, 1--38.
+
+\bibitem[SS22]{SS22} C. Spicer and R. Svaldi, \textit{Local and global applications of the Minimal Model Program for co-rank 1 foliations on threefolds}, J. Eur. Math. Soc. \textbf{24} (2022), no. 11, 3969--4025.
+
+\bibitem[TX23]{TX23} N. Tsakanikas and L. Xie, \textit{Remarks on the existence of minimal models of log canonical generalized pairs}, arXiv:2301.09186.
+
+\end{thebibliography}
+\end{document}
+

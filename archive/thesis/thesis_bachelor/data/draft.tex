@@ -1,0 +1,31 @@
+\chapter{更多模问题}
+在代数几何中还有许多其他模问题，这一章举例其中一些，以及GIT和叠理论在这些问题中的作用。
+\subsection{标记曲线}
+无论GIT还是叠的构造，考虑DM稳定曲线作为被分类对象的一个重要原因就是其自同构群有限。在GIT构造中，曲线的Hilbert点稳定需要群作用的稳定子群有限，也就意味着曲线本身的自同构群有限。而在叠理论中，形如$ [X/G] $的群胚是DM叠的一个判定条件同样是稳定子群有限。在$ g\geqslant2 $时光滑射影曲线的自同构群是有限的，但低亏格时就不成立。回顾DM稳定曲线的等价定义时可以发现，对于DM稳定曲线的有理不可约分支，它的自同构群是被其上标记点（与其他部分的交点，即结点）限制的；反之，可以在曲线上附加标记点的结构，使得低亏格时也可以限制自同构。具体来说，一个\textbf{$ n $-标记曲线（$ n $ pointed curve）}$ (C;P_1,\ldots,P_n) $是指一条结点曲线$ C $，和$ n $个不同的光滑点$ P_1,\ldots,P_n $，或者记为$ C $上的一个除子$ D=\sum_{i=1}^{n}P_i $，这时曲线记为$ (C;D) $。这些标记点的地位和结点曲线$ C $的结点相同，其间态射$ f:(C;D)\to (C':D') $必须满足$ f(P_i)=(P_i') $。用$ \omega_C(D) $代替对偶化层来定义DM稳定性，或者等价的把有理不可约分支与其他部分的交点个数是少为3（2）改为交点和标记点一共至少为3（2），这就得到了\textbf{DM稳定标记曲线}。在稳定曲线族
+$$ \mathcal{C}\to S $$
+也附加上额外的截影（section）$ \sigma_i:S\to \mathcal{C} $，使得在每个纤维通过这些截影给出标记点，这就是DM稳定$ n $-标记曲线族。
+$ n $-标记光滑射影曲线的模问题记为$ M_{g,n} $，而DM稳定$ n $-标记曲线的模问题记为$ \overline{M_{g,n}} $。在一般的DM稳定曲线的模空间构造中用到的大部分预备构造都有对应的结论：DM稳定$ n $-标记曲线通过$ (\omega_C(D))^{\otimes \nu} $嵌入到$ \mathbb{P}^r $中，其中$ r=(2\nu-1)(g-1)+\nu n-1 $，并且有Hilbert多项式
+$$ p(t)=(2\nu t-1)(g-1)+\nu nt $$
+可以构造Hilbert概型参数化$ \mathbb{P}^r $中全部有$ n $个标记点且以$ p(t) $为Hilbert多项式的曲线，记作$ \mathcal{H} $；进一步用相应的形变理论可以得到对应的$ \mathcal{K} $来参数化全部被$ (\omega_C(D))^{\otimes \nu} $嵌入的DM稳定$ n $-标记曲线，并且
+$$ \dim \mathcal{K}=3g-3+n+(r+1)^2-1 $$
+
+叠意义的模空间构造可以相对轻松地推广，群胚$ [\mathcal{K}/G] $就是$ \overline{\mathscr{M}_{g,n}} $，光滑曲线的部分同理。而如果用GIT方法构造模空间，需要证明相应版本的潜稳定性定理等，来说明$ n $-标记曲线稳定性与对应Hilbert点的稳定性的关系。但这部分直到2006才被Elizabeth Baldwin补上\upcite{GITandModuliofstablecurve}，其证明思路是通过归纳，将亏格$ g $且有$ n $个标记点的曲线的稳定性，与亏格$ g+n $而没有标记点的曲线的稳定性联系起来。后来又被David Swinarski推广到加权曲线（weighted pointed curve）上\upcite{GITandModuliofPointedCurves}，即标记点可以附加有理数$ 0\leqslant a_i \leqslant 1 $的权重。
+
+\subsection{vectorbundle over sm curve}
+
+\subsection{曲面}
+在曲面的分类时，GIT的思路遇到了困难。
+
+
+
+\section{模问题分析}
+
+关于模空间的问题：例如是否紧？是否有合适的紧化？维数怎样？是否连通、不可约？是否有奇点？是否有上同调环/chow环？等···
+
+与构造模空间、研究其性质同等重要的，是提出一个好的模问题，并定义一个好的期望的回答（moduli space as scheme/algebraic space/stack/corase space/fine space/good space etc）：模问题确实处理了值得关心的对象，模空间确实很好的反映了这些对象的性质。
+
+实际上几乎没有回答这个模问题，而是更好的提出模问题，以及分析模问题本身。
+
+模问题$ M $的groupoid即使是一个DM-stack，也和函子本身的信息完全一致，只是可以更“类似”scheme。DM-stack的diagonal的unramified，因此自同构群blabla。这说明模问题的对象的自同构群blabla
+
+

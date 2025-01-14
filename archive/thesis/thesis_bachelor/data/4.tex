@@ -1,0 +1,200 @@
+\chapter{曲线模空间的构造}
+在这一章中，将使用之前引入的各种工具和结论，用两种方法赋予曲线模空间$ \mathrm{M}_g $几何结构和紧化，并且简单讨论它们的性质与关系。
+\section{GIT思路的构造}
+GIT思路的构造最终得到的是曲线模问题的粗模空间。为了整体线索清晰，首先给出构造中需要的定理和得到的结论，而把定理证明的部分细节放在后面。这一节主要内容来自\cite{ModuliofCurves,LecturesonModuliofCurves}。
+\subsection{主要思路}
+记$ \mathcal{H}=\mathcal{H}_{d,g,r} $，其中$ g\geqslant2 $，$ d=2n(g-1)$ ， $r=(2n-1)(g-1)-1 $，且$ n\geqslant 5 $。在Hilbert概型$ \mathcal{H} $的构造中，$ m $的选取并不是唯一的，因此$ G=\mathrm{SL}(r+1) $在$ \mathbb{P}^r $的作用（代替自同构），可以诱导在不同$ m $对应的$ \mathbb{P}(\bigwedge^{p(m)}S_m) $上的作用，进而诱导在$ \mathcal{H} $上不同的作用。记$ \mathcal{H} $中亏格$ g $的DM稳定曲线的$ n $-典范嵌入对应的部分为$ \mathcal{K} $，在合适的$ m $的选取，即合适的$ G $的作用下，对应的商就是所求的粗模空间$ \overline{\mathcal{M}_g} $。其中合适是指使曲线的DM稳定性与曲线的$ m $-Hilbert点的GIT意义下的稳定性等价。证明等价性的关键思路在于通过一系列过渡的稳定性结论，将不同的稳定性联系起来，其中最重要（证明也最长、最需技巧性）的一条是潜稳定性：
+\begin{theorem}[\cite{ModuliofCurves}Theorem4.45]\label{potentiallystable}	
+	存在正整数$ m' $，使得任意$ m\geqslant m' $，如果$ \mathbb{P}^r $中亏格$ g $，次数$ d $的连通曲线$ C $的$ m $-Hilbert点$ [C]_m\in \mathcal{H} $在对应$ G $的作用下是半稳定的，则$ C $是潜稳定的，特别的，是DM半稳定的。
+\end{theorem}
+通过这个结论，以及光滑曲线的稳定性，可以选定一个$ m $和对应的作用，有集合的包含关系
+$$  \{[C]_m|C\text{是光滑射影曲线}\}\subset \mathcal{K}^{s}\subset \mathcal{K}^{ss}\subset \{[C]_m|C\text{是DM半稳定曲线}\} $$
+这些集合的关系通过下述断言有更精确的描述：
+	\begin{enumerate}
+		\item $ \mathcal{K}^{ss}$ 在 $ \mathcal{H}^{ss} $是闭的；
+		\item 如果$ [C]_m\in \mathcal{K}^{ss} $，那么$ C $是DM稳定的；
+		\item $ \mathcal{K}^{ss}=\mathcal{K}^s $；
+		\item 每一个亏格$ g $的DM稳定曲线$ C $，都有一个$ n $-典范模型，使得$ [C]_m\in \mathcal{K}^{ss} $，即$ \mathcal{K}=\mathcal{K}^{ss} $。
+	\end{enumerate}
+
+从断言得到 $ \mathcal{K}=\mathcal{K}^s=\mathcal{K}^{ss}$ ，并且在$ \mathcal{H}_{d,g,r}^{ss} $中是闭的。从GIT的理论知道，可以做商$ \pi:\mathcal{H}_{d,g,r}^{ss}\to\mathcal{H}_{d,g,r}^{ss}/G $，并且闭集$ \pi:\mathcal{K}^{ss}\to \mathcal{K}^{ss}/G $是几何商，记$\mathcal{K}^{ss}/G= \overline{\mathcal{M}_{g}} $，$ \mathcal{K} $中光滑曲线的部分是开集，其像记作 $ \mathcal{M}_g\subset \overline{\mathcal{M}_{g}} $。接下来只需验证这两者就是曲线模问题$ M_g $和$ \overline{M_g} $的粗模空间。我们对$ \overline{\mathcal{M}_g} $验证，$ \mathcal{M}_g $的性质是随之成立的。
+
+取$ \overline{M_g}(B) $中一个等价类的代表元，即一个$ B $上的亏格$ g $的DM稳定曲线族$ \phi:\mathcal{C}\to B $。由$ \phi_*(\omega_{\mathcal{C}/B}^{\otimes n}) $在$ B $上是局部自由层，因此可以将$ \mathcal{C} $嵌入在$ \mathbb{P}^r \times B$中，不同的嵌入就取遍$ \phi:\mathcal{C}\to B $的等价类的全部代表元。由$ \mathcal{H} $的泛性质可以得到$ f: B\to \mathcal{H} $。事实上，可以进一步限制在$ f:B\to \mathcal{K} $上。再复合上$ \pi: \mathcal{K}\to \overline{\mathcal{M}_g} $，因为这时$ G $-不变的，所以$ \phi:\mathcal{C}\to B $所在等价类的代表元会给出相同的态射$ B\to  \overline{\mathcal{M}_g} $，这就定义了函子$ p:\overline{M_g}\to \mathrm{Mor}(-,\overline{\mathcal{M}_g}) $。借助$ \mathcal{H} $的泛性质不难验证$ \overline{\mathcal{M}_g} $和函子$ p $确实构成了粗模空间。
+
+注意到群$ G=\mathrm{SL}(r+1) $是光滑仿射的，并且$ \dim G=(r+1)^2-1 $，而$ \dim \mathcal{K}=3g-3+(r+1)^2-1 $，因此通过概型间态射和维数的关系，容易得到
+$$ \dim \overline{\mathcal{M}_g}=\dim \mathcal{K}-\dim G=3g-3 $$
+这和最初黎曼得到的结论一致。
+
+\subsection{部分证明细节} 
+现在我们给出潜稳定性定理\ref{potentiallystable}和断言的部分细节：
+
+潜稳定性定理的证明非常复杂，Gieseker用了50页的篇幅来证明它，这里只列出主要步骤，并以其中一步的证明说明如何使用关于稳定性的数值判断准则。定理的证明分两部分，第一部分用反证法说明$ \mathbb{P}^r $中性质较差的曲线$ C $的Hilbert点$ [C]_m $不稳定，第二部分通过$ C\hookrightarrow \mathbb{P}^r $上的不等式，进一步说明$ C $的性质。在第一部分需要依次证明如果$ [C]_m $半稳定，则$ C\hookrightarrow \mathbb{P}^r $是
+\begin{enumerate}
+	\item 非退化的，即$ C $不含在任意一个超平面中；
+	\item $ C $的每个分支是一般约化的（generically reduced），即$ C $在每个一般点（generic point）的局部环是约化的；
+	\item $ C_{red} $的每个奇异点是二重点；
+	\item $ C_{red} $的奇异点不会是尖点（cusp singularity）；
+	\item $ C_{red} $的奇异点不会是自切点（tacnode）；
+\end{enumerate}
+第二部分证明了$ C $上的不等式：令$ X $是$ C $的约化连通完全子曲线，记$ Y=\overline{C-X} $，并赋予既约诱导子概型结构（reduced induced structure），如果$ X \cap  Y $上的点$ P_1,\ldots,P_k $满足$ Y $的每个不可约分支$ Y_j $都有
+$$ \deg L_C|_{Y_j}(-D)\geqslant0 $$
+其中$ L_C $是$ \mathscr{O}_{\mathbb{P}^r}(1) $的拉回，$ D=\sum_{i=1}^{k}P_i $，则有不等式
+$$ \frac{h^0(X,L_X)}{d-g+1}\geqslant\frac{\deg L_X -\frac{k}{2}}{d} $$
+通过这个不等式可以依次证明
+\begin{enumerate}
+	\item $ C $是约化的曲线；
+	\item $ C $的每个光滑有理不可约分支与其他部分交点至少2个，即$ C $是DM半稳定的。
+	\item 潜稳定性曲线定义中第六条不等式成立；
+	\item 潜稳定性曲线定义中第四、第五条成立。
+\end{enumerate}
+现在以第一部分第一条为例，说明定理\ref{smstable}的证明技巧如何在潜稳定性定理中应用。使用反证法，证明对退化曲线$ C $的Hilbert点$ [C]_m $可以构造出一个1-ps $ \lambda \to \mathrm{SL}(r+1) $，使$ [C]_m $不稳定。$ C $在$ \mathbb{P}^r $中退化，因此
+$$ \bar{\phi}_1:H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(1))\to H^0(C_{red},L) $$
+的核不为$ 0 $，记之为$ W_0 $，并记$ W_1=H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(1)) $且$ \dim W_0=r_0 $，取$ W_0 $的一组基$ w_0,\ldots,w_{r_0-1} $，并扩充为$ W_1 $的一组基$ w_0,\ldots,w_r $。这里用$ \mathrm{GL}(r+1) $版本的判别法，定义
+\begin{equation*}
+	\lambda (t) w_i=\left\{
+	\begin{array}{rcl}
+	 w_i&,&0\leqslant i \leqslant r_0-1\\
+		tw_i&,&  r_0\leqslant i \leqslant r
+	\end{array}\right.
+\end{equation*}
+即权重$ \rho_0=\cdots=\rho_{r_0-1}=0 $，$ \rho_{r_0}=\cdots=\rho_r=1 $，并且$ \sum_{i=0}^{r}\rho_i=\dim W_1-\dim W_0\leqslant d-g $。
+由引理\ref{uniform m}，存在与$ C $无关的$ m' $，使得任意$ m\geqslant m' $，有$ H^1(C,L^m)=0 $和
+$$ \phi_m:H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(m))\to H^0(C,L^m) $$
+是满射。记$ M_1,\ldots,M_N $是$ w_i $的$ m $次单项式，成为$ H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(m)) $的一组基。记$ N_C $是$ \mathscr{O}_C $的幂零元的理想层，整数$ q $使得$ N_C^q=0 $。因此可以构造滤链
+$$ 0\subset W_0^qW_1^{m-q}\subset W_0^{q-1}W_1^{m-q+1}\subset\cdots\subset W_0^1W_1^{m-1}\subset  W_0^0W_1^m=H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(m)) $$
+将这些通过$ \phi_m $映入$ H^0(C,L^m) $中，记$ V_s=\phi_m( W_0^{q-s}W_1^{m-q+s} ),s=0,\ldots,q $，这样得到$ H^0(C,L^m)  $中滤链
+$$ V_0\subset \cdots \subset V_q $$
+并记$ \dim V_s=v_s $。和定理\ref{smstable}的证明完全一致，可以得到$ H^0(C,L^m) $的一组基的权重$ w $的一个估计：
+$$ w\geqslant (m-q+1)(dm-g+1) $$
+如果点$ [C]_m $半稳定，则$ H^0(C,L^m) $有一组基，满足不等式
+$$ \frac{w}{mP(m)}\leqslant \frac{\sum_{i=0}^{r}\rho_i}{d-g+1}$$
+而这不等式只在$ m\leqslant (d-g+1)(q-1) $时成立。上述证明中的$ q $和$ m' $都可以对全部$ C $统一的选取，所以当所取$ m $充分大时，对于退化的$ C $，$ [C]_m $就不稳定。
+
+这就是在潜稳定性定理证明时用到的主要技巧，通过曲线的性质在$ H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(1)) $上构造恰当的滤链和1-ps： $ \lambda \to \mathrm{GL}(r+1) $，进而得到恰当的$ H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(m)) $和$ H^0(C,L^m) $的滤链，再用不等式估计基的权重。
+
+然后是证明断言：
+\begin{enumerate}
+	\item $ \mathcal{K}^{ss}$ 在 $ \mathcal{H}^{ss} $是闭的；
+	\item 如果$ [C]_m\in \mathcal{K}^{ss} $，那么$ C $是DM稳定的；
+	\item $ \mathcal{K}^{ss}=\mathcal{K}^s $；
+	\item 每一个亏格$ g $的DM稳定曲线$ C $，都有一个$ n $-典范模型，使得$ [C]_m\in \mathcal{K}^{ss} $，即$ \mathcal{K}=\mathcal{K}^{ss} $。
+\end{enumerate}
+
+对于第一条断言，已经知道$ \mathcal{K} $在$ \mathcal{H} $是局部闭的，而$ \mathcal{H}^{ss} $在$ \mathcal{H} $中是开的，因此$ \mathcal{K}^{ss}\subset \mathcal{H}^{ss} $至少是局部闭的。将$ \mathcal{K}^{ss} $分为不可约分支$ \mathcal{Y}_j $和嵌入$ g_j:\mathcal{Y}_j\to \mathcal{H}^{ss} $，只需证明嵌入$ g_j $是本征的。根据本征性的赋值判断准则，任意离散赋值环$ R $和分式域$ K=\mathrm{Frac}\,R $，记一般点为$ \eta $，如果有交换图
+$$ \xymatrix{
+	\mathrm{Spec}\,K \ar[d] \ar[r] & \mathcal{K}^{ss} \ar[d] \\
+	\mathrm{Spec}\,R \ar[r]^-{f} & \mathcal{H}^{ss}
+} $$
+则通过$ f $拉回$ \mathcal{H}^{ss} $的万有族，得到曲线族$ \mathcal{D}\to \mathrm{Spec}\,R $，并记$ \omega=\omega_{\mathcal{D}/\mathrm{Spec}\,R} $；态射$ \mathrm{Spec}\,K \to \mathcal{K}^{ss} $意味着$ \mathcal{D} $的一般纤维$ \mathcal{D}_{\eta} $的Hilbert点在$ \mathcal{K}^{ss} $中，要构造唯一的$ \mathrm{Spec}\,R \to \mathcal{K}^{ss} $，只需证明$ \mathcal{D} $的特殊纤维$ C=\mathcal{D}_0 $的Hilbert点也在$ \mathcal{K}^{ss} $中。从$ f $知$ C $的Hilbert点是半稳定的，只需要说明它是$ n $-典范嵌入的。由于一般纤维是$ n $-典范嵌入的，因此$ \omega_{\mathcal{D}/\mathrm{Spec}\,R}^{\otimes n}\cong \mathscr{O}_{\mathcal{D}}(1) $，只需证明这个同构在特殊纤维上也成立。记$ C $的不可约分支为$ C_i $，则
+$$ \mathscr{O}_{\mathcal{D}}(1)|_{\mathcal{D}_0}\cong \omega^{\otimes n}(\sum a_iC_i) $$
+根据潜稳定性定理，$ C $是潜稳定的，利用第六条的不等式可以说明$ C $是不可约的，因此$$ \mathscr{O}_{\mathcal{D}}(1)|_{\mathcal{D}_0}\cong \omega^{\otimes n} $$
+这样就证明了$ \mathcal{K}^{ss} $在$ \mathcal{H}^{ss} $是闭的。
+
+对于第二条断言，要说明如果$ [C]_m\in\mathcal{K}^{ss} $，则$ C $是DM稳定曲线，只需说明$ C $的自同构群有限。由于$ C $是潜稳定的，$ C $的自同构不有限只在它的光滑有理不可约分支$ X\cong \mathbb{P}^1 $上发生，即$ Y $与其他部分只有两个交点$ P,Q $。但是$ Y $在$ \mathbb{P}^r $中是直线，故$ \omega_C|_{Y}\cong \mathscr{O}_{\mathbb{P}^1}(-2)(P+Q)\cong \mathscr{O}_{\mathbb{P}^1} $，这样$ \omega_C^{\otimes n}|_{Y}\cong \mathscr{O}_{\mathbb{P}^1} $不是极丰层，矛盾！因此$ C $必然是DM稳定的。
+
+第三条断言，如果$ \mathcal{K}^{ss} $中有一个点$ x=[C]_m $不是稳定的，则$ Gx $不是闭轨道，且$ \overline{Gx} $中有唯一的闭轨道$ Gy $，稳定子群的维数有$ \dim G_x>\dim G_y=0 $。但是$ C $是DM稳定曲线，$ G_x=\mathrm{Aut}\, C $是有限群，维数为$ 0 $，矛盾！因此断言得证。
+
+第四条断言并不能通过纯粹的GIT理论得到，而需要DM稳定曲线的约化理论和形变理论的结果。对于任意一条DM稳定曲线$ C $，首先根据引理\ref{smoothing}构造离散赋值环$ R $上的曲线族$ \mathcal{C}\to \mathrm{Spec}\,R $，使一般纤维$ \mathcal{C}_K $是光滑曲线。这样$ [\mathcal{C}_K]_m $应当在$ \mathcal{K}^{ss} $中（根据光滑曲线的稳定性，定理\ref{smstable}），进而在$ \mathcal{H}^{ss} $中。因为$ \mathcal{H}^{ss} $和$ \mathcal{H}^{ss}/G $是射影概型，并且$ \mathcal{K}^{ss} $在$ \mathcal{H}^{ss} $中闭，因此可以取到恰当的
+$$ \xymatrix{
+	\mathrm{Spec}\,K \ar[d] \ar[r] & \mathcal{K}^{ss} \ar[d] \\
+	\mathrm{Spec}\,R \ar[r]^-{f} & \mathcal{H}^{ss}
+} $$
+使得$ f $的提升$ \bar{f}:\mathrm{Spec}\,R\to \mathcal{K}^{ss} $拉回得到的曲线族$ \mathcal{D}\to \mathrm{Spec}\,R $在一般纤维有同构
+$$ \mathcal{D}_K\cong \mathcal{C}_K $$
+根据引理\ref{DeformationforCurves}这个同构可以唯一的延拓在曲线族上
+$$ \mathcal{D}\cong \mathcal{C} $$
+因此特殊纤维$ C $的Hilbert点$ [C]_m $通过$ \bar{f} $映入$ \mathcal{K}^{ss} $中。
+
+这样四条断言就全部得到证明了。
+
+\section{Stack思路的构造}
+叠思路下构造模空间，同样需要对群作用$G=\mathrm{SL}(r+1)\curvearrowright \mathcal{K} $作商，但与GIT不同的是，并不在概型的范畴内作商，而是得到作为叠的商。这一章首先讨论一类叠 $ [X/G] $，之后说明曲线模问题的函子所定义的群胚正是这种叠。在这一节中的概型未加声明时是指一般的概型，即$ \mathrm{Spec}\,\mathbb{Z} $上的概型，主要参考\cite{DM69,GeometryAlgCurvesII,NotesModuliSpaceofCurves}。
+\subsection{$ [X/G] $型的叠}\label{X/G}
+令$ S $为概型，$ S $上的概型的范畴记作$ \mathscr{S}=\mathfrak{Sch}_S $。令$ X,G\in \mathscr{S} $，且$ G $是$ S $上平坦的有限型群概型，作用在$ X $上。定义群胚$ [X/G] $在$ B\in \mathscr{S} $的截影是$ (\pi:E\to B,\phi:E\to X) $，或简记为$ E $，其中$ \pi:E\to B $是$ B $上的$ G $-主丛，$ G $自然的作用在$ E $上，$ \phi:E\to X $是$ G $-不变的态射；$ (\pi':E'\to B,\phi':E'\to X) $到$ (\pi:E\to B,\phi:E\to X) $的态射是$ (g:E'\to E,f:B'\to B) $，满足图表交换 
+$$ \xymatrix{
+	E' \ar[d]_-{\pi'} \ar[r]^-{g} & E \ar[d]^-{\pi} \\
+	B' \ar[r]^-{f} & B
+} $$
+且$ \phi'=\phi\circ g $。$ p:[X/G]\to \mathscr{S} $是遗忘函子，$ p((\pi:E\to B,\phi:E\to X) ) =B$。对于$ \mathscr{S} $中的$ f:B'\to B $，显然可以通过拉回得到提升$ E'=E\times_B B' $。当$ G $的作用自由，并且$ X $是某个概型$ Y $的$ G $-主丛时，$ Y=X/G $可以表示$ [X/G] $，这时候每个$ [X/G](B) $的截影都是$ B\to X/G $的拉回。
+
+但是$ [X/G] $通常不具有概型结构，在这里我们需要的是叠结构，这在$ G $光滑时成立：
+\begin{theorem}
+	当$ G/S $是光滑仿射概型时，$ [X/G] $是一个叠。
+\end{theorem}
+定理的证明需要用到许多相关的下降理论（descent theory），可以参考\cite{NotesModuliSpaceofCurves}中Proposition.2.1。当$ X $是$ S $上诺特有限型概型，$ G $是$ S $上光滑仿射有限型群概型时，对任意概型$ B/S $，给出$ \underline{B}\to [X/G] $等价于给出$ (1_B:B\to B) $在$ [X/G](B) $中的像，即一个$ B $上的$ G $-主丛$ E\to B $和一个$ G $-不变态射$ E\to X $。对$ (f:B'\to B)\in \underline{B}(B') $，有
+$$ \xymatrix{
+	f^*E \ar[d] \ar[r]& E \ar[d]\ar[r]&X \\
+	B' \ar[r]^-{f} & B&
+} $$
+显然可以取平凡从$ G\times_X X $和群作用$ G\times_SX\to X $定义叠的1-态射$ \underline{X}\to [X/G] $。考虑纤维积$ \underline{B}\times_{[X/G]} \underline{X} $，对$ B' $，纤维积的截影为$ (f:B' \to B,B'\to X,\psi) $，其中$ \psi $是$ [X/G](B') $中同构，即$ G\times_X B'\cong f^*E $。通过
+$$ B'\cong S\times_SB'\xrightarrow{e_G\times 1_{B'}} G\times B'\cong f^*E\to E  $$
+得到$ B'\to E $，反之可以从$ B'\to E $得到一个截影，因此$ \underline{B}\times_{[X/G]} \underline{X}\cong \underline{E} $，是可表的叠，所以$ \underline{X}\to [X/G] $是可表的态射，并且是光滑的。另一方面，如果$ G $在$ X $上的作用使得$ X $的几何点的稳定子群约化且有限，可以得到$ [X/G] $的对角态射非分歧。因此利用DM叠的判定准则（定理\ref{criterionforDM}），可以得到
+\begin{theorem}
+	当$ X $是$ S $上诺特有限型概型，$ G $是$ S $上光滑仿射有限型群概型，且$ G $在$ X $上的作用，使得$ X $的几何点的稳定子群约化且有限，则$ [X/G] $是DM叠，且$ [X/G] $是分离的当且仅当$ G $的作用是恰当的。
+\end{theorem}
+
+
+\subsection{构造$ \mathscr{M}_g $}
+现在说明函子$ \overline{M_g} $定义的群胚$ \overline{\mathscr{M}_g} $是一个DM叠。
+
+在GIT的构造中假定了所有概型是代数闭域$ k $上的，有$ \mathcal{K}\subset \mathcal{H}_{d,g,r} $参数化全部亏格$ g\geqslant2 $的DM稳定曲线，记其中光滑曲线对应的开集为$ \mathcal{K}^\circ $。以$ \mathcal{K} $的情况为例，$ \mathbb{P}^r $的自同构群$G= \mathrm{PGL}(r+1)\cong \mathrm{PGL}(r+1) $作用在$ \mathcal{K} $上。下面取$ S=\mathrm{Spec}\,k $，在$ \mathscr{S}=\mathfrak{Set}_k $上通过\ref{stack}和\ref{X/G}两节中的结论证明$ \overline{\mathscr{M}_g}\cong [\mathcal{K}/G] $:
+
+每个亏格$ g $的DM稳定曲线族$ (\pi: \mathcal{X}\to B)\in \overline{\mathscr{M}_g}(B) $，在$ B $上有局部自由层$ \pi_*\omega_{\mathcal{X}/B}^{\otimes n} $，因而有射影丛$ \mathbb{P}(\pi_*\omega_{\mathcal{X}/B}^{\otimes n} )\to B $和相伴的$ G $主丛$ E\to B $。把$ \mathcal{X} $拉回到$ \pi':\mathcal{X}\times_BE \to E $，可以得到$ E $上的射影丛$ \mathbb{P}(\pi_*\omega_{\mathcal{X}\times_BE/E}^{\otimes n}) $，这个射影丛平凡，且与$ \mathbb{P}(\pi_*\omega_{\mathcal{X}/B}^{\otimes n })\to B $在$ E $的拉回同构。这样通过$ \mathcal{K} $的泛性质（$ \mathcal{H}_{d,g,r} $表示对应Hilbert函子），可以得到$ E\to \mathcal{K} $，并且显然是$ G $-不变的。因此从$ \mathcal{X}\to B $得到了$ G $-主丛$ E\to B $和$ G $-不变态射$ E\to \mathcal{K} $。而对$ {\mathscr{M}_g} $中的态射
+$$ \xymatrix{
+	\mathcal{X}' \ar[d]_-{\pi'} \ar[r] & \mathcal{X} \ar[d]^-{\pi} \\
+	B' \ar[r]^-{f} & B
+} $$
+有$ f^*\pi_*\omega_{\mathcal{X}/B}\cong \pi_*'\omega_{\mathcal{X}'/B'} $，因此有交换图
+$$ \xymatrix{
+	E' \ar[d] \ar[r] & E \ar[d] \\
+	B' \ar[r]^-{f} & B
+} $$
+即$ [\mathcal{K}/G] $中的态射。这样就构造了1-态射（范畴间的函子）$ \Phi:\overline{\mathscr{M}_g}\to [\mathcal{K}/G] $，并且可以验证是全忠实的。
+
+反之，每个$ [\mathcal{K}/G] $中对象$ (E\to B,E\to \mathcal{K} ) $，简记为$ E $，把$ \mathcal{K} $的万有族从$ E\to \mathcal{K} $拉回得到亏格$ g $的DM稳定曲线族$ \pi_E:\mathcal{X}_E\to E $，并且有同构$ \mathbb{P}({\pi_E}_*\omega_{\mathcal{X}_E/E}^{\otimes n} ) \cong E\times \mathbb{P}^r$。在交换图表
+$$ \xymatrix{
+	\mathcal{X}_E \ar[d]^-{\pi_E} &  \\
+	E \ar[r] & B
+} $$
+中，通过$ G $在$ E $和$ E\times \mathbb{P}^r $的作用和下降理论，可以证明此时$ E/G=B $，并且$ \mathcal{X}=\mathcal{X}_E/G $存在且满足$ \mathcal{X}\times_BE\cong \mathcal{X}_E $。这样$ \overline{\mathscr{M}_g}(B) $中的截影$ \pi:\mathcal{X}\to B $，简记为$ \pi $，在$ [\mathcal{K}/G] $中有$ \Phi(\pi) \cong E$，这就证明了两个范畴通过$ \Phi $范畴等价，也就是群胚的同构。
+
+通过这个同构，就说明$ \overline{\mathscr{M}_g} $是一个DM叠，并且可以同样的得到$ \mathscr{M}_g $也是DM叠。这就完成了叠意义下曲线模空间的构造。
+
+在这个构造中是通过“在叠的范畴中作商”来得到最终结果的，是一种全局（global）的描述。但通过形变理论还可以（\'etale）局部地理解这个模空间：对于域$ k $上的一条DM稳定曲线$ C $，有一个$ k $-点$ [C]\in \underline{\mathscr{M}_g} $。对$ C $的每一个形变$ \pi:\mathcal{C}\to B $，都可以通过$ \pi \in\overline{\mathscr{M}_g}(B)  $给出态射$ \underline{B}\to \overline{\mathscr{M}_g} $，这就是$ \overline{\mathscr{M}_g} $在点$ [C] $的一个局部。而$ C $的万有族$ \mathcal{X}\to \mathcal{M} $所给出的就是$ \overline{\mathscr{M}_g} $的图册，从此可以说明$ \overline{\mathscr{M}_g} $确实有维数
+$$ \dim \overline{\mathscr{M}_g}=\dim k[[t_1,\ldots,t_N]]=3g-3 $$
+如果形变$ \mathcal{C}\to B $的族中有同构的纤维，则还需要商去对应的自同构群$ G $，即$ B/G $（在叠的意义下）。这样$ \overline{\mathscr{M}_g} $在（\'etale）局部上就是这些$ B/G $粘贴得到的。
+
+\section{两种“紧化”}
+在这一节中讲讨论两种意义下的模空间的紧化，主要参考是\cite{DM69,GeometryAlgCurvesII,NotesModuliSpaceofCurves}。
+
+对于光滑射影曲线的模问题$ M_g $和等价类的集合$ \mathrm{M}_g $，GIT理论和叠理论分别给出了具有不同结构的模空间$ \mathcal{M}_g $和$ \mathscr{M}_g $，它们都包含了$ \mathrm{M}_g $的信息，即它们的$ k $-点就是集合$ \mathrm{M}_g $。但是为了更好的研究不同曲线的关系，需要模空间有更好的性质，比如说“紧性”，而这两个模空间都不是紧的，需要补充它们的边界。在代数几何中，紧性是通过本征态射来刻画的，为了说明构造的$\overline{ \mathcal{M}_g} $和$ \overline{\mathscr{M}_g }$是紧的，就要说明$\overline{ \mathcal{M}_g}\to \mathrm{Spec}\,k $和$ \overline{\mathscr{M}_g }\to \mathscr{S}=\underline{\mathrm{Spec}\,k} $是本征态射。
+
+$\overline{ \mathcal{M}_g}\to \mathrm{Spec}\,k $是本征态射非常显然：在GIT理论中，$ \mathcal{H}^{ss}/G $是域$ k $上射影概型，而$ \mathcal{K} $是$ \mathcal{H}^{ss} $的$ G $-不变闭子概型，自然得到$ \overline{ \mathcal{M}_g} $是$ k $上射影概型，因此$\overline{ \mathcal{M}_g}\to \mathrm{Spec}\,k $是本征态射。
+
+为了说明$\overline{ \mathscr{M}_g}\to \mathrm{Spec}\,k $是本征态射，只需要用DM叠的赋值判定准则就可以了。首先验证分离性，通过定理\ref{Sepforstack}，交换图表
+$$ \xymatrix{
+	& \overline{ \mathscr{M}_g}\ar[d]\\
+	\underline{\mathrm{Spec}\,R} \ar@<1pt>[ur]^-{g_1}\ar@<-1pt>[ur]_-{g_2}\ar[r] & \underline{\mathrm{Spec}\,k} 
+} $$
+中的$ g_1,g_2 $即指$ \mathrm{Spec}\,R $上的两个稳定曲线族$ \mathcal{C}_1,\mathcal{C}_2 $，而$ g_1,g_2 $在一般点同构，即指两个曲线族的一般纤维同构。由引理\ref{DeformationforCurves}知道这个同构可以延拓在整个曲线族，也就是$ g_1,g_2 $的同构。
+
+再看本征性，在定理\ref{Properforstack}的交换图表中，
+$$ \xymatrix{
+	\underline{\mathrm{Spec}\,K'}\ar[r]\ar[d]&\underline{\mathrm{Spec}\,K} \ar[d] \ar[r]^-{g} & \overline{ \mathscr{M}_g} \ar[d] \\
+	\underline{\mathrm{Spec}\,R'}\ar[r] \ar@{-->}[urr]&\underline{\mathrm{Spec}\,R} \ar[r] & \underline{\mathrm{Spec}\,k} }$$
+提升$ \underline{\mathrm{Spec}\,R'}\to \overline{ \mathscr{M}_g} $对应的恰好是DM稳定曲线的约化理论的结论，即引理\ref{reduction}。
+
+到此为止，GIT和叠思路下和意义下的两种模空间的构造和紧化就完成了。
+\section{标记曲线}
+最后将曲线模问题推广，即标记曲线的模空间，主要参考\cite{GITandModuliofPointedCurves,GITandModuliofstablecurve,GeometryAlgCurvesII}。
+
+无论GIT还是叠的构造，考虑DM稳定曲线作为被分类对象的一个重要原因就是其自同构群有限：在GIT构造中，曲线的Hilbert点稳定需要群作用的稳定子群有限，也就意味着曲线本身的自同构群有限。而在叠理论中，形如$ [X/G] $的群胚是DM叠的判定条件（定理\ref{criterionforDM}）同样要求稳定子群有限。在$ g\geqslant2 $时光滑射影曲线的自同构群是有限的，但低亏格时就不成立。回顾DM稳定曲线的等价定义时可以发现，对于DM稳定曲线的有理不可约分支，它的自同构群是被其上标记点（与其他部分的交点，即结点）限制的；反之，可以在曲线上附加标记点的结构，使得低亏格时也可以限制自同构。具体来说，一个\dotuline{$ n $-标记曲线（$ n $- pointed curve）}$ (C;P_1,\ldots,P_n) $是指一条结点曲线$ C $，和$ n $个不同的光滑点$ P_1,\ldots,P_n $。又是也记$ C $上的一个除子$ D=\sum_{i=1}^{n}P_i $，这时曲线记为$ (C;D) $。这些标记点的地位和结点曲线$ C $的结点相同，其间态射$ f:(C;D)\to (C':D') $必须满足$ f(P_i)=(P_i') $。用$ \omega_C(D) $代替对偶化层来定义DM稳定性，或者等价的把有理不可约分支与其他部分的交点个数是少为3（2）改为交点和标记点一共至少为3（2），这就得到了\dotuline{DM稳定标记曲线}。在稳定曲线族
+$$ \mathcal{C}\to S $$
+也附加上额外的截影（section）$ \sigma_i:S\to \mathcal{C} $，使得在每个纤维通过这些截影给出标记点，这就是DM稳定$ n $-标记曲线族。
+$ n $-标记光滑射影曲线的模问题记为$ M_{g,n} $，而DM稳定$ n $-标记曲线的模问题记为$ \overline{M_{g,n}} $。在一般的DM稳定曲线的模空间构造中用到的大部分预备构造都有对应的结论：DM稳定$ n $-标记曲线通过$ (\omega_C(D))^{\otimes \nu} $嵌入到$ \mathbb{P}^r $中，其中$ r=(2\nu-1)(g-1)+\nu n-1 $，并且有Hilbert多项式
+$$ p(t)=(2\nu t-1)(g-1)+\nu nt $$
+可以构造Hilbert概型参数化$ \mathbb{P}^r $中全部有$ n $个标记点且以$ p(t) $为Hilbert多项式的曲线，记作$ \mathcal{H} $；进一步用相应的形变理论可以得到对应的$ \mathcal{K} $来参数化全部被$ (\omega_C(D))^{\otimes \nu} $嵌入的DM稳定$ n $-标记曲线，并且
+$$ \dim \mathcal{K}=3g-3+n+(r+1)^2-1 $$
+
+叠意义的模空间构造可以相对轻松地推广，群胚$ [\mathcal{K}/G] $就是$ \overline{\mathscr{M}_{g,n}} $，光滑$ n $-标记曲线的部分同理。而如果用GIT方法构造模空间，需要证明相应版本的潜稳定性定理等，来说明$ n $-标记曲线稳定性与对应Hilbert点的稳定性的关系。但这部分直到2006才被Elizabeth Baldwin补上\upcite{GITandModuliofstablecurve}，其证明思路是通过归纳，将亏格$ g $且有$ n $个标记点的曲线的稳定性，与亏格$ g+n $而没有标记点的曲线的稳定性联系起来。后来David Swinarski又推广到加权曲线（weighted pointed curve）上，即标记点可以附加有理数$ 0\leqslant a_i \leqslant 1 $的权重\upcite{GITandModuliofPointedCurves}。
+

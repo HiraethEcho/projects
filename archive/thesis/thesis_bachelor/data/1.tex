@@ -1,0 +1,68 @@
+\chapter{绪论}
+
+\section{研究背景与结论}
+\subsection{背景}
+代数几何是现代基础数学的中心领域之一，不仅本身内容丰富，还与复流形、代数数论、表示论等分支联系密切，同时在密码学等应用学科也有重要作用。许多数学领域都有一个基础问题，即分类问题，代数几何也不例外，例如代数簇、曲线上向量丛的等价类的分类等。将这些对象的等价类参数化得到参数空间，通常期望这个空间本身具有一些结构，尤其是几何结构，以此研究这类对象，这样的问题常被称为模问题（moduli problem），对应的空间称为模空间（moduli space）\upcite{Princeton}。
+
+其中研究较早、技术相对成熟、有丰富结果的问题是曲线的模问题。最早黎曼考虑了紧黎曼面的分类问题，或者说是讨论可定向闭曲面上复结构的分类。可定向闭曲面可以由拓扑亏格分类，对应了模空间$$ \mathrm{M}_g=\{\text{亏格}g\text{的黎曼面等价类}\} $$
+虽然没有严格定义或证明，但黎曼认为亏格$ g\geqslant $的紧黎曼面由$ 3g-3 $个独立复参数决定，或者说$\dim \mathrm{M}_g= 3g-3 $。
+
+代数几何和黎曼面的研究说明紧黎曼面和复数域上光滑射影曲线是等价的，进一步代数几何研究的是更一般的代数曲线，对应模空间为$ \mathrm{M}_g=\{\text{亏格}g\text{的光滑射影曲线等价类}\} $。这个空间一般被赋予了非紧的几何结构，于是其紧化$ \overline{\mathrm{M}_g} $是一个自然的问题。从不同角度出发可以构造不同的紧化，也意味着不同意义下将不同的曲线添加进“边界”$ \overline{\mathrm{M}_g}-\mathrm{M}_g $中。各种观点下讨论曲线模空间的性质和紧化，产生了丰富的结果。
+
+\subsection{构造方法与结论}
+在不同领域下赋予$ \mathrm{M}_g $和$ \overline{\mathrm{M}_g} $几何结构有许多不同的方法和侧重点，例如Teichm\"{u}ller的方法更关注复流形的观点，Hodge理论的方法自然和Hodge理论息息相关\upcite{ModuliofCurves}。而叠（stack）和几何不变量理论（geometric invariant theory, GIT）这两种思路更有抽象代数几何的风格，并且它们在“紧化”中添加的实际上是同一类曲线（在本文称之为DM稳定曲线，或简称稳定曲线）。为了后续行文方便，接下来就给出这两种构造的大致思路：
+
+\subsubsection{GIT思路}
+对于亏格$ g\geqslant 2 $的光滑射影曲线$ C $，通过其上的极丰丛（very ample line bundle）$ \omega_C^{\otimes n} $可以$ n $-典范嵌入到射影空间$ \mathbb{P}^r $，并且它们具有相同的Hilbert多项式$ p(t)=dt+1-g $。其中$ r=(2n-1)(g-1)-1=h^0(C,\omega_C^{\otimes n})-1 $，曲线$ C $在$ \mathbb{P}^r $中的次数为$ d=\deg \omega_C^{\otimes n}=2n(g-1) $。通过Grothendieck的定理可以构造对应的Hilbert 概型 $ \mathcal{H}_{d,g,r}=\mathrm{Hilb}_r^{p} $来参数化$ \mathbb{P}^r $中具有Hilbert多项式$ p(t) $的闭子概型的嵌入。但$ \mathcal{H}_{d,g,r} $参数化的是嵌入而不是概型，即同一光滑曲线$ C $和极丰线丛$ \omega^{\otimes n}_C $可以以不同的方式嵌入$ \mathbb{P}^r $中，恰对应$ \mathbb{P}^r $的自同构，也就给出自同构群$ G=\mathrm{SL}(r+1) $在 $ \mathcal{H}_{d,g,r} $上的作用。取 $ \mathcal{H}_{d,g,r} $其中$ n $-典范嵌入的光滑射影曲线构成的子概型，再用GIT的方法商去$ G $，就得到得到 $ \mathcal{M}_g $。在Gieseker的构造中，GIT意义下作商时引入的的稳定点对应的是DM稳定曲线，添加它们就得到GIT意义下的紧化$ \overline{\mathcal{M}_g} $。
+
+\subsubsection{叠的思路}
+在概型的范畴中，曲线的模问题并不能得到完满的答案（没有细模空间）。叠构造的思路是通过Yoneda定理和群胚等概念扩大概型范畴，在函子范畴$ [\mathfrak{Sch}_S^\circ,\mathfrak{Set}] $甚至更大的“范畴$ \mathfrak{Sch}_S $上的群胚”的范畴中定义新的几何对象，即所谓的叠和DM叠。将光滑射影曲线的模问题用函子$ M_g $描述，在这个更大的范畴中通过函子得到一个群胚$ \mathscr{M}_g $，可以证明这是一个DM叠，也就是叠意义下的曲线模空间。$ \mathscr{M}_g $作为空间，\'etale局部上是曲线的形变商去自同构群得到的。将$ \mathscr{M}_g $紧化，同样需要引入更多曲线来补充边界，即DM稳定曲线，对应的群胚$ \overline{\mathscr{M}_g} $就是叠意义下$ \mathscr{M}_g $的紧化。
+
+\section{关于本文}
+关于这两种构造方法和模空间的性质，许多文献中给出了详细且深刻的内容。本文的目的并不是重复这些知识，而是通过梳理这些内容，尤其是关于构造的部分，来更好的理解曲线模问题，并进一步考虑其他模问题。因此，对于模空间的性质并不做过多的研究，而且许多定理、命题的证明都会省略，只保留一些关键的步骤。
+\subsection{本文的结构}
+本文首先讨论曲线的基本知识，然后引入构造时需要的工具，用这些工具在两种思路下构造模空间及其紧化，最后延申考虑更多模空间的问题。具体来说：
+
+第二章是关于曲线的基础知识，是后续分类的对象，分为三节：
+\begin{enumerate}
+	\item 首先是关于光滑曲线的基础概念与结论，并且用相对初等的方法讨论低亏格的光滑曲线。
+	\item 其次定义了DM稳定曲线和一些后续重要的性质，以及曲线的其他稳定性。
+	\item 最后关注与DM稳定曲线族相关的理论，包括形变理论（deformation theory）和约化理论（reduction theory）。
+\end{enumerate}
+
+第三章将介绍与定义模问题相关的范畴论的知识，以及GIT和叠两个构造思路用到的相关工具，分为三节：
+\begin{enumerate}
+	\item 首先是定义模问题相关的范畴论的知识，尤其是Yoneda定理和叠等概念，并且指出了我们期望得到的结论。
+	\item 定义和构造可表函子的例子（或者说细模空间）Hilbert概型，和一些后续用到的性质。
+	\item 最后介绍GIT的一般理论，和在Hilbert概型的具体应用，并通过一个例子给出Gieseker在GIT构造中的主要技术。
+\end{enumerate}
+
+第四章将介绍这两种构造曲线模空间的具体思路，并讨论它们简单的性质，分为四节：
+\begin{enumerate} 	
+	\item 第一节是GIT思路的构造，通过在Hilbert概型上作商得到$ \overline{\mathcal{M}_g} $，其开子概型为$ \mathcal{M}_g $。
+	\item 第二节是叠思路的构造。我们将说明函子$ M_g $和$ \overline{M_g} $对应的群胚$ \mathscr{M}_g $和$ \overline{\mathscr{M}_g} $是DM叠。
+	\item 第三节将说明两种意义下的紧化。
+	\item 第四节稍加推广，讨论标记曲线的模空间。
+\end{enumerate}	
+
+第五章对模问题的进一步讨论，分为两节：
+\begin{enumerate}
+	\item 首先列举其他模问题，以及GIT和叠理论的应用。
+	\item 最后讨论GIT和叠理论如何指导模问题。
+\end{enumerate}
+
+\subsection{假设与符号}
+最后说明本文的一些假设和符号。
+
+如无特别说明，本文中的概型均指$ 0 $特征代数闭域上的概型，曲线指连通曲线。在与群胚、叠相关的部分常指$ \mathrm{Spec}\,\mathbb{Z} $上的概型，并会提前声明。。
+
+本文中通常用$ X,Y,B,C,S $等表示域上的概型，$ \mathscr{N,T,F} ,$$ \mathscr{I,O,E}\!xt^i,\mathscr{H}\!om ,\Omega$ 等表示概型上的层；而$ \mathcal{X},\mathcal{Y},\mathcal{C} $表示一族概型。
+
+概型的范畴记为$ \mathfrak{Sch} $，而$ S $上的概型的范畴记为$ \mathfrak{Sch}_S $，当$ S=\mathrm{Spec}\,k $时也记为$ \mathfrak{Sch}_k $；集合的范畴记为$ \mathfrak{Set} $，其他范畴一般记为$ \mathscr{C},\mathscr{B},\mathscr{S},\mathscr{G} $等，$ \mathscr{C} $的对偶范畴记为$ \mathscr{C}^\circ $。范畴间的函子用$ F,G,H $等表示，如果作为2-范畴中的1-态射时也用$ f,g,h,p $等表示。有时也用$ Isom_B(X,Y),Hilb_r^p ,Gr(r,V)$表示对应含义的函子，如果可表则记对应概型为$ \mathrm{Hilb}_{r}^{p},\mathrm{Isom}_B(X,Y),\mathrm{Gr}(r,V)$。
+
+光滑射影曲线的模问题的函子记为$ M_g $，对应曲线等价类的集合记作$ \mathrm{M}_g $，通过GIT和叠理论分别赋予概型和DM叠的几何结构，记为$ \mathcal{M}_g $和$ \mathscr{M}_g $，各自意义下的紧化记为$ \overline{\mathcal{M}_g} $和$ \overline{\mathscr{M}_g} $。
+
+除此之外，$ x_0,\ldots,x_r $的$ d $次单项式常用$ x^I $表示，其中$ I=(i_0,\ldots,i_r) $是$ (r+1) $-元非负整数组，且$ \sum_{k=0}^{r}i_l=d $，单项式$$ x^I=\prod_{k=0}^{r}x_k^{i_l} $$
+
+仿射空间$ \mathbb{A}^r $中的点的坐标记为$ (a_1,\ldots,a_r) $，射影空间$ \mathbb{P}^r $中的点的齐次坐标记为$ [a_0:\ldots:a_r]  $。
+

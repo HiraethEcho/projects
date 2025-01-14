@@ -1,0 +1,1036 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{geometry}
+\geometry{a4paper,top=3.2cm,bottom=3.2cm,left=2.5cm,right=2.5cm}
+%\usepackage{soul}
+
+%\setcounter{tocdepth}{3}
+
+%\usepackage[pagewise]{lineno}\linenumbers
+%\usepackage[inline]{showlabels}
+
+\hyphenpenalty=5000
+\tolerance=1000
+
+\usepackage{todonotes}
+ \newcommand\liu[1]{\todo[color=green!40]{#1}} %Liu
+ \newcommand\liuinline[1]{\todo[inline,color=green!40]{#1}} %Liu inline
+ \newcommand\wang[1]{\todo[color=yellow!40]{#1}} %wang
+ \newcommand\wanginline[1]{\todo[inline,color=yellow!40]{#1}} %wang inline
+\newcommand\chen[1]{\todo[color=pink!40]{#1}} %chen
+ \newcommand\cheninline[1]{\todo[inline,color=pink!40]{#1}} %wang inline
+
+
+\usepackage{amsfonts, adjustbox, amssymb, amscd}
+\numberwithin{equation}{section}
+
+%\usepackage[symbol]{footmisc}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thepart}{\Roman{part}}
+
+\usepackage{bm}
+\usepackage{verbatim}
+%\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{subfiles}
+\usepackage[toc,page]{appendix}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage[all]{xy}
+
+\usepackage{graphicx}
+\usepackage{appendix}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  citecolor=red,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=red,
+}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\newcommand{\bir}{\dashrightarrow}
+
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\oE}{\overline{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\LD}{\mathcal{LD}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bb}{\bm{b}}
+\newcommand{\Mm}{{\bf{M}}}
+\newcommand{\Nn}{{\bf{N}}}
+\newcommand{\PP}{{\bf{P}}}
+\newcommand{\Pp}{{\bf{P}}}
+\newcommand{\NN}{{\bf{N}}}
+\newcommand{\Dd}{{\bf{D}}}
+\newcommand{\oY}{\overline{Y}}
+\newcommand{\oL}{\overline{L}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\ind}{\mathrm{ind}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\exc}{\mathrm{exc}}
+
+
+
+\newcommand{\Cc}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Zz}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+
+
+
+
+\newcommand{\zz}{\mathbf{z}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\ww}{\mathbf{w}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\kk}{\mathbf{k}}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\alct}{a\operatorname{LCT}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Center}{\operatorname{center}}
+\newcommand{\Cone}{\operatorname{Cone}}
+\newcommand{\Exc}{\operatorname{Exc}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Fr}{\operatorname{Fr}}
+\newcommand{\Conv}{\operatorname{Conv}}
+\newcommand{\Bir}{\operatorname{Bir}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\glct}{\operatorname{glct}}
+\newcommand{\ct}{\operatorname{ct}}
+\newcommand{\GLCT}{\operatorname{GLCT}}
+\newcommand{\HH}{\operatorname{H}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\red}{\operatorname{red}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\Nklt}{\operatorname{Nklt}}
+\newcommand{\mld}{{\operatorname{mld}}}
+\newcommand{\Bs}{{\operatorname{Bs}}}
+\newcommand{\Src}{{\operatorname{Src}}}
+\newcommand{\Spr}{{\operatorname{Spr}}}
+\newcommand{\num}{{\operatorname{num}}}
+\newcommand{\tang}{{\operatorname{tang}}}
+\newcommand{\pld}{{\operatorname{pld}}}
+\newcommand{\tmld}{{\operatorname{tmld}}}
+\newcommand{\relin}{\operatorname{relin}}
+
+\newcommand{\loc}{\operatorname{loc }}
+\newcommand{\expsing}{\mathrm{exp}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\Weil}{\operatorname{Weil}}
+\newcommand{\lct}{\operatorname{lct}}
+\newcommand{\LCT}{\operatorname{LCT}}
+\newcommand{\fol}{\operatorname{fol}}
+\newcommand{\CR}{\operatorname{CR}}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\pet}{\operatorname{pet}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ngklt}{\operatorname{Ngklt}}
+\newcommand{\Nlc}{\operatorname{Nlc}}
+\newcommand{\ld}{\operatorname{ld}}
+\newcommand{\Diff}{\operatorname{Diff}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\mult}{\operatorname{mult}}
+\newcommand{\Rct}{\operatorname{Rct}}
+\newcommand{\RCT}{\operatorname{RCT}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\cont}{\operatorname{cont}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lf}{\lfloor}
+\newcommand{\rf}{\rfloor}
+
+
+\newcommand{\Aa}{{\bf{A}}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\Bb}{{\bf{B}}}
+\newcommand{\Ff}{\mathcal{F}}
+\newcommand{\Gg}{\mathcal{G}}
+\newcommand{\LCP}{\mathcal{LCP}}
+\newcommand{\Oo}{\mathcal{O}}
+\newcommand{\Ii}{\Gamma}
+\newcommand{\Jj}{\mathcal{J}}
+\newcommand{\Ee}{\mathcal{E}}
+\newcommand{\Hh}{\mathcal{H}}
+\newcommand{\Ll}{\mathcal{L}}
+\newcommand{\me}{\mathcal{E}}
+\newcommand{\mo}{\mathcal{O}}
+\newcommand{\nN}{\mathcal{N}}
+\newcommand{\anN}{\mathcal{AN}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Xx}{\mathcal{X}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Yy}{\mathcal{Y}}
+
+
+\newcommand{\BB}{\mathfrak{B}}
+\newcommand{\mm}{\mathfrak{m}}
+
+\newcommand{\NE}{\mathrm{NE}}
+\newcommand{\Nef}{\mathrm{Nef}}
+\newcommand{\Sing}{\mathrm{Sing}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\reg}{\mathrm{reg}}
+\newcommand{\creg}{\mathrm{creg}}
+\newcommand\MLD{{\rm{MLD}}}
+\newcommand\FT{{\rm{FT}}}
+\newcommand{\crt}{{\rm{crt}}}
+\newcommand{\CRT}{{\rm{CRT}}}
+\newcommand{\Coeff}{{\rm{Coeff}}}
+\newcommand\coeff{{\rm{coeff}}}
+\newcommand{\rank}{\mathrm{rank}}
+
+\makeatletter
+\newenvironment{subtheorem}[1]{%
+  \def\subtheoremcounter{#1}%
+  \refstepcounter{#1}%
+  \protected@edef\theparentnumber{\csname the#1\endcsname}%
+  \setcounter{parentnumber}{\value{#1}}%
+  \setcounter{#1}{0}%
+  \expandafter\def\csname the#1\endcsname{\theparentnumber.\Alph{#1}}%
+  \ignorespaces
+}{%
+  \setcounter{\subtheoremcounter}{\value{parentnumber}}%
+  \ignorespacesafterend
+}
+\makeatother
+\newcounter{parentnumber}
+
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{exprop}[thm]{Example-Proposition}
+\newtheorem{claim}[thm]{Claim}
+
+\newtheorem{alphthm}{Theorem}
+\renewcommand{\thealphthm}{\Alph{alphthm}}
+\newtheorem{alphcor}{Corollary}
+\renewcommand{\thealphcor}{\Alph{alphthm}}
+
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{mythm}[1]
+{\renewcommand\theinnercustomthm{#1}\innercustomthm}
+{\endinnercustomthm}
+
+\newtheorem{innercustomcor}{Corollary}
+\newenvironment{mycor}[1]
+{\renewcommand\theinnercustomcor{#1}\innercustomcor}
+{\endinnercustomcor}
+
+
+%\newtheorem{theorempart}{Theorem B.}[alphthm]
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ques}[thm]{Question}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remdef}[thm]{Remark-Definition}
+\newtheorem{deflem}[thm]{Definition-Lemma}
+\newtheorem{defthm}[thm]{Definition-Theorem}
+\newtheorem{setup}[thm]{Set-up}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{sce}[thm]{Scenario}
+\newtheorem{nota}[thm]{Notation}
+\newtheorem{exlem}[thm]{Example-Lemma}
+\newtheorem{cons}[thm]{Construction}
+\newtheorem{code}[thm]{Code}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{notation}{Notation ($\star$)}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\begin{document}
+
+\title{Sarkisov for Foliation}
+\author{ Jihao Liu, Yanze Wang, and Yifei Chen}
+
+\subjclass[2020]{14E30, 37F75}
+\keywords{Algebraically integrable foliations. Generalized pairs. Minimal model program}
+\date{\today}
+
+\begin{abstract}
+  Sarkisov for foliation.
+\end{abstract}
+
+%The concept of generalized foliated quadruple was introduced by the third author, Luo, and Meng in the study of the global ACC for foliations in dimension $\leq 3$. It is a mixed structure of foliated triples and Birkar-Zhang's generalized pairs. In this paper, we systematically study the structure of algebraically integrable generalized foliated quadruples and use this new structure prove results for both foliations and generalized pairs.
+
+%We prove the cone theorem of algebraically integrable generalized foliated quadruples and establish the canonical bundle formula of generalized foliated quadruples in full generality. As an important application to the minimal model program, we prove the cone theorem, contraction theorem, and the existence of flips for $\Qq$-factorial foliated dlt algebraically integrable foliations and lc generalized pairs. In particular, we can run the minimal model program for both cases.
+
+%We also provide other applications to the theory of foliations and generalized pairs. We establish the canonical bundle formula, the subadjunction formula, the Kodaira and Kawamata-Viehweg vanishing theorems, and the base-point-freeness theorem for generalized pairs. We show that lc generalized pairs have Du Bois singularities. We prove the existence of Mori fiber spaces, the base-point-freeness theorem, the precise adjunction formula, and the ACC for lc thresholds for algebraically integrable foliations and algebraically integrable generalized foliated quadruples. Moreover, we show that foliated dlt algebraically integrable foliations are induced by contractions, answering a conjecture of Cascini and Spicer. 
+
+%Finally, we prove the existence of good minimal models for $\Qq$-factorial foliated dlt triples polarized with an ample divisor. As a consequence, we prove a special case of Prokhorov-Shokurov's $\bb$-semi-ampleness conjecture when the boundary is polarized with a horizontal ample divisor.
+
+
+
+\address{address}
+\email{email}
+
+\maketitle
+
+% \pagestyle{myheadings}\markboth{\hfill G. Chen, J. Han, J. Liu, and L. Xie \hfill}{\hfill MMP for algebraically integrable foliations and generalized pairs\hfill}
+
+\tableofcontents
+
+\section{Introduction}\label{sec:Introduction}
+
+\subsection{Main Theorems}
+The minimal model program (MMP)  aims to classify varieties up to birational equivalence.
+Conjecturally, any variety is either birational to a minimal model or a Mori fibre space. The representative in each birational class is possibly not unique. It is natural to ask what is the relation between representatives of a birational class. 
+For minimal models, Kawamata shows that:
+\begin{thm}
+\cite[Theorem 1]{kawamataFlopsConnectMinimal2008} Let $(W,B_W)$ be a $\mathbb{Q}$-factorial terminal pair, and $(X,B),(Y,D)$  two minimal models of $(W,B_W)$. Then the birational map $X\dashrightarrow Y$ may be factored as a sequence of $(K_X+B)$-flops.
+\end{thm}
+For Mori fibre spaces, the Sarkisov program shows that:
+\begin{thm}[Sarkisov for klt pairs]\label{thm: kltsp}
+  Let $ f:(X, B)\to S$ and $f':(X', B')\to S' $ be two MMP-related $ \mathbb{Q} $-factorial klt log Mori fibre spaces with the induced  birational map $\Phi$:
+  \[
+    \xymatrix{
+      (X,B)\ar[d]_f\ar@{.>}[r]^\Phi&(X',B')\ar[d]^{f'}\\
+      S&S'}
+  \]
+  Then modulo isomorphisms, $ \Phi  $ can be decomposed into a sequence of Sarkisov links.
+\end{thm}
+\textbf{Sarkisov Links:}
+There are following 4 types of Sarkisov links:
+
+  $\textbf{I}$:
+  $\xymatrix{
+      Z\ar[d]_p\ar@{.>}[r]&X_1\ar[d]^{f_1}\\
+      X\ar[d]_f&S_1\ar[dl]^{t}\\
+      S &}$
+  $\textbf{II}$:
+  $\xymatrix{
+      Z\ar[d]_p\ar@{.>}[r]&Z'\ar[d]^{q}&\\
+      X\ar[d]_{f}&X_1\ar[d]^{f_1}\\
+      S\ar[r]^{\sim}&S_1}$
+  $\textbf{III}$:
+  $
+    \xymatrix{
+    X\ar@{.>}[r]\ar[d]_f& Z\ar[d]^q& \\
+    S\ar[rd]_{s}         & X_{1}\ar[d]^{f_{1}}&\\
+    &S_{1}
+    }
+  $
+  $\textbf{IV}$:
+  $\xymatrix{
+      X\ar[d]_f\ar@{.>}[rr]&&X_1\ar[d]^{f_1}\\
+      S\ar[dr]_{s}&&S_1\ar[dl]^{t}\\
+      &T &}$
+  where all $ f:X\to S $ and $ f_1:X_1\to S_1 $ are log Mori fibre spaces, all $ p,q $ are divisorial contractions, and all dash arrows are a composition of flips or flops.
+Liu etc have established MMP for certain generalized foliated quadruples (gfq in short).
+
+
+In this article, we give a Sarkisov program for $\mathbb{Q}$-factorial F-dlt generalized foliated quadruples:
+\begin{thm}[sp for F-dlt gfq] \label{thm: gfqsp}
+  Assume that
+  \begin{itemize}
+    \item $W\rightarrow U$ is a contraction between normal quasi-projective varieties,
+    \item $(W/U,\mathcal{F}_{W},B_{W},\mathbb{M})$ is a $\mathbb Q$-factorial F-dlt gfq, such that $K_\mathcal{F}+B_W+M_W$ is not pseudo-effective$/U$,
+    \item $\rho_X: W\dashrightarrow X$ and $\rho_Y: W\dashrightarrow Y$ are two $K_{ \mathcal{F}_{W} }+B_W+M_W$-MMP$/U$,
+    \item $\phi_X: (X,\mathcal{F}_{X},B_{X},\mathbf{M})  \rightarrow S_X$ is a $(K_{\mathcal{F}_{X}}+B_X+M_X)$-Mori fiber space$/U$ and $\phi_Y: (Y,\mathcal{F}_{Y},B_{Y},\mathbf{M})  \rightarrow S_Y$ is a $(K_{\mathcal{F}_{Y}} +B_Y+M_Y)$-Mori fiber space$/U$.
+  \end{itemize}
+  \begin{center}$\xymatrix{
+        & W\ar@{-->}[dl]_{\rho_X}\ar@{-->}[dr]^{\rho_Y}& \\
+        X \ar@{->}[d]_{\phi_X}\ar@{-->}[rr]^{f}   &  & Y\ar@{->}[d]^{\phi_Y} \\
+        S_X & &S_Y }$
+  \end{center}
+  Then the induced birational map $f: X\dashrightarrow Y$ is given by a finite sequence of Sarkisov links, i.e. $f$ can be written as $X_0\dashrightarrow X_1\dots\dashrightarrow X_n\cong Y$, where each $X_{i}\dashrightarrow X_{i+1}$ is a Sarkisov link.
+\end{thm}
+
+\subsection{Idea of Proof}
+Let $(W/U,\mathcal{F},B_{W},\mathbf{M})$ be a $\mathbb{Q}$-factorial F-dlt gfq, and $\sigma_{X}: W \dashrightarrow (X/U,\mathcal{F}_{X},B_{X},\mathbf{M})\xrightarrow{g_{X}} S_{X}$  and  $\sigma_{Y}: W \dashrightarrow (Y/U,\mathcal{F}_{Y},B_{Y},\mathbf{M})\xrightarrow{g_{Y}}S_{Y} $ be two Mori fibre spaces such that  both $\sigma_{X}$ and $\sigma_{Y}$ are $(K_{\mathcal{F}}+B_{W}+\mathbf{M}_{W})$-MMP over $U$. Let $A_{W}$ be a sufficiently small effective relatively ample$/U$ $\mathbb{Q}$-divisor such that both $\sigma_{X}$ and $\sigma_{Y}$ are $(K_{\mathcal{F}}+B_{W}+\mathbf{M}_{W}+A_{W})$-MMP. Replace $\mathbf{M}$ by $\mathbf{M}+\bar{A}$ and then $(W,\mathcal{F},B_{W},\mathbf{M}+\bar{A})$ is still a $\mathbb{Q}$-factorial F-dlt gfq.  
+
+By Lemma \ref{thm: fdlt is acss}, we have $f_{W}:W\to Z $ etc.
+
+By Theorem \ref{lem: klt boundary}, there is a $\mathbb{Q}$-divisor $D_{W} \sim_{\mathbb{R},U}B_{W}+G_{W}+M_{W}+A_{W}$. 
+
+By Lemma , both $\sigma_{X}$ and $\sigma_{Y}$ are $(K_{\mathcal{F}}+B_{W}+\mathbf{M}_{W}+A_{W})$-MMP$/U$, and hence $(X,D_{X})\to S_{X}$ and $(Y,D_{Y})\to S_{Y}$ are $\mathbb{Q}$-factorial klt Mori fibre spaces of $(W,D_{W})$. 
+
+\wanginline{Gaps here: MMP over U or Z?}
+
+Therefore by Theorem \ref{thm: kltsp}, the birational map $\Phi: X \dashrightarrow Y$ is decomposed into Sarkisov links:
+  \[
+    \xymatrix{
+    X=X_0\ar@{.>}[r]\ar[d]_{f=f_{0}}&X_{1}\ar@{.>}[r]\ar[d]_{f_{1}}& X_{2}\ar[d]_{f_{2}}\ar@{.>}[r] &\cdots\ar@{.>}[r]&X_N=X'\ar[d]_{f_{N}} \\
+    S=S_{0}&S_{1} &S_{2}&&S_N=S'
+    }
+  \]
+
+\section{Preliminaries}
+
+
+\subsection{Double scaling (klt sarkisov)}
+In this subsection, we give a quick review of the ``double scaling" Sarkisov program for klt pairs. Readers can check \cite{haconMinimalModelProgram2012} for details.
+
+\textbf{MMP related}
+
+we need divisor extraction morphisms. For klt pairs, we have
+
+\begin{cor}\label{klt extraction}
+  \cite[Corollary 13.7]{haconMinimalModelProgram2012} Let $ (X,B) $ be a  klt pair and $\mathfrak{C}$ be any set of exceptional divisors $E$  of discrepancy $ a(E;X,B)\leqslant 0 $. Then there is a birational morphism $ f:Z\to X $ and a $ \mathbb{Q} $-divisor $ B_Z $ such that:
+  \begin{enumerate}
+    \item $ (Z,B_Z) $ is klt;
+    \item $ E $ is an $f$-exceptional divisor if and only if $ E\in \mathfrak{C} $;
+    \item $ \operatorname{mult}_{E}B_Z=-a(E;X,B) $ if $E \in \mathfrak{C}$, and $ f_*B_Z=B $ and $ K_Z+B_Z=f^*(K_X+B) $.
+  \end{enumerate}
+  In particular, if we take $\mathfrak{C}$ to be the set consisting of all exceptional divisors $E$ of discrepancy $a(E; X, B)\leqslant 0$, then $ Z $ is called \textbf{terminalization} of $ X $; if we take $\mathfrak{C}$ to be the set consisting of only one exceptional divisor $E$ of discrepancy $a(E; X, B)\leqslant 0$, then $ f: Z\to X $ is called a \textbf{divisorial extraction}.
+\end{cor}
+First we give an order for pairs:
+\begin{defn}
+  Let $f: X\dashrightarrow Y$ be a birational map of normal quasi-projective varieties. If
+  \begin{itemize}
+    \item $f$ does not extract divisors;
+    \item $a(E;X,B_{X})\leqslant a(E;Y,B_{Y})$ for all divisors  $E$  over $X$,
+  \end{itemize}
+  then we denote $(X,B)\geqslant (Y,B_{Y})$.
+\end{defn}
+
+Let $(W,B_{W})$ be a $\mathbb{Q}$-factorial klt pair, and $\phi_X: (X,B_{X})\to S_{X}$ and $\phi_Y: (Y,B_{Y}) \to S_{Y} $ be two Mori fibre space as outcome of $(K_{W}+B_{W})$-MMP. We  replace $(W,B_W)$ by a log resolution such that $(W,B_{W})$ is terminal and $\sigma_{X}:W\to X$ and $\sigma_{Y}:W\to Y$ are $(K_W+B_W)$-non-positive morphisms, and $(W,B_W)\geqslant (X,B_{X}),(Y,B_{Y})$.
+
+Take  very general ample $\mathbb{Q}$-divisors $ A_{X} $ and $ A_{Y} $ on $ S_{X} $ and $ S_{Y} $ such that $ G\sim_{\mathbb{Q}}-(K_X+B_{X})+\phi_{X}^*A_{X} $ and $ H\sim_{\mathbb{Q}}-(K_{Y}+B_{Y})+\phi_{Y}^{*}A' $ are two ample $\mathbb{Q}$-divisors. Moreover, we may assume $ G $ and $ H $ satisfy $G_{W}:= \sigma^*G=\sigma^{-1}_*G $ and $ H_{W}:=\sigma_{Y}^{*}H=\sigma_{Y*}^{-1}H $. Therefore, $\sigma_{X*}(K_{W}+B_{W}+G_{W})=K_{X}+B_{X}+G$ is nef. Furthermore, we may assume $(W, B_W+gG_W+hH_W)$ is log smooth and terminal for all $0\leqslant g,h\leqslant 2$ by taking further blow-ups if necessary. Then we have:
+\begin{thm}[Sarkisov program with double scaling]\label{thm: double scaling}
+  \cite[Claim 13.12]{haconMinimalModelProgram2012}
+  Notations as above, there is a finite sequence of Sarkisov links
+  \[
+    \xymatrix{
+    X=X_0\ar@{.>}[r]\ar[d]_{f=f_{0}}&X_{1}\ar@{.>}[r]\ar[d]_{f_{1}}& X_{2}\ar[d]_{f_{2}}\ar@{.>}[r] &\cdots\ar@{.>}[r]&X_N=X'\ar[d]_{f_{N}} \\
+    S=S_{0}&S_{1} &S_{2}&&S_N=S'
+    }
+  \]
+  and rational numbers
+  \[
+    \begin{aligned}
+      1 & =g_0\geqslant g_1 \geqslant \cdots \geqslant g_N   & =0 \\
+      0 & =h_0\leqslant h_{1} \leqslant \cdots \leqslant h_N & =1 \\
+    \end{aligned}
+  \]
+  such that
+  \begin{enumerate}
+    \item For each $i$, $\sigma_i:W\dashrightarrow  X_{i}$ is $(K_{W}+B_{W}+g_{i}G_{W}+h_{i}H_{W})$-non-positive, and $(K_{X_{i}}+B_{i}+g_{i}G_{i}+h_{i}H_{i})=\sigma_{i*}(K_{W}+B_{W}+g_{i}G_{W}+h_{i}H_{W})$ is nef and is relatively trivial over $S_{i}$;
+    \item $(W,B_{W}+g_{i}G_{W}+h_{i}H_{W})\geqslant (X_{i},B_{i}+g_{i}G_{i}+h_{i}H_{i})$;
+    \item Each Sarkisov link $X_{i}\dashrightarrow X_{i+1}$ is given by a sequence of $(K_{X_{i}}+B_{i}+g_{i}G_{i}+h_{i}H_{i})$-trivial maps;
+    \item  The last link $X_{N} \to S_{N}$ is isomorphic to $X'\to S'$.
+  \end{enumerate}
+\end{thm}
+Here trivial map means:
+\begin{defn}\label{trivialmap}
+  \cite[\S 13.2]{haconMinimalModelProgram2012} Let $f:X\dashrightarrow Y$ be a rational map of normal quasi-projective varieties over $S$, and $D$ be an $\mathbb{R}$-Cartier $\mathbb{R}$-divisor  on $X$ with $f_*D=D_Y$. Then $f$ is called \textbf{$D$-trivial} if $D$ is pull back of an $\mathbb{R}$-Cartier divisor on $S$.
+\end{defn}
+Each link is established by running certain MMP. Precisely,  let $C_{i}$ be a general $f_{i}$-vertical curve on $X_{i}$, then
+  \begin{itemize}
+    \item $r_{i}:=\frac{H_{i}.C_{i}}{G_{i}.C_{i}}$;
+    \item Let $\Gamma$ be the set of $t\in [0,\frac{g_{i}}{r_{i}}] $ such that
+          \begin{enumerate}
+            \item\label{singularcondition} $\left(W,B_{W}+g_{i}G_{W}+h_{i}H_{W}+t(H_{W}-r_{i}G_{W})\right)\geqslant \left(X_{i},B_{i}+g_{i}G_{i}+h_{i}H_{i}+t\left(H_{i}-r_{i}G_{i}\right)\right)$;
+            \item$K_{X_{i}}+B_{i}+g_{i}G_i+h_{i}H+t(H_{i}-r_{i}G_{i})$ is nef.
+          \end{enumerate}
+          Let $s_{i}=\max\, \Gamma $;
+    \item Let $D_{W,i}=B_{W}+g_{i}G_{W}+h_{i}H_{W}$ and $D_{i}=B_{i}+g_{i}G_{i}+h_{i}H_{i}$. Let $D_{W,i}(t)=B_{W}+g_{i}G_{W}+h_{i}H_{W}+t(H_{W}-r_{i}G_{W})$ and $D_{i}(t)=B_{i}+g_{i}G_{i}+h_{i}H_{i}+t (H_{i}-r_{i}G_{i})$. Let $g_{i+1}=g_{i}-r_{i}s_{i}$ and $h_{i+1}=h_{i}+s_{i}$. Note that $D_{W,i+1}=D_{W,i}(s_{i})$.
+  \end{itemize}
+ If $s_{i}=\frac{g_{i}}{r_{i}}$, then $g_{i+1}=0$. Let $N=i+1$  and let $g_{N}:X_{N}=X_{i} \to S_{N}=S_{i}$, then $X_{N}\to S_{N}$ is isomorphic to $g:Y\to S_{Y}$  and  the Sarkisov program stops. Otherwise, if  $s_{i}<\frac{g_{i}}{r_{i}}$, then we construct the Sarkisov link $X_{i}\dashrightarrow X_{i+1}$ as follows:
+\begin{enumerate}
+  \item\label{a} Suppose $s_{i}$ is not the threshold of  condition (\ref{singularcondition}) of $\Gamma$. That is, there exists $0<\epsilon\ll 1$, such that for any divisor $E$ on $W$, we have
+  \[
+    a(E;X_{i},D_{i}(s_{i}+\epsilon))\geqslant a(E;W,D_{W,i}(s_{i}+\epsilon))
+  \]
+  and $K_{X_{i}}+D_{i}(s_{i}+\epsilon)$ is not nef. Then there is a $2$-dimensional $(K_{X_{i}}+D_{i}(s_{i}+\epsilon)-\delta G_{i})$-negative extremal face $F$ for some $0< \delta \ll \epsilon $, spanned by $R=\mathbb{R}_{\geqslant 0}[C_{i}]$ and another extremal ray $P$. Hence, there is a contraction $X_{i}\to T_{i}$ corresponding to $F$ factoring through $f_{i}$. Then we run the $(K_{X_{i}}+D_{i}(s_{i}+\epsilon))$-MMP over $T_{i}$ with scaling. After finitely many flips, we either have a $(K_{X_{i}}+D_{i}(s_{i}+\epsilon))$-minimal model, a divisorial contraction, or a log Mori fibre space over $T_{i}$:
+  \begin{enumerate}
+    \item\label{a1}After finitely many flips $X_{i}\dashrightarrow X_{i+1}$ there is a log Mori fibre space $X_{i+1}\to S_{i+1}$. This is a link of type IV.
+    \item\label{a2} After finitely many flips $X_{i}\dashrightarrow Z_{i}$ there is a divisorial contraction $Z_{i}\to X_{i+1}$, then let $S_{i+1}=T_{i}$ and $X_{i+1}\to S_{i+1}$ is a log Mori fibre space. This is a link of type III.
+    \item \label{a3}After finitely many flips $X_{i}\dashrightarrow X_{i+1}$,  the contraction $X_{i+1}\to T_{i}$ is a log minimal model of $\left(X_{i},D_{i}\left(s_{i}+\epsilon\right)\right)$ over $T_{i}$. Let  $C'$ be the strict transform of  $C_{i}$ on $X_{i+1}$, then $(K_{X_{i+1}}+D_{i+1}(\epsilon)).C'=0$ and $(K_{X_{i+1}}+B_{i+1}).C'<0$, therefore there is a contraction  $X_{i+1} \to S_{i+1}$ over $T_i$, which is a log Mori fibre space. This is a link of type IV.
+  \end{enumerate}
+  \item\label{b} Suppose $s_{i}$ is the threshold of condition (\ref{singularcondition}) of $\Gamma$. That is, there exists  $0<\epsilon \ll 1$ and a $\sigma_{i}$-exceptional divisor $E_{i}$ on $W$ such that
+  \[
+    a(E_{i};X_{i},D_{i}(s_{i}+\epsilon))< a(E_{i};W,D_{W,i}(s_{i}+\epsilon))
+    .\]
+  In this case, we have
+  \[
+    a(E_{i};X_{i},D_{i}(s_{i}))= a(E_{i};W,D_{W,i}(s_{i}))=-\operatorname{mult}_{E_{i}}(D_{W,i}(s_{i}))\leqslant 0
+    .\]
+
+  Let $p_{i}:Z_{i}\to X_{i}$ be the divisorial extraction of the divisor $E_{i}$ as in Corollary \ref{klt extraction}, and suppose $K_{Z_{i}}+D_{Z_{i}}(s_{i})=K_{Z_{i}}+B_{Z_{i}}+g_{i+1}G_{Z_{i}}+h_{i+1}H_{Z_{i}}=p_{i}^*\left(K_{X_{i}}+D_{i}\left(s_{i}\right)\right)$.
+  Take a sufficiently small $\delta$ such that $0<\delta \ll \epsilon \ll 1$ and
+  \[
+    K_{Z_{i}}+\Delta_{i}=p_{i}^*(K_{X_{i}}+D_{i}(s_{i}+\epsilon)-\delta G_{i})
+  \]
+  is klt. Then we run the $(K_{Z_{i}}+\Delta_{i})$-MMP  over $S_{i}$. Since $Z_{i}$ is covered by $(K_{Z_{i}}+\Delta_{i})$-negative curves, it follows that $(K_{Z_{i}}+\Delta_{i})$ is not pseudo-effective over $S_{i}$, and this MMP ends with a log Mori fibre space. Moreover, this is an MMP for $p_{i}^*(K_{X_{i}}+D_{i}(s_{i}+\epsilon)-\delta'G_{i})$ for all $0<\delta'\leqslant\delta$. After finitely many flips, we either have a $(K_{Z_{i}}+\Delta_{i})$ log Mori fibre space or a $(K_{Z_{i}}+\Delta_{i})$ divisorial contraction.
+  \begin{enumerate}
+    \item\label{b1} After finitely many flips $Z_{i}\dashrightarrow X_{i+1}$, there is a log Mori fibre space $X_{i+1}\to S_{i+1}$. This is a link of type I. In this case we have $\rho(X_{i+1})=\rho(X_{i})+1$.
+    \item\label{b2} After finitely many flips $Z_{i}\dashrightarrow Z_{i+1}'$, there is a divisorial contraction $q_{i}:Z_{i+1}'\to X_{i+1}$ over $S_i$. Then $X_{i+1}\to S_{i}=:S_{i+1}$ is a log Mori fibre space. This is a link of type II.
+  \end{enumerate}
+\end{enumerate}
+\begin{claim}\label{behavior}
+  \begin{enumerate}
+    \item $r_{i}\leqslant r_{i+1}$. Moreover, in the case \ref{a1}, we have $r_{i}<r_{i+1}$.
+    \item Since the birational map $X_{i}\dashrightarrow X_{i+1}$ is over $T_{i}$ (respectively over $S_{i}$) and $(K_{X_{i}}+D_{i}(s_{i}))$ is numerically trivial over $T_{i}$ (respectively over $S_{i}$) in case \ref{a} (respectively case \ref{b}), it follows that $a(E;X_{i},D_{i}(s_{i}))= a(E;X_{i+1},D_{i+1})$ for any divisor $E$ over $W$ and so we have the inequality
+          \[
+            a(E;X_{i+1},D_{i+1})\geqslant a(E;W,D_{W,i+1}).
+          \]
+    \item\label{2adicrepancy}  In the case \ref{a}, for any divisor $E \subset W$, we have $a(E;X_{i},D_{i}(s_{i}+\epsilon))\leqslant a(E;X_{i+1},D_{i+1}(\epsilon))$ for all $0<\epsilon\ll 1$. Moreover, since $X_{i} \not\cong X_{i+1}$, there is a divisor $F$ over $W$ such that  $a(F;X_{i},D_{i}(s_{i}+\epsilon))< a(F;X_{i+1},D_{i+1}(\epsilon))$.
+
+    \item\label{2bdiscrepancy}   In case \ref{b}, for any divisor $E \subset W$, we have $a(E;X_{i},D_{i}(s_{i}+\epsilon)-\delta G_{i})\leqslant a(E;X_{i+1},D_{i+1}(\epsilon)-\delta G_{i+1})$ for all $0<\epsilon\ll 1$. Moreover, since $X_{i} \not\cong X_{i+1}$, there is a divisor $F$ over $W$ such that  $a(F;X_{i},D_{i}(s_{i}+\epsilon)-\delta G_{i})< a(F;X_{i+1},D_{i+1}(\epsilon)-\delta G_{i+1})$.
+    \item  $h_{i}\leqslant 1$, and $h_{i}=1$ if and only if $g_{i}=0$;
+  \end{enumerate}
+\end{claim}
+\begin{claim}\label{termination2}
+   Suppose we construct a sequence of Sarkisov links:
+  \[
+    \xymatrix{
+    X=X_0\ar@{.>}[r]\ar[d]_{f_0}&X_{1}\ar@{.>}[r]\ar[d]_{f_1}& X_{2}\ar[d]_{f_2}\ar@{.>}[r] &\cdots\ar@{.>}[r]&X_{i}\ar[d]_{f_i}\ar@{.>}[r] &\cdots\\
+    S=S_{0}&S_{1} &S_{2}&&S_{i}
+    }
+    ,\]
+  then
+  \begin{enumerate}
+    \item there are only finitely many possibilities for $f_{i}:X_{i}\to S_{i}$ up to isomorphism;
+    \item the Sarkisov program with double scaling of $(G_{W},H_{W})$ terminates. That is, there exists an integer $N>0$ such that $g_{N}=0$.
+  \end{enumerate}
+\end{claim}
+
+\subsection{Generalized pair}
+
+\begin{defn}[$\mathbf{b}$-divisors]\label{defn: b divisors} Let $X$ be a normal quasi-projective variety. We call $Y$ a \emph{birational model} over $X$ if there exists a projective birational morphism $Y\to X$. 
+
+Let $X\dashrightarrow X'$ be a birational map. For any valuation $\nu$ over $X$, we define $\nu_{X'}$ to be the center of $\nu$ on $X'$. A \emph{$\bb$-divisor} $\Dd$ on $X$ is a formal sum $\Dd=\sum_{\nu} r_{\nu}\nu$ where $\nu$ are valuations over $X$ and $r_{\nu}\in\mathbb R$, such that $\nu_X$ is not a divisor except for finitely many $\nu$. If in addition, $r_{\nu}\in\Qq$ for every $\nu$, then $\Dd$ is called a \emph{$\Qq$-$\bb$-divisor}. The \emph{trace} of $\Dd$ on $X'$ is the $\Rr$-divisor
+$$\Dd_{X'}:=\sum_{\nu_{X'}\text{ is a divisor}}r_\nu\nu_{X'}.$$
+If $\Dd_{X'}$ is $\Rr$-Cartier and $\Dd_{Y}$ is the pullback of $\Dd_{X'}$ on $Y$ for any birational model $Y$ over $X'$, we say that $\Dd$ \emph{descends} to $X'$ and $\Dd$ is the \emph{closure} of $\Dd_{X'}$, and write $\Dd=\overline{\Dd_{X'}}$. 
+
+Let $X\rightarrow U$ be a projective morphism and assume that $\Dd$ is a $\bb$-divisor on $X$ such that $\Dd$ descends to some birational model $Y$ over $X$. If $\Dd_Y$ is nef$/U$ (resp. base-point-free$/U$, semi-ample$/U$), then we say that $\Dd$ is \emph{nef}$/U$ (resp. \emph{base-point-free}$/U$, \emph{semi-ample}$/U$). If $\Dd_Y$ is a Cartier divisor, then we say that $\Dd$ is \emph{$\bb$-Cartier}. If $\Dd_Y$ is a $\Qq$-Cartier $\Qq$-divisor, then we say that $\Dd$ is \emph{$\Qq$-$\bb$-Cartier}. If $\Dd$ can be written as an $\Rr_{\geq 0}$-linear combination of nef$/U$ $\bb$-Cartier $\bb$-divisors, then we say that $\Dd$ is \emph{NQC}$/U$.
+
+Let $X\rightarrow U$ be a projective morphism and assume that $\Dd$ and $\Dd'$ are two $\bb$-divisors over $X$. We write $\Dd\sim_{\mathbb R,U}\Dd'$ (resp. $\Dd\sim_{\mathbb Q,U}\Dd',\Dd\equiv_{\mathbb Q,U}\Dd'$) if for any birational model $Y$ of $X$, $\Dd_Y\sim_{\mathbb R,U}\Dd'_Y$ (resp. $\Dd_Y\sim_{\mathbb Q,U}\Dd'_Y,\Dd_Y\equiv_{\mathbb Q,U}\Dd_Y'$). 
+
+We let $\bm{0}$ be the $\bb$-divisor $\bar{0}$.
+\end{defn}
+
+\begin{lemma}[gpair to klt pair]\label{lem: klt boundary}
+	Let $(X/U,B,\mathbf{M})$ be a lc gpair, and $A$ be an ample$/U$ divisor. Suppose that either 
+	
+	(i) $(X, B,\mathbf{M})$ is klt, or
+	
+	(ii) there exists a boundary $C$, such that $(X,C)$ is klt.
+	
+  Then, there exists a boundary $D \sim_{\mathbb{R},U} B+M_{X}+A$, such that $(X,D)$ is klt. 
+	
+	Moreover, if $X$ is $\mathbb{Q}$-factorial, we may run a $K_X+B+M_{X}$-MMP$/U$ on $X$.
+\end{lemma}
+
+
+ACSS, therefore  Property (*)  etc
+
+\textbf{Toroidal generalized pairs}
+
+\begin{defn}[{cf. \cite[Definition 2.1]{ACSS21}}]\label{defn: toroidal g-pairs}
+Let $(X,\Sigma_X,\Mm)/U$ be a g-pair. We say that $(X,\Sigma_X,\Mm)$ is \emph{toroidal} if $\Sigma_X$ is a reduced divisor, $\Mm$ descends to $X$, and for any closed point $x\in X$, there exists a toric variety $X_{\sigma}$, a closed point $t\in X_{\sigma}$, and an isomorphism of complete local algebras 
+$$\phi_x:\widehat{\mathcal{O}}_{X,x}\cong\widehat{\mathcal{O}}_{X_\sigma,t}$$
+such that the ideal of $\Sigma_X$ maps to the invariant ideal of $X_{\sigma}\backslash T_{\sigma}$, where $T_\sigma\subset X_\sigma$ is the maximal torus of $X_{\sigma}$. Any such $(X_\sigma, t)$ will be called as a \emph{local model} of $(X,\Sigma_X,\Mm)$ at $x\in X$.
+
+Let $(X,\Sigma_X,\Mm)/U$ and $(Z,\Sigma_Z,\Mm^Z)/U$ be toroidal g-pairs and $f: X\rightarrow Z$ a surjective morphism$/U$. We say that $f: (X,\Sigma,\Mm)\rightarrow (Z,\Sigma,\Mm^Z)$ is \emph{toroidal}, if for every closed point $x\in X$, there exist a local model $(X_\sigma,t)$ of $(X,\Sigma_X,\Mm)$ at $x$, a local model $(Z_{\tau},s)$ of $(Z,\Sigma_Z,\Mm^Z)$ at $z:=f(x)$, and a toric morphism $g: X_\sigma\to Z_{\tau}$, so that the diagram of algebras commutes.
+\begin{center}$\xymatrix{
+    \widehat{\mathcal{O}}_{X,x}\ar@{->}[r]^{\cong}  &     \widehat{\mathcal{O}}_{X_{\sigma},t} \\
+     \widehat{\mathcal{O}}_{Z,z}\ar@{->}[r]^{\cong}\ar@{->}[u] & \widehat{\mathcal{O}}_{Z_{\tau},s}\ar@{->}[u]
+}$
+\end{center}
+Here the vertical maps are the algebra homomorphisms induced by $f$ and $g$ respectively. 
+\end{defn}
+
+\begin{lem}\label{lem: equi-dimensional model}
+Let $X$ be a normal quasi-projective variety, $X\rightarrow U$ a projective morphism, $X\rightarrow Z$ a contraction, $B$ an $\Rr$-divisor on $X$, $\Mm$ a nef$/U$ $\bb$-divisor on $X$, $D_1,\dots,D_m$ prime divisors over $X$, and $D_{Z,1},\dots,D_{Z,n}$ prime divisors over $Z$. Then there exist a toroidal g-pair  $(X',\Sigma_{X'},\Mm)/U$, a log smooth pair $(Z',\Sigma_{Z'})$, and a commutative diagram
+ \begin{center}$\xymatrix{
+X'\ar@{->}[r]^{h}\ar@{->}[d]_{f'}& X\ar@{->}[d]^{f}\\
+Z'\ar@{->}[r]^{h_Z} & Z\\
+}$
+\end{center}
+satisfying the following.
+\begin{enumerate}
+\item $h$ and $h_Z$ are projective birational morphisms.
+\item $f': (X',\Sigma_{X'},\Mm)\rightarrow (Z',\Sigma_{Z'})$ is a toroidal contraction.
+\item $\Supp(h^{-1}_*B)\cup\Supp\Exc(h)$ is contained in $\Supp\Sigma_{X'}$.
+\item $X'$ has at most toric quotient singularities.
+\item $f'$ is equi-dimensional.
+\item $\Mm$ descends to $X'$.
+\item $X'$ is $\Qq$-factorial klt.
+\item The center of each $D_i$ on $X'$ and the center of each $D_{Z,i}$ on $Z'$ are divisors.
+\end{enumerate}
+We call any such $f': (X',\Sigma_{X'},\Mm)\rightarrow (Z',\Sigma_{Z'})$ (associated with $h$ and $h_Z$) which satisfies (1-7) an \emph{equi-dimensional model} of $f: (X,B,\Mm)\rightarrow Z$. 
+\end{lem}
+
+\begin{defn}\label{defn: eequi-dimensional model}
+We call any such $f': (X',\Sigma_{X'},\Mm)\rightarrow (Z',\Sigma_{Z'})$ (associated with $h$ and $h_Z$) which satisfies (1-7) an \emph{equi-dimensional model} of $f: (X,B,\Mm)\rightarrow Z$. 
+\end{defn}
+
+
+\begin{defn}[Discrimiant and moduli parts] \label{defn: moduli part}
+Let $(X,B,\Mm)/U$ be a g-sub-pair and $f: X\rightarrow Z$ a contraction such that $(X,B,\Mm)$ is generically sub-lc$/Z$. In the following, we fix a choice of $K_X$ and a choice of $K_Z$, and suppose that for any birational morphism $g: \bar X\rightarrow X$ and $g_Z: \bar Z\rightarrow Z$, $K_{\bar X}$ and $K_{\bar Z}$ are chosen as the Weil divisors such that $g_*K_{\bar X}=K_X$ and $(g_Z)_*K_{\bar Z}=K_Z$.
+
+Let $f': X'\rightarrow Z'$ be any contraction that is birationally equivalent to $f$ such that the induced birational maps $h: X'\dashrightarrow X$ and  $h_Z: Z'\dashrightarrow Z$ are morphisms and $Z'$ is $\Qq$-factorial. We let 
+$$K_{X'}+B'+\Mm_{X'}:=h^*(K_X+B+\Mm_X).$$ 
+For any prime divisor $D$ on $Z'$, we define
+$$b_D(X',B',\Mm;f):=1-\sup\left\{t\mid \left(X',B'+tf'^*D,\Mm\right)\text{ is sub-lc over the generic point of } D\right\}.$$
+Since being sub-lc is a property that is preserved under crepant transformations, $b_D(X,B,\Mm;f)$ is independent of the choices of $X'$ and $Z'$ and is also independent of $U$.
+
+Since $(X,B,\Mm)$ is generically sub-lc$/Z$, $(X',B',\Mm)$ is generically sub-lc$/Z$, so we may define
+$$B_{Z'}:=\sum_{D\text{ is a prime divisor on }Z'}b_D(X,B,\Mm;f)D.$$
+and $$N_{X'}:=K_{X'}+B'+\Mm_{X'}-f'^*(K_{Z'}+B_{Z'}).$$
+We call $B_{Z'}$ and $N_{X'}$ the \emph{discriminant part} and \emph{trace moduli part} of $f': (X',B',\Mm)\rightarrow Z'$ respectively, and call $B_Z:=(h_Z)_*B_{Z'}$ and $N_X:=h_*B$ the \emph{discriminant part} and \emph{trace moduli part} of $f: (X,B,\Mm)\rightarrow Z$ respectively.
+
+By construction, there exist two $\bb$-divisors $\Bb$ on $Z$ and $\Nn$ on $X$, such that for any contraction $f'': X''\rightarrow Z''$ that is birationally equivalent to $f$ such that the induced birational maps $h': X''\dashrightarrow X'$ and  $h_{Z'}: Z''\dashrightarrow Z'$ are morphisms and $Z''$ is $\Qq$-factorial, $\Bb_{Z''}$ is the discriminant part of $f'': (X'',B'',\Mm)\rightarrow Z''$, and $\Nn_{X''}$ is the trace moduli part of  $f'': (X'',B'',\Mm)\rightarrow Z''$, where 
+$$K_{X''}+B''+\Mm_{X''}:=h'^*(K_{X'}+B'+\Mm_{X'}).$$ 
+We call $\Nn$ the \emph{moduli part} of $f: (X,B,\Mm)\rightarrow Z$ and $\Bb$ the \emph{discriminant $\bb$-divisor} of $f: (X,B,\Mm)\rightarrow Z$. By construction, $\Bb$ is uniquely determined and $\Nn$ is uniquely determined for any fixed choices of $K_X$ and $K_Z$.
+\end{defn}
+
+\begin{defn}[Property $(*)$ generalized pairs, ]\label{defn: property *}
+cf. {\cite[Definition 2.13]{ACSS21}}
+
+Let $(X,B,\Mm)/U$ be a g-sub-pair and $f: X\rightarrow Z$ a contraction. We say that $f: (X,B,\Mm)\rightarrow Z$ satisfies \emph{Property $(*)$} if there exists a reduced divisor $\Sigma_Z$ on $Z$ satisfying the following.
+\begin{enumerate}
+\item $(Z,\Sigma_Z)$ is log smooth. In particular, $Z$ is smooth.
+\item The vertical$/Z$ part $B^v$ of $B$ is equal to $f^{-1}(\Sigma_Z)$. In particular, $B^v$ is reduced and $\Sigma_Z$ is the image of $B^v$ on $Z$.
+\item For any closed point $z\in Z$ and any reduced divisor  $\Sigma\ge \Sigma_Z$ on $Z$ such that  $(Z,\Sigma)$ is log smooth near $z$, $(X,B+f^*(\Sigma-\Sigma_Z),\Mm)$ is sub-lc over a neighborhood of $z$.
+\end{enumerate}
+%If $f$ is clear from the context and $f: (X,B,\Mm)\rightarrow Z$ satisfies Property $(*)$, then we also say that $(X,B,\Mm)/Z$ satisfies \emph{Property $(*)$}. 
+By (2), $\Sigma_Z$ is uniquely determined by $f: (X,B,\Mm)\rightarrow Z$. We will temporarily call $\Sigma_Z$ the \emph{base divisor} associated to $f: (X,B,\Mm)\rightarrow Z$. In Lemma \ref{lem: basic property (*) gpair} below, we will show that $\Sigma_Z$ is actually the discriminant part of $f: (X,B,\Mm)\rightarrow Z$.
+\end{defn}
+
+\begin{lem}[$(*)$ property gpair lc]\label{lem: basic property (*) gpair}
+Let $(X,B,\Mm)/U$ be a g-sub-pair and $f: X\rightarrow Z$ a contraction such that $f: (X,B,\Mm)\rightarrow Z$ satisfies Property $(*)$. Let $\Sigma_Z$ be the base divisor associated to $f: (X,B,\Mm)\rightarrow Z$. Then:
+\begin{enumerate}
+\item $(X,B,\Mm)$ is sub-lc.
+\item $\Sigma_Z$ is the discriminant part of $f: (X,B,\Mm)\rightarrow Z$.
+\item If $B\geq 0$, then $f$ is equi-dimensional over $Z\backslash\Supp\Sigma_Z$.
+\end{enumerate}
+\end{lem}
+
+\begin{defn}[Qdlt]\label{defn: qdlt}
+Let $(X,B,\Mm)/U$ be an lc g-pair. We say that $(X,B,\Mm)$ is \emph{qdlt} if there exists an open (possibly empty) subset $V\subset X$ satisfying the following.
+\begin{enumerate}
+    \item $(V,B|_V)$ is $\Qq$-factorial toroidal. In particular, $B|_V$ is a reduced divisor. 
+    \item $V$ contains the generic point of any lc center of $(X,B,\Mm)$.
+    \item The generic point of any lc center of $(X,B,\Mm)$ is the generic point of an lc center of $(V,B|_V)$.
+\end{enumerate}
+\end{defn}
+
+\begin{lem}[equivalent definition]\label{lem: equi def qdlt}
+    Let $(X,B,\Mm)/U$ be a lc g-pair. Then the following conditions are equivalent:
+    \begin{enumerate}
+        \item $(X,B,\Mm)$ is qdlt.
+        \item For any lc center of $(X,B,\Mm)$ with generic point $\eta$, near $\eta$, $(X,B)$ is $\Qq$-factorial toroidal and $\Mm$ descends to $X$.
+    \end{enumerate}
+\end{lem}
+
+
+
+
+\subsection{Generalized foliated quadruples}
+
+\begin{defn}[Foliations, {cf. \cite[Section 2.1]{CS21}}]\label{defn: foliation}
+Let $X$ be a normal variety. A \emph{foliation} on $X$ is a coherent sheaf $\Ff\subset T_X$ such that
+\begin{enumerate}
+    \item $\Ff$ is saturated in $T_X$, i.e. $T_X/\Ff$ is torsion free, and
+    \item $\Ff$ is closed under the Lie bracket.
+\end{enumerate}
+The \emph{rank} of the foliation $\Ff$ is the rank of $\Ff$ as a sheaf and is denoted by $\rk\Ff$. The \emph{co-rank} of $\Ff$ is $\dim X-\rk\Ff$. The \emph{canonical divisor} of $\Ff$ is a divisor $K_\Ff$ such that $\mathcal{O}_X(-K_{\mathcal{F}})\cong\mathrm{det}(\Ff)$. We define $N_{\Ff}:=(T_X/\Ff)^{\vee\vee}$ and $N_{\Ff}^*:=N_{\Ff}^{\vee}$.
+
+If $\Ff=0$, then we say that $\Ff$ is a \emph{foliation by points}.
+\end{defn}
+
+\begin{defn}[Pullbacks and pushforwards, {cf. \cite[3.1]{ACSS21}}]\label{defn: pullback}
+Let $X$ be a normal variety, $\Ff$ a foliation on $X$, $f: Y\dashrightarrow X$ a dominant map, and $g: X\dashrightarrow X'$ a birational map. We denote $f^{-1}\Ff$ the \emph{pullback} of $\Ff$ on $Y$ as constructed in \cite[3.2]{Dru21}. We also say that $f^{-1}\Ff$ is the \emph{induced foliation} of $\Ff$ on $Y$. If $\Ff=0$, then we say $f^{-1}\Ff$ is induced by $f$. In this case, we say $f^{-1}\Ff$ is \emph{algebraically integrable}.
+
+We define the \emph{pushforward} of $\Ff$ on $X'$ as $(g^{-1})^{-1}\Ff$ and denote it by $g_*\Ff$.
+\end{defn}
+
+\begin{defn}[Invariant subvarieties, {cf. \cite[3.1]{ACSS21}}]\label{defn: f-invariant}
+Let $X$ be a normal variety, $\Ff$ a foliation on $X$, and $S\subset X$ a subvariety. We say that $S$ is \emph{$\Ff$-invariant} if and only if for any open subset $U\subset X$ and any section $\partial\in H^0(U,\Ff)$, we have $$\partial(\mathcal{I}_{S\cap U})\subset \mathcal{I}_{S\cap U}$$ 
+where $\mathcal{I}_{S\cap U}$ is the ideal sheaf of $S\cap U$. Note that if $\Ff$ is the foliation induced by a dominant map $f:X\dashrightarrow Z$, then a divisor $D$ is $\Ff$-invariant if and only if $D$ is vertical with respect to $f$.
+\end{defn}
+
+\begin{defn}[Special divisors on foliations]\label{defn: special divisors on foliations}
+Let $X$ be a normal variety and $\Ff$ a foliation on $X$. For any prime divisor $C$ on $X$, we define $\epsilon_{\Ff}(C):=1$ if $C$ is not $\Ff$-invariant, and  $\epsilon_{\Ff}(C):=0$ if $C$ is $\Ff$-invariant. If $\Ff$ is clear from the context, then we may use $\epsilon(C)$ instead of $\epsilon_{\Ff}(C)$. For any $\Rr$-divisor $D$ on $X$, we define $$D^{\Ff}:=\sum_{C\mid C\text{ is a component of }D}\epsilon_{\Ff}(C)C.$$
+Let $E$ be a prime divisor over $X$ and $f: Y\rightarrow X$ a projective birational morphism such that $E$ is on $Y$. We define $\epsilon_{\Ff}(E):=\epsilon_{f^{-1}\Ff}(E)$. It is clear that $\epsilon_{\Ff}(E)$ is independent of the choice of $f$.
+\end{defn}
+
+\begin{defn}[Generalized foliated quadruples]\label{defn: gfq}
+A \emph{generalized foliated sub-quadruple} (\emph{sub-gfq} for short) $(X,\Ff,B,\Mm)/U$ consists of a normal quasi-projective variety $X$, a foliation $\Ff$ on $X$, an $\Rr$-divisor $B$ on $X$, a projective morphism $X\rightarrow U$, and a nef$/U$ $\bb$-divisor $\Mm$ over $X$, such that $K_{\Ff}+B+\Mm_X$ is $\mathbb R$-Cartier. If $\Mm$ is NQC$/U$, then we say that $(X,\Ff,B,\Mm)/U$ is \emph{NQC}. If $B\geq 0$, then we say that $(X,\Ff,B,\Mm)/U$ is a \emph{generalized foliated quadruple} (\emph{gfq} for short). If $U=\{pt\}$, we usually drop $U$ and say that $(X,\Ff,B,\Mm)$ is \emph{projective}. 
+
+Let $(X,\Ff,B,\Mm)/U$ be a (sub-)gfq. If $\Mm=\bm{0}$, then we may denote $(X,\Ff,B,\Mm)/U$ by $(X,\Ff,B)/U$ or $(X,\Ff,B)$, and say that $(X,\Ff,B)$ is a \emph{foliated (sub-)triple} (\emph{f-(sub-)triple} for short). If $\Ff=T_X$, then we may denote $(X,\Ff,B,\Mm)/U$ by $(X,B,\Mm)/U$, and say that $(X,B,\Mm)/U$ is a \emph{generalized (sub-)pair} (\emph{g-(sub-)pair} for short). If $\Mm=\bm{0}$ and $\Ff=T_X$, then we may denote $(X,\Ff,B,\Mm)/U$ by $(X,B)/U$ or $(X,B)$, and say that $(X,B)$ is a \emph{(sub-)pair}. 
+
+A (sub-)gfq (resp. f-(sub-)triple, f-(sub-)pair, g-(sub-)pair, (sub-)pair) $(X,\Ff,B,\Mm)/U$ (resp. $(X,\Ff,B)/U$,$(X,B,\Mm)/U$, $(X,B)/U$) is called a \emph{$\mathbb Q$-(sub-)gfq} (resp. \emph{$\mathbb Q$-f-(sub-)triple, $\mathbb Q$-g-(sub-)pair, $\mathbb Q$-(sub-)pair} if $B$ is a $\mathbb Q$-divisor and $\Mm$ is a $\mathbb Q$-$\bb$-divisor.
+
+It is worth mentioning that our definition of generalized foliated quadruples slightly differs from \cite[Definition 1.2]{LLM23}, as the latter requires $\Mm$ to be NQC$/U$,  while we only require it to be nef$/U$.
+\end{defn}
+
+\begin{defn}[Singularities of gfqs]\label{defn: gfq singularity}
+Let $(X,\Ff,B,\Mm)$ be a (sub-)gfq. For any prime divisor $E$ over $X$, let $f: Y\rightarrow X$ be a birational morphism such that $E$ is on $Y$, and suppose that
+$$K_{\Ff_Y}+B_Y+\Mm_Y:=f^*(K_\Ff+B+\Mm_X)$$
+where $\Ff_Y:=f^{-1}\Ff$. We define $a(E,\Ff,B,\Mm):=-\mult_EB_Y$ to be the \emph{discrepancy} of $E$ with respect to $(X,\Ff,B,\Mm)$. It is clear that $a(E,\Ff,B,\Mm)$ is independent of the choice of $Y$. If $\Mm=\bm{0}$, then we let $a(E,\Ff,B):=a(E,\Ff,B,\Mm)$. If $\Ff=T_X$, then we let $a(E,X,B,\Mm):=a(E,\Ff,B,\Mm)$. If $\Mm=\bm{0}$ and $\Ff=T_X$, then we let $a(E,X,B):=a(E,\Ff,B,\Mm)$.
+
+We say that $(X,\Ff,B,\Mm)$ is \emph{(sub-)lc} (resp. \emph{(sub-)klt}) if $a(E,\Ff,B,\Mm)\geq -\epsilon_{\Ff}(E)$ (resp. $>-\epsilon_{\Ff}(E)$) for any prime divisor $E$ over $X$. We say that $(X,\Ff,B,\Mm)$ is \emph{(sub-)canonical} (resp. \emph{(sub-)terminal}) if $a(E,\Ff,B,\Mm)\geq 0$ (resp. $>0$) for any prime divisor $E$ that is exceptional over $X$. An \emph{lc place} of $(X,\Ff,B,\Mm)$ is a prime divisor $E$ over $X$ such that $a(E,\Ff,B,\Mm)=-\epsilon_{\Ff}(E)$. An \emph{lc center} of $(X,\Ff,B,\Mm)$ is a subvariety $W$ of $X$, such that either $W$ is the center of an lc place of $(X,\Ff,B,\Mm)$ on $X$, or $W=X$. A \emph{non-trivial lc center} of $(X,\Ff,B,\Mm)$ is an lc center of $(X,\Ff,B,\Mm)$ that is not $X$. A \emph{non-lc place} of $(X,\Ff,B,\Mm)$ is a prime divisor $E$ over $X$ such that $a(E,\Ff,B,\Mm)<-\epsilon_{\Ff}(E)$. A \emph{non-lc center} of $(X,\Ff,B,\Mm)$ is the center of a non-lc place of $(X,\Ff,B,\Mm)$ on $X$. The union of all non-lc centers of $(X,\Ff,B,\Mm)$ is called the \emph{non-lc locus} of $(X,\Ff,B,\Mm)$ and is denoted by $\Nlc(X,\Ff,B,\Mm)$. The union of all non-lc centers and non-trivial lc centers of $(X,\Ff,B,\Mm)$ is called the \emph{non-klt locus} of $(X,\Ff,B,\Mm)$ and is denoted by $\Nklt(X,\Ff,B,\Mm)$.
+\end{defn}
+
+\begin{defn}[super divisor]
+Let $f: X\rightarrow Z$ be a projective morphism between normal quasi-projective varieties and $G$ an $\Rr$-divisor on $X$. We say that $G$ is \emph{super$/Z$} if either $Z$ is a point, or there exist ample Cartier divisors $H_1,\dots,H_{2\dim X+1}$ on $Z$ such that $G\geq\sum_{i=1}^{2\dim X+1}f^*H_i.$
+\end{defn}
+
+\begin{defn}[Property $(*)$ gfq]\label{defn: foliation property *}
+Let $(X,\Ff,B,\Mm)/U$ be a sub-gfq. Let $G\geq 0$ be a reduced divisor on $X$ and let $f: X\rightarrow Z$ be a projective morphism. We say that $(X,\Ff,B,\Mm;G)/Z$ \emph{satisfies Property $(*)$} if the following conditions hold:
+\begin{enumerate}
+  \item $f: (X,B+G,\Mm)\rightarrow Z$ satisfies Property $(*)$ (See Definition \ref{defn: property *}). In particular, $\pi$ is a contraction.
+  \item $\Ff$ is induced by $f$.
+  \item $G$ is an $\Ff$-invariant divisor.
+\end{enumerate}
+
+If $(X,\Ff,B,\Mm;G)/Z$ satisfies Property $(*)$, then we say that $(X,\Ff,B,\Mm)$ satisfy Property $(*)$, and say that $f$, $Z$, and $G$ are \emph{associated} with $(X,\Ff,B,\Mm)$.
+
+It is clear that property $(*)$ is independent of the choice of $U$. We remark that the choice of $f$ and $G$ may not be unique. We also remark that $f$ may not be a morphism$/U$.
+\end{defn}
+
+\begin{defn}[ACSS gfq, {cf. \cite[Definition 4.3]{DLM23}}]\label{defn: ACSS f-triple}
+Let $(X,\Ff,B,\Mm)/U$ be a gfq, $G\geq 0$ a reduced divisor on $X$, and $f: X\rightarrow Z$ a projective morphism. We say that $(X,\Ff,B,\Mm;G)/Z$ is \emph{weak ACSS} if 
+\begin{enumerate}
+    \item $(X,\Ff,B,\Mm;G)/Z$ satisfies Property $(*)$ and $(X,\Ff,B,\Mm)$ is lc, and
+    \item $f$ is equi-dimensional.
+\end{enumerate}
+We say that $(X,\Ff,B,\Mm;G)/Z$ is \emph{ACSS} if the following additional conditions are satisfied:
+\begin{enumerate}
+  \item[(3)]  There exist an $\Rr$-divisor $D\geq 0$ on $X$ and a nef$/X$ $\bb$-divisor $\Nn$ such that
+    \begin{enumerate}
+      \item  $\Supp\{B\}\subset\Supp D$,
+      \item $\Nn-\alpha \Mm$ is nef$/X$ for some $\alpha>1$, and
+      \item for any reduced divisor $\Sigma\geq f(G)$ such that $(Z,\Sigma)$ is log smooth, $$(X,B+D+G+f^*(\Sigma-f(G)),\Nn)$$ 
+      is qdlt. In particular, $D+\Nn_X-\Mm_X$ is $\Rr$-Cartier, 
+    \end{enumerate}
+  \item[(4)] For any lc center of $(X,\Ff,B,\Mm)$ with generic point $\eta$, over a neighborhood of $\eta,$
+    \begin{enumerate}
+      \item $\Mm$ descends to $X$,
+      \item $\eta$ is the generic point of an lc center of $(X,\Ff,\lfloor B\rfloor)$, and
+       \item $f: (X,B+G)\rightarrow (Z,f(G))$ is a toroidal morphism, in particular, $(X,B)$ is toroidal and $B=\lfloor B\rfloor$.
+    \end{enumerate}
+\end{enumerate}
+
+If $(X,\Ff,B,\Mm;G)/Z$ is ACSS, then we say that $f$, $Z$, and $G$ are \emph{properly associated with} $(X,\Ff,B,\Mm)$. If $(X,\Ff,B,\Mm;G)/Z$ is ACSS and $G$ is super$/Z$, then we say that $(X,\Ff,B,\Mm;G)/Z$ is \emph{super ACSS}.
+
+If $(X,\Ff,B,\Mm;G)/Z$ is ACSS \emph{weak ACSS} (resp. \emph{ACSS}, \emph{super ACSS}), then we say that $(X,\Ff,B,\Mm)/Z$ and $(X,\Ff,B,\Mm)$ are \emph{weak ACSS} (resp. \emph{ACSS}, \emph{super ACSS}).
+\end{defn}
+
+\begin{lem}[super wacss]\label{lem: weak acss can be super}
+    Let $(X,\Ff,B,\Mm)/U$ be a gfq and $f: X\rightarrow Z$ a contraction such that $(X,\Ff,B,\Mm)/Z$ satisfies Property $(*)$ (resp. is weak ACSS). Then there exists a super$/Z$ divisor $G$ on $X$ such that if $(X,\Ff,B,\Mm;G)/Z$ satisfies Property $(*)$ (resp. is weak ACSS).
+\end{lem}
+
+\begin{prop}[gfq cbf]\label{prop: weak cbf gfq}
+Let $(X,B+G,\Mm)$ be a g-sub-pair and $f: X\rightarrow Z$ an equi-dimensional contraction, such that $f: (X,B+G,\Mm)\rightarrow Z$ satisfies Property $(*)$. Assume that $B$ is horizontal$/Z$ and $G$ is vertical$/Z$. Let $\Ff$ be the foliation induced by $f$ and let $\Nn$ be the moduli part of $f: (X,B+G,\Mm)\rightarrow Z$. Then:
+\begin{enumerate}
+  \item $K_{\Ff}+B+\Mm_X\sim \Nn_X$.
+  \item $K_{\Ff}+B+\Mm_X\sim_{Z}K_X+B+G+\Mm_X.$
+\end{enumerate}
+In particular, $K_{\Ff}+B+\Mm_X$ is $\Rr$-Cartier.
+\end{prop}
+
+\begin{lem}[ACSS MMP]\label{lem: ACSS mmp can run}
+Let $(X,\Ff,B,\Mm)/U$ be an lc gfq, $\Delta\geq 0$ an $\Rr$-divisor on $X$, and $\Nn$ a nef$/U$ $\bb$-divisor on $X$. Assume that $\Ff$ is induced by a contraction $f: X\rightarrow Z$ and 
+$$K_{\Ff}+B+\Mm_X\sim_{\mathbb R,Z}K_X+\Delta+\Nn_X.$$
+ Then the followings hold.
+\begin{enumerate}
+    \item Any $(K_{\Ff}+B+\Mm_X)$-negative extremal ray$/U$ $R$ is a $(K_X+\Delta+\Nn_X)$-negative extremal ray$/Z$, and $(K_{\Ff}+B+\Mm_X)\cdot R=(K_X+\Delta+\Nn_X)\cdot R.$
+    \item Any step of a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ is a step of a $(K_X+\Delta+\Nn_X)$-MMP$/Z$. Moreover, assume that $(X,\Delta,\Nn)$ is lc and either $X$ is $\Qq$-factorial klt or $\Nn$ is NQC$/U$, then we may run a step of a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$.
+    \item Assume that $(X,\Ff,B,\Mm;G)/Z$ is weak ACSS for some divisor $G$, $\Delta=B+G$, and $\Mm=\Nn$. For any sequence of steps $$\phi: (X,\Ff,B,\Mm;G)\dashrightarrow (X',\Ff',B',\Mm;G')$$ 
+    of a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$, we have the following.
+    \begin{enumerate}
+    \item $(X',\Ff',B',\Mm;G')/Z$ is weak ACSS.
+        \item If $(X,\Ff,B,\Mm;G)/Z$ is ACSS, then $(X',\Ff',B',\Mm;G')/Z$ is ACSS. 
+        \item If $G$ is super$/Z$, then $G'$ is super$/Z$.
+        \item If $X$ is $\Qq$-factorial klt, then $X'$ is $\Qq$-factorial klt. 
+        \item If $X$ is $\Qq$-factorial and $\Mm$ is NQC$/U$, then $X'$ is $\Qq$-factorial.
+        \item If $X$ is $\Qq$-factorial and $(X,\Ff,B,\Mm;G)/Z$ is (super) ACSS, then $X'$ is $\Qq$-factorial and $(X',\Ff',B',\Mm;G')/Z$ is (super) ACSS.
+    \end{enumerate}
+    \item Any sequence of steps of a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ is a sequence of steps of a $(K_X+\Delta+\Nn_X)$-MMP$/Z$.
+\end{enumerate}
+\end{lem}
+
+\begin{lem}[super MMP with scaling]\label{lem: super mmp with scaling}
+Let $(X,\Ff,B,\Mm)/U$ be an lc gfq, $(X,\Delta,\Nn)/U$ an lc g-pair, and $f: X\rightarrow Z$ a contraction, such that $\Ff$ is induced by $f$, $\Delta$ is super$/Z$, and
+$$K_{\Ff}+B+\Mm_X\sim_{\mathbb R,Z}K_X+\Delta+\Nn_X.$$
+Then the followings hold.
+\begin{enumerate}
+  \item Any $(K_X+\Delta+\Nn_X)$-negative extremal ray$/U$ $R$ is a $(K_{\Ff}+B+\Mm_X)$-negative extremal ray$/Z$ and $(K_{\Ff}+B+\Mm_X)\cdot R=(K_X+\Delta+\Nn_X)\cdot R.$
+  \item A step of a $(K_X+\Delta+\Nn_X)$-MMP$/U$ is a step of a $(K_{\Ff}+B+\Mm_X)$-MMP$/Z$.
+  \item Any sequence of steps of a $(K_X+\Delta+\Nn_X)$-MMP$/U$ is a sequence of steps of a $(K_{\Ff}+B+\Mm_X)$-MMP$/Z$.
+  \item Let $D\geq 0$ be an $\Rr$-divisor on $X$ and $\Nn'$ a nef$/U$ $\bb$-divisor on $X$ such that $D+\Nn'_X$ is $\Rr$-Cartier. Then any sequence of steps of a $(K_X+\Delta+\Nn_X)$-MMP$/U$ with scaling of $(D,\Nn')$ is a sequence of steps of a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ with scaling of $(D,\Nn')$, and any sequence of steps of a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ with scaling of $(D,\Nn')$ is a sequence of steps of a $(K_X+\Delta+\Nn_X)$-MMP$/U$ with scaling of $(D,\Nn')$.
+\end{enumerate}
+\end{lem}
+
+\begin{thm}[Very exceptrional MMP for gfq]\label{thm: mmp very exceptional alg int fol}
+Let $(X,\Ff,B,\Mm)/U$ be a weak ACSS gfq. Let $E_1,E_2\geq 0$ be two $\Rr$-divisors on $X$ such that $E_1\wedge E_2=0$, $E_1$ is very exceptional$/U$, and
+$$K_{\Ff}+B+\Mm_X\sim_{\mathbb R,U}\text{(resp. }\equiv_U,\sim_{\mathbb Q,U}\text{) }E_1-E_2.$$ 
+Assume that either $X$ is $\Qq$-factorial klt or $\Mm$ is NQC$/U$. Let $A$ be an ample$/U$ $\Rr$-divisor. Then:
+\begin{enumerate}
+    \item We may run a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ with scaling  of $A$.
+    \item Let $\mathcal{P}$ be the $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ constructed in (1) if $X$ is not $\Qq$-factorial, and let $\mathcal{P}$ be any $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ with scaling of $A$ if $X$ is $\Qq$-factorial. Then:
+    \begin{enumerate}
+        \item  Either $\mathcal{P}$ terminates with a Mori fiber space, or $\mathcal{P}$ contracts $E_1$ after finitely many steps.
+        \item Suppose that $E_2=0$. Then:
+        \begin{enumerate}
+        \item $\mathcal{P}$ terminates with a weak lc model $(X',\Ff',B',\Mm)/U$ of $(X,\Ff,B,\Mm)/U$. In particular,
+        $K_{\Ff'}+B'+\Mm_{X'}\sim_{\mathbb R,U}\text{(resp. }\equiv_U,\sim_{\mathbb Q,U}\text{) }0.$
+         \item The divisors contracted by the induced birational map $X\dashrightarrow X'$ are exactly $\Supp E_1$.
+        \item If $(X,\Ff,B,\Mm)$ is $\Qq$-factorial ACSS, then $(X',\Ff',B',\Mm)/U$ is a good minimal model of $(X,\Ff,B,\Mm)/U$. 
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+\end{thm}
+
+\wanginline{Maybe a theorem of extract divisors for gfq here}
+
+\begin{thm}[Mori fibre space for gfq]\label{thm: existence mfs}
+Let $(X,\Ff,B,\Mm)/U$ be an lc gfq. Assume that $\Ff$ is algebraically integerable and $K_{\Ff}+B+\Mm_X$ is not pseudo-effective$/U$. Then:
+\begin{enumerate}
+  \item $(X,\Ff,B,\Mm)/U$ has a Mori fiber space.
+  \item Suppose that $(X,\Ff,B,\Mm)$ is weak ACSS, and either $X$ is $\Qq$-factorial klt or $\Mm$ is NQC$/U$. Then:
+  \begin{enumerate}
+    \item We may run a $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ with scaling of an ample$/U$ $\Rr$-divisor, which terminates with a Mori fiber space$/U$.
+    \item If $X$ is $\Qq$-factorial, then any $(K_{\Ff}+B+\Mm_X)$-MMP$/U$ with scaling of an ample$/U$ $\Rr$-divisor terminates with a Mori fiber space$/U$.
+   \end{enumerate}
+   \end{enumerate}
+\end{thm}
+
+\begin{thm}[fdlt implies acss]\label{thm: fdlt is acss}
+    Let $(X,\mathcal{F},B,\mathbf{M})/U$ be a $\mathbb{Q}$-factorial F-dlt gfq. Then $(X,\mathcal{F},B,\mathbf{M})$ is ACSS.
+\end{thm}
+
+\section{Sarkisov program for gfq}
+
+% \section{Generalized pair Sarkisov program}
+
+% \section{Flops connect Minimal Models}
+
+\begin{thebibliography}{99}
+
+  \bibitem[ACSS21]{ACSS21} F. Ambro, P. Cascini, V. V. Shokurov, and C. Spicer, \textit{Positivity of the moduli part}, arXiv:2111.00423.
+
+  \bibitem[Bir19]{Bir19} C. Birkar, \textit{Anti-pluricanonical systems on Fano varieties}, Ann. of Math. (2), \textbf{190} (2019), 345--463.
+
+  \bibitem[Bir21]{Bir21} C. Birkar, \textit{Generalised pairs in birational geometry}, EMS Surv. Math. Sci. \textbf{8} (2021), no. 1--2, 5--24.
+
+  \bibitem[BZ16]{BZ16} C. Birkar and D.-Q. Zhang, \textit{Effectivity of Iitaka fibrations and pluricanonical systems of polarized pairs}, Pub. Math. IHES., \textbf{123} (2016), 283--331.
+
+  \bibitem[BM16]{BM16} F. Bogomolov and F. McQuillan, \textit{Rational curves on foliated varieties}, In: \textit{Foliation theory in algebraic
+    geometry}, Simons Symp. Springer, Cham (2016), 21--51.
+
+  \bibitem[Bru02]{Bru02} M. Brunella, \textit{Foliations on complex projective surfaces}, arXiv:math/0212082.
+
+
+  \bibitem[Bru15]{Bru15} M. Brunella, \textit{Birational geometry of foliations}, IMPA Monographs \textbf{1} (2015), Springer, Cham.
+
+  \bibitem[BCHM10]{BCHM10}
+  C. Birkar, P. Cascini, C. D. Hacon and J. M\textsuperscript{c}Kernan, \textit{Existence of minimal models for varieties of log general type}, J. Amer. Math. Soc. \textbf{23} (2010), no. 2, 405--468.
+
+  \bibitem[Che20]{Che20} G. Chen, \textit{Boundedness of $n$-complements for generalized pairs}, arXiv:2003.04237.
+
+
+  \bibitem[CHL23]{CHL23} G. Chen, J. Han, and J. Liu, \textit{On effective Iitaka fibrations and existence of complements}, arXiv:2301.04813.
+
+  \bibitem[Che22]{Che22} Y.-A. Chen, \textit{ACC for foliated log canonical thresholds}, arXiv:2202.11346.
+
+  \bibitem[Che23]{Che23} Y.-A. Chen, \textit{Log canonical foliation singularities on surfaces}, Math. Nachr. \textbf{00} (2023), 1--35.
+
+  \bibitem[CP19]{CP19} F.~Campana and M. P\u{a}un, \textit{Foliations with positive slopes and birational stability of orbifold cotangent bundles}, Pub. Math. IHES., \textbf{129} (2019), 1--49.
+
+  \bibitem[Can04]{Can04} F. Cano, \textit{Reduction of the singularities of codimension one singular foliations in dimension three}, Ann. Math. (2) \textbf{160} (2004), no. 3, 907--1011.
+
+  \bibitem[CS20]{CS20} P. Cascini and C. Spicer, \textit{On the MMP for rank one foliations on threefolds}, arXiv:2012.11433.
+
+  \bibitem[CS21]{CS21} P.~Cascini and C. Spicer, \textit{MMP for co-rank one foliations on threefolds}, Invent. math. \textbf{225} (2021), 603--690.
+
+  \bibitem[CS23a]{CS23a} P. Cascini and C. Spicer, \textit{On the MMP for algebraically integrable foliations}, to appear in Shokurov's 70th birthday's special volume, arXiv:2303.07528.
+
+  \bibitem[CS23b]{CS23b} P. Cascini and C. Spicer, \textit{Foliation adjunction}, arXiv:2309.10697.
+
+
+  \bibitem[CD23]{CD23} P. Chaudhuri and O. Das, \textit{A basepoint free theorem for algebraically integrable foliations}, arXiv:2307.03530v1.
+
+  \bibitem[CLX23]{CLX23} B. Chen, J. Liu, and L. Xie, \textit{Vanishing theorems for generalized pairs}, arXiv:2305.12337.
+
+  \bibitem[DH23]{DH23} O. Das and C. D. Hacon, \textit{On the Minimal Model Program for K\"ahler 3-folds}, arXiv:2306.11708.
+
+  \bibitem[DHY23]{DHY23} O. Das, C. D. Hacon, and J. Y\'a\~nez, \textit{MMP for generalized pairs on K\"ahler 3-folds}, arXiv:2305.00524.
+
+  \bibitem[DLM23]{DLM23} O. Das, J. Liu, and R. Mascharak, \textit{ACC for lc thresholds for algebraically integrable foliations}, arXiv:2307.07157.
+
+  \bibitem[DO23a]{DO23a} O. Das and W. Ou, \textit{On the Log Abundance for Compact K\"ahler 3-folds}, Manuscripta Math. (2023)
+
+  \bibitem[DO23b]{DO23b} O. Das and W. Ou, \textit{On the Log Abundance for Compact K\"ahler threefolds II}, arXiv:2306.00671.
+
+  \bibitem[dFKX17]{dFKX17} T. de Fernex, J. Koll\'ar, and C. Xu, \textit{The dual complex of singularities}, in \textit{Higher dimensional algebraic geometry: in honor of Professor Yujiro Kawamata’s sixtieth birthday}, Adv. Stud. Pure Math., \textbf{74} (2017), Math. Soc. Japan, Tokyo, 103--129.
+
+  \bibitem[Dru17]{Dru17} S. Druel, \textit{On foliations with nef anti-canonical bundle}, Trans. Amer. Math. Soc., \textbf{369} (2017), no. 11, 7765--7787.
+
+  \bibitem[Dru21]{Dru21} S. Druel, \textit{Codimension 1 foliations with numerically trivial canonical class on singular spaces}, Duke Math. J., \textbf{170} (2021), no. 1, 95--203.
+
+  \bibitem[Eck04]{Eck04} T. Eckl, \textit{Numerically trivial foliations}, Ann. Inst. Fourier (Grenoble) \textbf{54} (2004), 887--938.
+
+  \bibitem[Fil19]{Fil19} S. Filipazzi, \textit{Generalized pairs in birational geometry}, 2019. PhD thesis, University of Utah.
+
+  \bibitem[Fil20]{Fil20} S. Filipazzi, \textit{On a generalized canonical bundle formula and generalized adjunction}, Ann. Sc. Norm. Super. Pisa Cl. Sci. (5) Vol. XXI (2020), 1187--1221.
+
+  \bibitem[FS23]{FS23} S. Filipazzi and R. Svaldi, \textit{On the connectedness principle and dual complexes for generalized pair}, Forum Math. Sigma \textbf{11} (2023), E33.
+
+  \bibitem[Flo14]{Flo14} E. Floris, \textit{Inductive approach to effective b-semiampleness}, Int. Math. Res. Not. \textbf{6} (2014), 1465--1492.
+
+  \bibitem[Fuj11]{Fuj11} O. Fujino, \textit{Fundamental theorems for the log minimal model program}, Publ. Res. Inst. Math. Sci. \textbf{47} (2011), no. 3, 727--789.
+
+
+  \bibitem[Fuj17]{Fuj17} O. Fujino, \textit{Foundations of the minimal model program}, MSJ Memoirs, \textbf{35}, Mathematical Society of Japan, Tokyo (2017).
+
+  \bibitem[FM00]{FM00} O. Fujino and S. Mori, \textit{A canonical bundle formula}, J. Differential Geom. \textbf{56} (2000), no. 1, 167--188.
+
+  \bibitem[FG12]{FG12} O. Fujino and Y. Gongyo, \textit{On canonical bundle formulas and subadjunctions}, Michigan Math. J. \textbf{61} (2012), 255--264.
+
+  \bibitem[FG14]{FG14} O. Fujino and Y. Gongyo, \textit{On the moduli b-divisors of lc-trivial fibrations}, Ann. Inst. Fourier (Grenoble), \textbf{64} (2014), no. 4, 1721--1735.
+
+  \bibitem[Gon11]{Gon11} Y. Gongyo, \textit{On the minimal model theory for dlt pairs of numerical Kodaira dimension zero}, Math. Rest. Lett. \textbf{18} (2011), no. 5, 991--1000.
+
+  \bibitem[HL21a]{HL21a} C. D. Hacon and J. Liu, \textit{Existence of flips for generalized lc pairs}, arXiv:2105.13590, to appear in Camb. J. Math.
+
+  \bibitem[HMX14]{HMX14} C. D. Hacon, J. M\textsuperscript{c}Kernan, and C. Xu, \textit{ACC for log canonical thresholds}, Ann. of Math. \textbf{180} (2014), no. 2, 523--571.
+
+  \bibitem[HX13]{HX13} C. D. Hacon and C. Xu, \textit{Existence of log canonical closures}, Invent. Math. \textbf{192} (2013), no. 1, 161--195.
+
+  \bibitem[HL22]{HL22} J. Han and Z. Li, \textit{Weak Zariski decompositions and log terminal models for generalized polarized pairs}, Math. Z. \textbf{302} (2022), 707--741.
+
+  \bibitem[HLS19]{HLS19} J. Han, J. Liu, and V. V. Shokurov, \textit{ACC for minimal log discrepancies of exceptional singularities}, arXiv:1903.04338.
+
+  \bibitem[HL21b]{HL21b} J. Han and W. Liu, \textit{On a generalized canonical bundle formula for generically finite morphisms},  Ann. Inst. Fourier (Grenoble), \textbf{71} (2021), no. 5, 2047--2077.
+
+  \bibitem[Hac12]{haconMinimalModelProgram2012} C. D. Hacon; \textit{The {{Minimal}} model program for {{varieties}} of log general type}. On the webpage of Hacon, \url{https://www.math.utah.edu/~hacon/MMP.pdf}
+
+  \bibitem[Har77]{Har77} R. Hartshorne, \textit{Algebraic geometry}, Springer-Verlag, New York-Heidelberg (1977), Graduate Texts in Mathematics, no. 52.
+
+
+  \bibitem[Has22]{Has22} K. Hashizume, \textit{Iitaka fibrations for dlt pairs polarized by a nef and log big divisor}, Forum Math. Sigma. \textbf{10} (2022), Article No. 85.
+
+  \bibitem[HH20]{HH20}  K. Hashizume and Z. Hu, \textit{On minimal model theory for log abundant lc pairs}, J. Reine Angew. Math., \textbf{767} (2020), 109--159.
+
+
+  \bibitem[Hu20]{Hu20} Z. Hu, \textit{Log abundance of the moduli b-divisors for lc-trivial fibrations}, arXiv:2003.14379.
+
+  \bibitem[KMM87]{KMM87} Y. Kawamata, K. Matsuda, and K. Matsuki, \textit{Introduction to the minimal model problem}, Algebraic geometry, Sendai (1985), 283--360, Adv. Stud. Pure Math., \textbf{10}, North-Holland, Amsterdam (1987).
+
+  \bibitem[JLX22]{JLX22} J. Jiao, J. Liu, and L. Xie, \textit{On generalized lc pairs with b-log abundant nef part}, arXiv:2202.11256.
+
+  \bibitem[Kaw98]{Kaw98} Y. Kawamata, \textit{Subadjunction of log canonical divisors, II}, Amer. J. Math. \textbf{120} (1998), no. 5, 893--899.
+
+  \bibitem[Kaw08]{kawamataFlopsConnectMinimal2008} Y. Kawamata; \textit{Flops {{Connect Minimal Models}}}, Publ. Res. Inst. Math. Sci. \textbf{44} (2008), no. 2, 419–423.
+
+  \bibitem[Kod64]{Kod64} K. Kodaira, \textit{On the structure of compact complex analytic surfaces}, I, Amer. J. Math. \textbf{86} (1964), 751--798.
+
+
+  \bibitem[Kol07]{Kol07} J. Koll\'ar, \textit{Kodaira’s canonical bundle formula and adjunction}, In: \textit{Flips for 3-folds and 4-folds}, Ed. by A. Corti. \textbf{35}. Oxford Lecture Series in Mathematics and its Applications. Oxford: Oxford University Press (2007), Chap. 8, 134--162.
+
+  \bibitem[Kol13]{Kol13} J. Koll\'ar, \textit{Singularities of the minimal model program}, Cambridge Tracts in Math. \textbf{200} (2013), Cambridge Univ. Press. With a collaboration of S\'andor Kov\'acs.
+
+  \bibitem[Kol23]{Kol23} J. Koll\'ar, \textit{Families of varieties of general type}, Cambridge Tracts in Math. \textbf{231} (2023), Cambridge Univ. Press. With the collaboration of Klaus Altmann and S\'andor Kov\'acs.
+
+
+  \bibitem[Kol$^+$92]{Kol+92} J. Koll\'{a}r et al., \textit{Flip and abundance for algebraic threefolds}. Ast\'{e}risque no. \textbf{211}, (1992).
+
+  \bibitem[KM98]{KM98} J. Koll\'{a}r and S. Mori, \textit{Birational geometry of algebraic varieties}, Cambridge Tracts in Math. \textbf{134} (1998), Cambridge Univ. Press.
+
+  \bibitem[Kov99]{Kov99} S. J. Kov\'acs, \textit{Rational, log canonical, Du Bois singularities: on the conjectures of Koll\'ar and Steenbrink}, Compos. Math. \textbf{118} (1999), no. 2, 123--133.
+
+  \bibitem[Kov11]{Kov11} S. J. Kov\'acs, \textit{DB pairs and vanishing theorems}, Kyoto Journal of Mathematics, Nagata Memorial Issue \textbf{51} (2011), no. 1, 47--69.
+
+  \bibitem[Kov12]{Kov12} S. J. Kov\'acs, \textit{The splitting principle and singularities}, Compact moduli spaces and vector bundles, Contemp. Math. \textbf{564} (2012), Amer. Math. Soc. Providence, RI, 195--204.
+
+
+
+  \bibitem[LT22]{LT22} V. Lazi\'c and N. Tsakanikas, \textit{Special MMP for log canonical generalised pairs (with an appendix joint with Xiaowei Jiang)}, Sel. Math. New Ser. \textbf{28} (2022), Article No. 89.
+
+  \bibitem[LLM23]{LLM23} J. Liu, Y. Luo, and F. Meng, \textit{On global ACC for foliated threefolds}, arXiv:2303.13083, to appear in Trans. of Amer. Math. Soc.
+
+  \bibitem[LMX23a]{LMX23a} J. Liu, F. Meng, and L. Xie, \textit{Complements, index theorem, and minimal log discrepancies of foliated surface singularities}, arXiv:2305.06493.
+
+  \bibitem[LMX23b]{LMX23b} J. Liu, F. Meng, and L. Xie, \textit{Uniform rational polytope of foliated threefolds and the global ACC}, arXiv:2306.00330.
+
+  \bibitem[LX23a]{LX23a} J. Liu and L. Xie, \textit{Relative Nakayama-Zariski decomposition and minimal models of generalized pairs}, Peking Math. J. (2023).
+
+  \bibitem[LX23b]{LX23b} J. Liu and L. Xie, \textit{Semi-ampleness of generalized pairs}, Adv. Math. \textbf{427} (2023), 109126.
+
+  \bibitem[McQ98]{McQ98} M. McQuillan, \textit{Diophantine approximation and foliations}, Pub. Math. IHES. \textbf{87} (1998), 121--174.
+
+  \bibitem[McQ08]{McQ08} M. McQuillan, \textit{Canonical models of foliations}, Pure Appl. Math. Q. \textbf{4} (2008), no. 3, Special Issue: In honor of Fedor Bogomolov, Part 2, 877--1012.
+
+  \bibitem[Miy87]{Miy87} Y. Miyaoka, \textit{Deformations of a morphism along a foliation and applications}, Algebraic geometry, Bowdoin, Proc. Sympos. Pure Math. \textbf{46} (1985) (Brunswick, Maine, 1985), Amer. Math. Soc., Providence, RI (1987), 245--268.
+
+
+  \bibitem[Nak16]{Nak16} Y. Nakamura, \textit{On minimal log discrepancies on varieties with fixed Gorenstein index}, Michigan Math. J. \textbf{65} (2016), no. 1, 165--187.
+
+  \bibitem[Nak04]{Nak04} N. Nakayama, \textit{Zariski-decomposition and abundance}, MSJ Memoirs, \textbf{14} (2004), Mathematical Society of Japan, Tokyo.
+
+  \bibitem[PS09]{PS09} Y.G. Prokhorov and V. V. Shokurov, \textit{Towards the second main theorem on complements}, J. Algebraic Geom., \textbf{18} (2009), no. 1, 151--199.
+
+  \bibitem[Roc97]{Roc97}  R. T. Rockafellar, \textit{Convex analysis} (1997), vol. 11, Princeton University Press.
+
+  \bibitem[Sei68]{Sei68} A. Seidenberg, \textit{Reduction of singularities of the differential equation A dy = B dx}, Amer. J. Math. \textbf{90} (1968), 248--269.
+
+  \bibitem[Sho00]{Sho00} V. V. Shokurov, \textit{Complements on surfaces}, J. Math. Sci. (New York) \textbf{102} (2000), no. 2, 3876--3932.
+
+  \bibitem[Siu10]{Siu10} Y.-T. Siu, \textit{Abundance conjecture}, in \textit{ Geometry and analysis}, no. 2, Ed. by L. Ji, 271--317. Advanced Lectures in Mathematics. Boston International Press.
+
+  \bibitem[Spi20]{Spi20} C. Spicer, \textit{Higher dimensional foliated Mori theory}, Compos. Math. \textbf{156} (2020), no. 1, 1--38.
+
+  \bibitem[SS22]{SS22} C. Spicer and R. Svaldi, \textit{Local and global applications of the Minimal Model Program for co-rank 1 foliations on threefolds}, J. Eur. Math. Soc. \textbf{24} (2022), no. 11, 3969--4025.
+
+  \bibitem[Sza94]{Sza94} E. Szab\'o, \textit{Divisorial log terminal singularities}, J. Math. Sci. Univ. Tokyo, \textbf{1} (1994), no. 3, 631--639.
+
+  \bibitem[TX23]{TX23} N. Tsakanikas and L. Xie, \textit{Remarks on the existence of minimal models of log canonical generalized pairs}, arXiv:2301.09186.
+
+  \bibitem[Xie22]{Xie22} L. Xie, \textit{Contraction theorem for generalized pairs}, arXiv:2211.10800.
+
+  \bibitem[Xu23]{Xu23} Z. Xu, \textit{Abundance for threefolds in positive characteristic when $\nu=2$}, arXiv:2307.03938.
+
+\end{thebibliography}
+\end{document}

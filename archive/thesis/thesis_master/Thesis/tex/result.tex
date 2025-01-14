@@ -1,0 +1,201 @@
+\chapter{三种方法的比较和例子}
+
+\section{三种方法的比较}
+先比较前两种方法的异同点。相同点是：
+\begin{enumerate}
+  \item 前两种方法都归纳地构造Sarkisov连接 $X_{i} \dashrightarrow X_{i+1}$，并且每个连接都是用双射线MMP来构造，这样的归纳过程是两个纲领 (program)。这两个纲领的终结判定本质上是一样的 (Noether-Fano-Iskovskikh判别法，定理\ref{nfi}和\ref{nfi2})，即$(X_{N}, B_{N}+H_{N})$和$(X',B'+H')$是相同的弱对数典范模型，而$S,S_{N}$是相同的丰沛模型 (在下降法中应该是$(X',B'+ \frac{1}{\mu'}H')$)。
+  \item 在构造每个Sarkisov连接时，都分为两种情况，对应Noether-Fano-Iskovskikh判别法的两个条件。当$K_{X_{i}}+B_{i}+g_{i}G_{i}+h_{i}H_{i}+D_{i}(s_{i}+\epsilon)$ 或 $K_{X_{i}}+ \frac{1}{\mu_{i}}H_{i}$不是数值有效时，即不是极小模型时，自然地直接在$X$ 上运行某种MMP ；另外一种情况则关于$X_{i}$和$X'$ 的奇点性质 (关于特定的边界除子和对数典范除子) ，都需要先改善$X_{i}$的奇点性质，使其向$X'$接近，具体来说就是构造特定的除子解压。 
+\end{enumerate}
+不同点是：
+\begin{enumerate}
+  \item 下降法只将$X'$ 看作某个弱对数典范模型，然后将$X$用MMP改造成对应的模型。下降法用Sarkisov次数来描述两者之间的距离。双标量法则将$X$和$X'$都看作$W$ 的模型 (通过构造$G$ 和$H'$)，用$(G_{W},H_{W})$和它们的系数$g_{i},h_{i}$来描述两个模型间的距离。
+  \item 第一种方法在相对较大的范围内改进$X$ ，具体来说，终端奇点的三维代数簇的集合，或者高维情况下构造集合$\mathcal{C}_{\theta}$，下降法的终结性依赖于这个集合中的某些D CC或有限性。双标量法则固定一个屋顶，即公共对数解消$W$，这个纲领的终结性依赖于$W$ 的模型的有限性。因此，下降法需要更多的限制条件，例如边界除子是$\mathbb{Q}$-除子等，才能保证纲领终结；而双标量法则更广泛地可行和成立。  
+\end{enumerate}
+
+第三种方法和第一种方法有本质的不同，有限模型法并不是一个纲领，即并不是归纳地构造Sarkisov连接。相反，这种方法首先找出公共解消$W$上的丰沛模型，然后找到一条路线，将它们连起来。此时代数簇之间的态射，并不是根据MMP将一个代数簇改进成另一个代数簇的态射，而是表示不同代数簇作为不同模型的关系。下降法构造Sarkisov连接是通过双射线MMP，其中出现的每一个代数簇，在有限模型法中被视为一组特殊的互相相邻的模型。
+\section{例子}
+这一节给出一些具体的MMP-相关的森纤维空间的Sarkisov分解的例子。
+
+\subsection{下降法}\label{example1}
+记 $ X=\mathbb{P}^2 $ 为射影平面，坐标记为 $ [ x_0:x_1:x_2 ] $ ，记 $ X'=\mathbb{P}^2 $ 为另一个射影平面，坐标为 $ [ y_0:y_1:y_2 ] $。
+记 $ B=\{x_0=0\} $ 和 $B'=\{y_{0}=0\} $。
+取双有理映射 $ \Phi:X\dashrightarrow X' $ ，按如下定义：
+\[ \Phi:[x_0:x_1:x_2]\dashrightarrow [x_0^2:x_0x_1:x_1^2+x_0x_2] .\]
+那么存在一个公共解消 $\sigma: W\to X$ 和 $\sigma':W\to X'$，两个态射都是三个对点的胀开的复合。
+三个胀开如下所示：
+\begin{enumerate}
+  \item $\pi_{1}:W_{1}\to X$ 是对点 $P_{0} \in B$ 的胀开，点 $P_{0}$是双有理映射  $\Phi$不定义的点。 用相同的符号 $B$ 表示它在  $W_{1}$上的严格双有理变换。将$\pi_{1}$的例外除子记为 $E_{1}$。此时$\Phi$提升到 双有理映射 $W_{1}\dashrightarrow X'$，但仍然不是态射。
+  \item $\pi_{2}:W_{2}\to W_{1}$ 是对点 $P_{1}=E_{1} \cap B$的胀开，点 $P_{1}$是双有理映射 $  W_{1}\dashrightarrow X' $
+的不定义的点。将$\pi_{2}$的例外除子记为 $E_{2}$，仍然用同样的符号 $B$ 和 $E_{1}$ 表示它们在 $W_{2}$ 上的严格双有理变换。此时$\Phi$提升到 双有理映射 $W_{2}\dashrightarrow X'$，但仍然不是态射。
+  \item $\pi_{3}:W=W_{3}\to W_{2}$ 是对点 $P_{2} \in E_{2} \setminus (B\cup E_{1})$的胀开。将$\pi_{3}$的例外除子记为 $E_{3}$，仍然用同样的符号 $B,E_{1},E_{2}$ 表示它们在 $W_{3}$ 上的严格双有理变换。此时$\Phi$提升到 双有理映射 $W_{3}\to  X'$是一个态射。
+\end{enumerate}
+那么 $ \sigma=\pi_{3}\circ \pi_{2} \circ \pi_{1} $ 和 $ W=W_3 $ 是 $\Phi$的公共解消。对称的， $ \sigma':W\to X' $ 是三个压缩曲线的态射的复合  $W=W'_{3}\xrightarrow{\pi'_{3}} W'_{2}\xrightarrow{\pi'_{2}} W'_{1} \xrightarrow{\pi'_{1}} X'$。双有理态射$\pi'_{3},\pi'_{2},\pi'_{1}$ 依次压缩曲线 $ B,E_2,E_1 $。
+\begin{remark}
+  显然双有理映射$\Phi$有逆映射
+\[ \Phi^{-1}:[y_0:y_1:y_2]\dashrightarrow [y_0^2:y_0y_1:y_1^2-y_0y_2] \]
+  与$\Phi $只差一个符号。于是$\sigma' $是解消 $\Phi^{-1}$的三个胀开的复合，例外曲线依次是$E_{1},E_{2},B$。可以看到，$B' \subset X'$是例外除子$E_{3} \subset W$在$X'$上的严格双有理变换。在$W$ 上，如果用相同的符号$B'$记它在 $W$ 上的严格双有理变换，那么 除子$E_{3}$和$B$ 是地位相等的。
+\end{remark}
+下面给出一些代数簇的符号：
+\begin{itemize}
+  \item 令 $W_{2}\to Z_{0}$ 是  $W_{2}$压缩曲线 $E_{1}$的态射，且 $Z_{0} \to X_{1}$ 是压缩曲线 $B$的除子压缩，那么 $Z_{0}\to X_{0}$ 是  $X$上解压 $E_{2}$的除子解压；
+  \item 令 $W'_{2}\to Z_{1}$   是 $W'_{2}$上压缩 $E_{1}$的态射，那么 $Z_{1} \to X_{1}$ 是$X_{1}$上解压除子 $E_{3}$ 的除子解压，并且 $Z_{1}\to X'$ 是压缩 $E_{2}$的除子压缩；
+  \item 令$W\to Z$ 是$W$ 上压缩  $E_{1}$ 和 $E_{2}$ 的两个压缩曲线态射的复合，那么 $Z\to X$ 是解压 $E_{3}$的除子解压，而 $Z\to X'$ 是解压 $B$的除子解压
+\end{itemize}
+对应的映射的交换图表：
+\[ \xymatrix{&&&W_3\ar[ld]\ar@{=}[r]&W\ar[ddd]\ar@{=}[r]&W_3'\ar[rd]\\
+    &&W_2\ar[ld]\ar[rd]&&&&W_2'\ar[rd]\ar[dl]\\
+    &W_1\ar[ld]&&Z_0\ar[llld]\ar[rd]&&Z_1\ar[ld]\ar[rrrd]&&W_1'\ar[rd]\\
+    X_0&&&&X_1&&&&X'
+  } \]
+  和
+\[\xymatrix{
+    &W\ar[d]\ar[ddl]_{\sigma}\ar[ddr]^{\sigma'}&\\
+    &Z\ar[dl]\ar[dr]\\
+    X&&X'. }  \]
+
+考虑代数簇对 $ (X,bB) $ 和 $ (X',b'B') $，因为是对数光滑的，所以显然是具有klt奇点的。取函数 $\theta$ 使得：
+\begin{itemize}
+  \item $\theta(B)=b$ 且 $\theta(B')=b'$;
+  \item $\theta(E_{1})=\theta(E_{2})=\epsilon$，其中 $b,b'<\epsilon<1$.
+\end{itemize}
+那么有分歧公式：
+\[ \begin{array}{rllllllll}
+      & K_W+B_W \\
+    = & \sigma^*(K_X+bB)       & + & (3-2b+b')E_3 & + & (1-b+\epsilon)E_1 & + & (2-2b+\epsilon)E_2   \\
+    = & \sigma'^*(K_{X'}+b'B') & + & (3-2b'+b)B   & + & (1-b'+e)E_1       & + & (2-2b'+\epsilon)E_2 .
+  \end{array} \]
+取 $ \mathcal{H}'=|\mathcal{O}_{X'}(1)| $为 $X'$上极丰沛的完全线性系，那么 $H\in |\mathcal{O}_{X}(2)|$。
+
+不同的 $\theta$ 和  $\epsilon$ 的选取给出不同的分解：
+\begin{enumerate}
+  \item\label{example1.1} 如果$ 2b+2b'\geqslant 3\epsilon>0 $，那么  $\Phi$ 是两个第二型 Sarkisov 连接 $\psi_{0},\psi_{1}$的复合： 
+    \[ \xymatrix{
+        &Z_{0}\ar[rd]\ar[ld] & &Z_{1}\ar[rd]\ar[ld]\\
+        X\ar[d]\ar@{.>}[rr]^{\psi_{0}}& &X_{1}\ar@{.>}[rr]^{\psi_{1}}\ar[d]&&X'\ar[d]\\
+        \text{pt}&&\text{pt}&&\text{pt} .} \]
+  \item 如果 $ 2b+2b'< 3\epsilon $，那么 $\Phi$ 是一个第二型Sarkisov连接的复合：
+        \[ \xymatrix{
+            &Z\ar[rd]\ar[ld] & \\
+            X_{1}\ar@{.>}[rr]^{\Phi}\ar[d]& &X'\ar[d]\\
+            \text{pt}&&\text{pt} .} \]
+  \item 如果 $ \epsilon=b=b'=0 $，那么 $\Phi$是四个 Sarkisov 连接 $\psi_{i}$的复合：
+        \[ \xymatrix{
+          &&W_2\ar[ld]\ar[rd]&&W_2'\ar[ld]\ar[rd]\\
+          &X_1=\mathbb{F}_1\ar@{.>}[rr]^{\psi_{1}}\ar[d]&&X_2=\mathbb{F}_2\ar@{.>}[rr]^{\psi_{2}}\ar[d]&&X_3=\mathbb{F}_1\ar[d]\ar[rd]^{\psi_{3}}\\
+          X=X_0=\mathbb{P}^2\ar[d]\ar@{.>}[ru]^{\psi_{0}}&\mathbb{P}^1\ar[ld]\ar@{=}[rr]&&\mathbb{P}^1\ar@{=}[rr]&&\mathbb{P}^1\ar[rd]&X_4=X'=\mathbb{P}^2\ar[d]\\
+          \text{pt}&&&&&&\text{pt} .} \]
+\end{enumerate}
+
+\subsection{双标量法}
+沿用\ref{example1}节的记号，令 $B_{W}=\frac{1}{2}(B+E_{1}+E_{3})$ 并考虑代数簇对 $(X,\frac{1}{2}B)$ 和 $(X',\frac{1}{2}B')$。那么有 $G=G_{0}\sim_{\mathbb{Q}}\frac{5}{2}B$ 和 $H'\sim_{\mathbb{Q}}\frac{5}{2}B'$。对$G$和$H'$运行双标量Sarkisov纲领：
+\begin{enumerate}
+  \item 第一个连接：$r_{0}=2$ 且 $s_{0}=\frac{1}{5}$。于是 $X_{1}$ 是$W$  关于 $(W,B_{W}+\frac{3}{5}G_{W}+\frac{1}{5}H_{W})$的弱对数典范模型；
+  \item 第二个连接： $r_{1}=1$ 且 $s_{1}=\frac{2}{5}$。于是 $X_{2}= X'$ 是$W$ 关于  $(W,B_{W}+\frac{1}{5}G_{W}+\frac{3}{5}H_{W})$的弱对数典范模型。
+\end{enumerate}
+\begin{remark}
+严格按照命题\ref{2Constructlink}和引理\ref{termination2}来说，$N=3 $，且还有一个恒同的连接$X_{2}=X_{3}$，不过这里我们省去它。
+\end{remark}
+\begin{remark}
+  这给出了上一小节\ref{example1} 中情况 (\ref{example1.1})相同的分解。
+\end{remark}
+
+\subsection{有限模型法}
+令  $P,Q$ 是射影平面 $\mathbb{P}^{2}$上两个不同的点，且 $L$是经过 $P$ 和 $Q$的射影直线。令 $p:X\to \mathbb{P}^{2}$ 是在 $P$处的胀开，并且记 $E_{1}$是例外除子。令 $q:Y\to \mathbb{P}^{2}$ 是在 $Q$处的胀开，并且记 $E_{2}$ 是例外除子。 令 $W\to \mathbb{P}^{2}$ 是在  $P$ 和$Q$两点的胀开。那么有压缩态射 $f:W\to X$ 和 $g:W\to Y$。用相同的记号 $L,E_{1}$ 和 $E_{2}$表示它们在$W$ 上的严格双有理变换。 那么$W$ 上有
+\[
+  K_{W}\sim -3L-2E_{1}-2E_{2}
+\]
+和相交数关系： 
+\begin{center}
+  \begin{tabular}{cccc}
+        \hline
+        %\cline{2-9}% partial hline from column i to column j
+                 & $L$  & $E_{1}$ & $E_{2}$ \\
+        \hline
+        $L$      & $-1$ & $1$     & $1$ \\
+        $E_{1}$  & $1$  & $-1$    & $0$ \\
+        $E_{2}$  & $1$  & $0$     & $-1$ \\
+        \hline
+    \end{tabular}
+\end{center}
+令  $h:W\to Z$ 是压缩曲线 $L$的压缩态射，那么 $Z\cong \mathbb{P}^{1} \times \mathbb{P}^{1}=\mathbb{F}_{0}$。 注意到 $X\cong \mathbb{F}_{1}$，那么 $\phi:X\to S \cong \mathbb{P}^{1}$是森纤维空间。类似的，还有令一个森纤维空间 $\psi: Y\to T\cong \mathbb{P}^{1}$。 用交换图表表示是：
+\[ \xymatrix{
+    S\cong \mathbb{P}^{1}&X\cong \mathbb{F}_{1}\ar[l]_{\phi}\ar[r]^{p} & \mathbb{P}^{2} \\
+    &W\ar[u]^{f}\ar[r]_{g}\ar[ld]_{h} & Y\cong \mathbb{F}_{1}\ar[u]_{q}\ar[d]^{\psi}\\
+    Z\cong \mathbb{F}_{0}\ar[uu]\ar[rr]&&T\cong \mathbb{P}^{1} .} \]
+
+由$p$和$q$诱导双有理映射 $\Phi: X\dashrightarrow  Y$，如果取$W$ 上边界除子 $B_{W}=\frac{1}{4}L$，那么$f$ 和 $g$ 是 $(K_{W}+B_{W})$-MMP输出的两个森纤维空间，即它们是MMP-相关的森纤维空间。
+
+取 $A\sim_{\mathbb{Q}}-K_{W}+\frac{1}{4}L$。将$E_{1}$和$E_{2}$张成的线性空间用  $\frac{1}{4}L$平移，得到仿射子空间，记为$V$，那么有$\mathcal{L}_{A}(V)=\mathcal{E}_{A}(V)$。对
+\[ D=A+ \frac{1}{4}L +aE_{1}+bE_{2},0\leqslant a,b\leqslant 1 \]
+有 $D \in \mathcal{E}_{A}(V)$，且$K_{W}+D\sim_{\mathbb{Q}} \frac{1}{2}L+aE_{1}+bE_{2}$成立。取下列除子：
+\[ \begin{array}{rllllllll}
+  D_{0}&=&A& +& \frac{1}{4}L& + &0\cdot E_{1}            &+& \frac{3}{4}\cdot E_{2}, \\
+  D_{1}&=&A& +& \frac{1}{4}L& + & \frac{3}{4}\cdot E_{1} &+& 0 \cdot E_{2}, \\
+  D_{2}&=&A& +& \frac{1}{4}L& + &0\cdot E_{1}            &+& \frac{1}{2}\cdot E_{2}, \\
+  D_{3}&=&A& +& \frac{1}{4}L& + & 0\cdot  E_{1}          &+& 0 \cdot E_{2}, \\
+  D_{4}&=&A& +& \frac{1}{4}L& + & \frac{1}{2}\cdot E_{1} &+& 0 \cdot E_{2}.
+  \end{array} \]
+于是 $\mathcal{E}_{A}(V)$ 有下图所示的划分：
+
+\begin{center}
+  
+\begin{tikzpicture}
+    \draw (0,0)--(6,0)--(6,6)--(0,6)--(0,0);
+    \draw (0,3)--(6,3);
+    \draw (3,0)--(3,6);
+    \draw (3,0)--(0,3);
+    \draw(4.5,4.5)node{$\mathbb{P}^{2} $};
+    \draw(0.9,0.9)node{$Z$};
+    \draw(2.1,2.1)node{$W$};
+    \draw(4.5,1.5)node{$Y$};
+    \draw(1.5,4.5)node{$X$};
+    \draw(-0.5,-0.5)node{pt};
+    \draw(-1,3)node{$\mathbb{P}^{1}=S$};
+    \draw(3,-1)node{$\mathbb{P}^{1}=T$};
+    \draw(4.5,0.3)node{$D_{1}$};
+    \draw(7,0)node{$aE_{1}$};
+    \filldraw (4.5,0) circle(0.05);
+    \filldraw (3,0) circle(0.05);
+    \draw(3.3,0.3)node{$D_{4}$};
+    \filldraw (0,0) circle(0.05);
+    \draw(0.3,0.3)node{$D_{3}$};
+    \filldraw (0,3) circle(0.05);
+    \draw(0.3,3.3)node{$D_{2}$};
+    \filldraw (0,4.5) circle(0.05);
+    \draw(0.5,4.5)node{$D_{0}$};
+    \draw(0,7)node{$bE_{2}$};
+\end{tikzpicture}
+\end{center}
+其中 $ W,X,Y,Z,\mathbb{P}^{2}$ 是$W$ 关于某些边界除子$D$ (对应图中符号所在多面体) 的弱对数典范模型 ，同时也是某些除子的丰沛模型和对数典范模型；另外$S,T,pt $是$W$ 关于某些边界除子的丰沛模型 (但不是对数典范模型)。   
+$D_{0}$对应弱对数典范模型$X$ 和丰沛模型$S$，并且压缩态射$\phi:X\to S$ (定理\ref{mapbetweenAM}.(2)给出)是森纤维空间压缩态射；类似的$D_{1}$ 对应森纤维空间$\psi:Y\to T$。点 $D_{2},D_{3},D_{4}$对应三个Sarkisov连接 (按定理\ref{2Constructlink})；
+\begin{itemize}
+  \item $D_{2}$对应
+\[ \xymatrix{
+                         & W\ar[ld]\ar[rd]          & \\
+    X\ar[d]              &                          & Z\ar[d]\\
+\mathbb{P}^{1}\ar@{=}[r] & \mathbb{P}^{1}\ar@{=}[r] & \mathbb{P}^{1} } \]
+  \item $D_{3}$对应
+\[ \xymatrix{
+    Z\ar[d]\ar@{=}[rr]    &           & Z\ar[d] \\
+    \mathbb{P}^{1}\ar[dr] &           & \mathbb{P}^{1}\ar[dl] \\
+                          & \text{pt} & } \]
+  \item $D_{4}$对应
+\[ \xymatrix{
+                         & W\ar[ld]\ar[rd]          & \\
+    Z\ar[d]              &                          & Y\ar[d]\\
+\mathbb{P}^{1}\ar@{=}[r] & \mathbb{P}^{1}\ar@{=}[r] & \mathbb{P}^{1} } \]
+\end{itemize}
+
+于是，有 $\Phi: X\dashrightarrow  Y$ 的分解：
+\[ \xymatrix{
+                                   & W\ar[ld]\ar[rd]          &                       &           &                                 & W\ar[ld]\ar[rd] \\
+    X\ar[d]                        &                          & Z\ar[d]\ar@{=}[rr]    &           & Z\ar[d]                         &                           & Y\ar[d]\\
+    \mathbb{P}^{1}\ar@{=}[r]       & \mathbb{P}^{1}\ar@{=}[r] & \mathbb{P}^{1}\ar[dr] &           & \mathbb{P}^{1}\ar[dl]\ar@{=}[r] & \mathbb{P}^{1}\ar@{=}[r] & \mathbb{P}^{1} \\
+                                   &                          &                       & \text{pt} &                                 &                           & }\]
+\begin{remark}
+此例中对$V$ 和$A$ 的选取并不是严格按照引理\ref{keylemma}构造的，但是相对简单一些，并且可以看出模型在Sarkisov分解中的位置。
+\end{remark}
+
+% \section{应用}
+
+% Sarkisov 纲领有许多应用，例如2阶Cremona群的经典结果 (即每一个射影平面的双有理自同构都是由自同构和标准二次映射复合生成，见 \cite[Chapter 2]{ksc04} )。 Takahashi \cite{tak95} 对对数曲面建立了特殊的Sarkisov纲领，并得到了另一个经典代数结论的几何证明：每一个仿射平面的自同构都由仿射自同构和上三角变换复合 (见 \cite[Chpter 13]{mat02})。Lamy\cite{lam22}给出了更多其他应用。

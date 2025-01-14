@@ -1,0 +1,580 @@
+\chapter{工具}
+这一章将给出描述、定义和解决模问题的理论，这些理论不只是工具，还一定程度上指出了研究模空间的思路。在最后还举例说明了GIT理论在相应构造中的主要技术手段。
+\section{模问题与模空间}
+首先我们从范畴论的角度来描述模问题，定义新的几何概念：叠和DM叠，并且指出我们期望的$ \mathrm{M}_g $上应有的几何结构。这一节的内容主要参考\cite{GIT,DM69,NotesModuliSpaceofCurves}。
+\subsection{模问题与模空间}
+任给范畴$ \mathscr{C} $，可以定义函子范畴：$ [\mathscr{C},\mathfrak{Set}] $中的对象是$ \mathscr{C} $到$ \mathfrak{Set} $的正变函子，态射是函子间的自然变换。类似的，$ [\mathscr{C}^\circ,\mathfrak{Set} ]$是反变函子的范畴。Yoneda嵌入和Yoneda 引理描述了函子范畴$ [\mathscr{C}^\circ,\mathfrak{Set}] $与原来范畴的关系。
+\begin{theorem}
+	对任意范畴$ \mathscr{C} $和反变函子范畴$ [\mathscr{C}^\circ,\mathfrak{Set}] $，$ \mathscr{C} $可以作为其全忠实（fully and faithful）子范畴：
+	$$ \mathscr{C} \hookrightarrow [\mathscr{C}^\circ,\mathfrak{Set}] , X \mapsto\mathrm{Mor}(-,X) $$
+\end{theorem}
+Yoneda嵌入告诉我们，$ \mathscr{C} $作为范畴的信息被函子范畴$ [\mathscr{C}^\circ,\mathfrak{Set}] $包括了。全忠实的性质说明，$ X\in\mathscr{C} $是完全被函子$ \mathrm{Mor}(-,X) $决定，或者说$ X $被$ \mathscr{C} $中所有对象到它的全部态射决定。假如在$ [\mathscr{C}^\circ,\mathfrak{Set}]  $上重复这个过程，函子范畴中的态射就是函子间的自然变换，一个函子$ F $被所有函子到它的全部自然变换$ \mathrm{Nat}(G,F)=\mathrm{Mor}_{[\mathscr{C}^\circ,\mathfrak{Set}]}(G,F) $决定。但是Yoneda引理声明只需要更弱的条件：
+\begin{theorem}
+	对任意范畴$ \mathscr{C} $，范畴中对象$ X\in \mathscr{C}  $，反变函子$ F\in [\mathscr{C}^\circ,\mathfrak{Set}] $，有集合的同构：	
+	$$ \mathrm{Nat}(\mathrm{Mor}(-,X),F) \to F(X),\alpha \mapsto \alpha_X(1_X)\in F(X) $$
+\end{theorem}
+为了确定反变函子$ F $，最直接的方法对任意的$ X\in\mathscr{C} $，确定$ F(X) $，而Yoneda引理则说明这个集合就是$ \mathrm{Nat}(\mathrm{Mor}(-,X),F)=\mathrm{Mor}_{[\mathscr{C}^\circ,\mathfrak{Set}]}(\mathrm{Mor}(-,X),F) $，并且$ FX $和$ FY $的态射也可以从同构中诱导。这就是说，在函子范畴$ [\mathscr{C}^\circ,\mathfrak{Set}] $中，并不需要全部到$ F $的态射（自然变换）来确定$ F $，而只需要子范畴$ \mathscr{C} $中的对象到它的态射就可以了。显然这个子范畴的对象是重要的：
+\begin{definition}
+	如果反变函子$ F:\mathscr{C}\to \mathfrak{Set} $与某个$ X\in\mathscr{C} $的函子$ \mathrm{Mor}(-,X) $自然同构，则称$ F $为\dotuline{可表函子}，被$ X $表示。
+\end{definition}
+回到模问题，它想要解决的是参数化有某性质的一类对象，或者用函子的角度来看，对于某个空间$ B $，考虑它是否能参数化一族对象的等价类。例如分类概型，仿照形变理论的语言，对于性质P，定义反变函子$ M $:
+$$M(B)=\{ \mathcal{X}\to B| \text{每个纤维}\mathcal{X}_b\text{有性质P} \}/\sim $$
+这里等价关系是$ (f:\mathcal{X}\to B) \sim (g:\mathcal{X'}\to B) $，如果存在$ B $-同构$ h:\mathcal{X}\to\mathcal{ X'} $。对于$ \phi: B'\to B $，对应集合间的映射$ M(\phi):M(B)\to M(B') $由纤维积实现：
+$$ \xymatrix{
+	\mathcal{X}'\ar[r]^-{\sim}&\mathcal{X}\times_{B}B' \ar[d] \ar[r] & \mathcal{X} \ar[d] \\
+	&B' \ar[r]^-{\phi} & B
+} $$
+这样的定义是合理的，此时$ M(\mathrm{Spec}\,k) $就是等价类的集合$ \mathrm{M} $。
+
+如果这样的函子可以被某个概型$ \mathcal{M} $表示，则任意有性质P的域$ k $上的对象$(X\to \mathrm{Spec}\, k)\in  F(\mathrm{Spec}\, k)$，都唯一对应 $f\in \mathrm{Mor}(\mathrm{Spec}\, k,\mathcal{M}) $，亦即$ \mathcal{M} $的一个$ k $-点，所以$ \mathcal{M}(k) $将参数化全部有性质P的对象的等价类（也不会更多），也就是$ \mathrm{M} $的一个很好的几何结构，$ \mathcal{M} $称为模问题$ M $的\dotuline{细模空间（fine moduli space）}。
+
+具体到曲线模空间的情况，光滑射影曲线的函子为$ M_g $：
+$$  M_g (B)=\{\pi:\mathcal{C} \to B| f \text{是光滑本征态射，每个纤维是亏格} g \text{的连通光滑射影曲线}  \} / \sim $$
+并且$ f:B'\to B $对应纤维积：
+$$ \xymatrix{
+	\mathcal{X}' \ar[d]_-{\pi'} \ar[r] & \mathcal{X} \ar[d]^-{\pi} \\
+	B' \ar[r]^-{f} & B
+} $$
+但可惜的是，这个模问题的细模空间$ \mathcal{M}_g $并不存在。关键在于一些$ k $上的曲线$ C$具有非平凡的自同构，这样可以构造一族$ \mathcal{X}\to B $使得每个纤维都与$ C $同构，因此$ B $将映入$ \mathcal{M}_g $的一个$ k $-点，但这样就得到$ \mathcal{X}=C\times B $，这显然不总成立。更具体的例子，取$ g=0 $，则模空间应该是简单的一个点$ \mathrm{Spec}\,k $，以及万有族$ \mathbb{P}^1 \to \mathrm{Spec}\,k$
+。那么对于某条曲线$ C \to \mathrm{Spec}\,k $应该只有一个拉回$ C\times_k\mathbb{P}^1 $，但是从曲面的知识可以知道，$ C $上以$ \mathbb{P}^1 $为纤维的射影丛不止这一个。可见曲线模问题中$ \mathrm{M}_g $不会具有细模空间的几何结构，但是仍然可以赋予它概型结构，记作概型$ \mathcal{M}_g $，不要求它表示函子$ M_g $，但仍有类似的性质，比如$ \mathcal{M}_g $的闭点应该一一对应光滑射影曲线的等价类，以及具有某种泛性质。严格地说，可以定义粗模空间：
+\begin{definition}
+	对于模问题的函子$ F $，如果概型$ M $和自然变换$ \phi:F \to \mathrm{Mor}(-,M) $满足：
+	\begin{enumerate}
+		\item 对任意代数闭域$ K $，有同构$$ \phi(\mathrm{Spec}\,K):F(\mathrm{Spec}\,K) \to  \mathrm{Mor}(-,M)(\mathrm{Spec}\,K)=\mathrm{Mor}(\mathrm{Spec}\,K,M) $$
+		\item 任意的概型$ N $和自然变换$ \psi :F \to \mathrm{Mor}(-,N) $，都穿过$ \mathrm{Mor}(-,M) $，即存在唯一$ \chi: \mathrm{Mor}(-,N)\to \mathrm{Mor}(-,M) $，使得$ \phi=\chi \circ \psi $
+	\end{enumerate}
+	此时称$ M $为模问题$ F $的\dotuline{粗模空间}。
+\end{definition}
+
+对于曲线模问题的函子$ M_g $，记其粗模空间为$ \mathcal{M}_g $。在这个定义里，第一条说明空间$ \mathcal{M}_g $确实对应了全部的亏格$ g $的光滑曲线的等价类；而第二条的泛性质则部分还原了细模空间的性质。在GIT思路的构造中，最后得到的就是这个粗模空间。
+
+\subsection{函子与叠}\label{stack}
+解决细模空间不存在的另一个方法是，对于一个反变函子$ F\in [\mathfrak{Sch}^\circ,\mathfrak{Set}] $，直接将函子本身作为一个几何对象，即曲线模空间的函子$ M_g $本身就是一个几何对象。这样就需要描述一个函子的几何的性质，或者说明它与概型的关系。这种新的几何结构就是群胚和DM叠。相关的内容主要包含在\cite{DM69,NotesModuliSpaceofCurves}中，但一些概念有所调整，以符合现在流行的观点和本文的需要。在这一小节中的概型是指$ \mathrm{Spec}\,\mathbb{Z} $上的概型，对应的范畴记为$ \mathfrak{Sch} $，任意概型$ S $可以定义$ S $上的概型的范畴$ \mathfrak{Sch}_S $，记为$ \mathscr{S} $。
+
+\begin{definition}
+	范畴$ \mathscr{S} $上的\dotuline{群胚}$ (\mathscr{G},p) $，也称为概型$ S $上的群胚，是指范畴$ \mathscr{G} $和一个正变函子$ p:\mathscr{G}\to\mathscr{S} $，满足：
+	\begin{enumerate}
+		\item 对任意$ \mathscr{S} $中的$ f:B'\to B $，和$ X\in \mathscr{G},p(X)=B $，存在$ \mathscr{G} $中的$ \bar{f}:X'\to X $，使得$ p(X')=B',p(\bar{f})=f $，称为$ f $的提升；
+		$$ \xymatrix{
+			X' \ar[d]_-{p} \ar[r]^-{\bar{f}} & X \ar[d]^-{p} \\
+			B' \ar[r]_-{f} & B
+		} $$
+		\item 对任意$ \mathscr{S} $中的$ X'\xrightarrow{f} X\xleftarrow{g}X'' $和在$ p $下的像$ B'\xrightarrow{\phi} B\xleftarrow{\psi}B'' $，任意的$ \chi :B''\to B' $使得$ \psi=\phi\circ\chi $，有唯一的$ h:X''\to X' $使得$ p(h)=\chi,g=f\circ h $。
+		$$ \xymatrix{
+			X'\ar[rd]^-{f}\ar[rrr]^-{p}& & &B'\ar[dl]_-{\phi}\\
+			&X\ar[r]^{p}&B&\\
+			X''\ar@{-->}[uu]^-{h}\ar[ur]_-{g}\ar[rrr]^-{p}&&&B''\ar[ul]^-{\psi}\ar[uu]_-{\chi}
+		} $$
+	\end{enumerate}
+	$ (\mathscr{G},p) $也简记为$ \mathscr{G} $，群胚的对象即范畴的对象。
+\end{definition}
+在定义中，$ p(X)=B $称$ X $属于$ B $ （$ X $ lying over $ B $）。记$ \mathscr{G}(B) $是$ \mathscr{G} $的子范畴，其中对象满足$ p(X)=B $，态射满足$ p(f)=1_B $，这样的对象称为$ \mathscr{G} $在$ B $的\dotuline{截影}。定义中第二条要求说明第一条中任何两个不同的提升$ \bar{f}_1:X'_1\to X $和$ \bar{f}_2:X_2'\to X $，有唯一的同构$ g:X'_1\to X'_2 $使$ \bar{f}_1=\bar{f}_2\circ g $，这个同构称为典范的。特别的，$ \mathscr{G}(B) $中的态射全部都是同构，所以是一个群胚，因此像曲线族一样称$ \mathscr{G} $是$ \mathscr{S} $上的群胚。通过选择公理，可以为每一个$ f:B'\to B $和$ X\in\mathscr{G}(B) $选定一个提升，这样就给出了一个函子$ f^*:\mathscr{G}(B)\to \mathscr{G}(B') $。在这样的记号下，记$ B''\xrightarrow{f}B'\xrightarrow{g}B $，任意的$ X\in \mathscr{G}(B) $，有唯一典范的同构$ f^*g^*X\cong (gf)^*X $，或者说函子$ f^*g^* $和$ (gf)^* $的自然同构。
+
+两个$ \mathscr{S} $上的群胚$ p_1:\mathscr{G}_1\to \mathscr{S} $和$ p_2:\mathscr{G}_2\to \mathscr{S} $间的态射是一个函子$ p:\mathscr{G}_1\to \mathscr{G}_2 $，使得$ p\circ p_2=p_1 $；$ p $给出范畴等价时作为态射同构。这样范畴$ \mathscr{S} $上的群胚的范畴构成一个2-范畴，其中1-态射是群胚间的函子，2-态射是函子间的自然变换。
+
+群胚的范畴是包含函子范畴$ [\mathscr{S}^\circ,\mathfrak{Set}] $作为子范畴的：给定一个反变函子$ F\in [\mathscr{S}^\circ,\mathfrak{Set}] $，定义对应的$ \mathscr{S} $上的群胚$ \underline{F} $，其对象为$ \mathrm{ob}\,\underline{F}=\{(B,b)|B\in \mathscr{S},b\in F(B)\} $，对象间的态射$ (B,b)\to (B',b') $是$ \mathscr{S} $中的态射$ f:B\to B' $，满足$ F(f)(b')=b $，也记作$ f $。取遗忘函子
+$$ p:\underline{F}\to \mathscr{S},((B,b))\mapsto B $$
+在这种情况中，$ \underline{F}(B) $中的同构只有$ 1_X $，实际上和集合$ F(B) $的结构相同。这样每个$ f:B\to B' $的提升是唯一的：$ f^*(B,b)=(B',F(f)(b))  $，可见这确实是$ \mathscr{S} $上的一个群胚，并且实际上和函子$ F $相比，包含的信息完全一致。特别的，每个$ S $概型$ X $（即$ \mathscr{S} $中的对象）被反变函子$ \mathrm{Mor}_\mathscr{S}(-,X) $决定（Yoneda嵌入），从这函子得到的群胚$ \underline{\mathrm{Mor}(-,X)} $和概型$ X $是互相完全决定的，这个群胚记作$ \underline{X} $，其中对象$ (\mathrm{Mor}(Y,X),\phi: Y\to X) $也简记为$ \phi $。这时概型间的态射$ f:X\to Y $容易诱导函子的自然变换，和群胚间的同态（函子）$ \underline{f} $，因此$ \mathscr{S} $上群胚的范畴包含了函子范畴$ [\mathscr{S}^\circ,\mathfrak{Set}] $和$ \mathscr{S} $。类似可表函子的概念，如果群胚$ \mathscr{G} $和某个概型的群胚$ \underline{X} $同构（范畴等价），称为可表的，被$ X $表示。更特殊的，如果取$ \mathscr{S} $中的对象$ 1_S:S\to S $，那么有函子$ \mathrm{Mor}(-,S) $和群胚$ \underline{S} $，事实上群胚$ \underline{S} $作为范畴是和$ \mathscr{S} $等价的。
+
+群胚的概念作为概型概念的推广，还有一个重要的对应的构造，即纤维积。对于群胚间的态射（函子）$ \mathscr{F}\xrightarrow{f}\mathscr{H}\xleftarrow{g}\mathscr{G} $，定义\dotuline{群胚的纤维积}$ \mathscr{F}\times _\mathscr{H}\mathscr{G} $：其中$ (\mathscr{F}\times _\mathscr{H}\mathscr{G})(B) $的对象是三元对$ (X,Y,\phi) $：$ X\in \mathscr{F}(B),Y\in \mathscr{G}(B) $，而$ \phi $是$ \mathscr{H}(B) $中同构$ f(X)\cong g(Y) $；对象间的态射是态射对$ (\alpha,\beta):(X,Y,\phi)\to (X',Y',\phi ')$ ，其中 $\alpha:X\to X',\beta :Y\to Y' $，并且有交换图：
+$$\xymatrix{
+	f(X) \ar[d]_-{f(\alpha) } \ar[r]^-{\phi} & g(Y) \ar[d]^-{g(\beta)} \\
+	f(X') \ar[r]_-{\phi '} & g(Y')
+}$$
+显然从$ \mathscr{F}\times _\mathscr{H}\mathscr{G} $有到$ \mathscr{F} $和$ \mathscr{G} $有遗忘函子作为投影$ p,q $，但是图表
+$$ \xymatrix{
+	\mathscr{F}\times _\mathscr{H}\mathscr{G} \ar[d]_-{p} \ar[r]^-{q} & \mathscr{H} \ar[d]^-{g} \\
+	\mathscr{F} \ar[r]_-{f} & \mathscr{G}
+} $$
+并不是交换的，其中的1-态射（函子）的复合$ f\circ p $与$ g\circ q $并不是相等的函子，但是这两个函子可以有自然同构（即三元对中的$ \phi $），这样的图表称为2-交换图表。不难验证，$ \mathscr{F}\times_{\mathscr{H}} \mathscr{G} $有相应的泛性质，且对于概型的态射$ X\xrightarrow{f}Z\xleftarrow{g}Y $，有群胚的同构
+$$ \underline{ X \times_Z Y } \cong \underline{X} \times_{\underline{Z}}\underline{Y} $$
+因此群胚的纤维积是概型的纤维积的合理推广。
+
+从Yoneda引理知道，全部自然变换$ \mathrm{Nat}(\mathrm{Mor}(-,X),F) $决定了$ F $；同样的在群胚的范畴中，全部1-态射$ \mathrm{Mor}(\underline{X},\mathscr{G}) $就决定了$ \mathscr{G} $，并且和Yondea引理的证明是几乎一样的：给定一个$ f:\underline{X}\to \mathscr{G} $，取
+$$ 1_X= (\mathrm{Mor}(X,X),1_X)\in \underline{X}(X) $$
+则有$ f(1_X)=G\in \mathscr{G}(X) $；反之，取$ G\in\mathscr{G}(X) $，通过函子的性质和$ \mathscr{G} $选定的提升，就可以确定函子（态射）$ f_G:\underline{X}\to \mathscr{G} $：对$ \phi = (Y,\phi :Y\to X)\in \underline{X}(Y) $，令$ f_G(\phi)=\phi^*X\in\mathscr{G}(Y) $。即同样的全部$ \mathrm{Mor}(\underline{X},\mathscr{G}) $就可以确定$ \mathscr{G} $，或者说$ \mathrm{Mor}(\underline{X},\mathscr{G}) $作为范畴与$ \mathscr{G}(X) $范畴等价，这和函子范畴的情况一致。反之，如果记群胚的范畴为$ \mathfrak{G} $，那么群胚$ \mathscr{G} $也可视为从$ \mathscr{S} $到$ \mathfrak{G} $的反变函子：$ \mathscr{G}(B)\in \mathfrak{G} $。
+
+为了描述$ p:\mathscr{G}\to \mathscr{S} $的结构，取$ B\in\mathscr{S},X,Y\in\mathscr{G}(B) $，记$\mathscr{B}= \mathscr{S}_B=\mathfrak{Sch}_B$ ，可以定义函子 $ Isom_B(X,Y):\mathscr{B}\to \mathfrak{Set}$：对于$ (B'\xrightarrow{f} B)\in\mathscr{B} $，定义$ Isom_B(X,Y)(B') $为$ \mathscr{G}(B') $中$ f^*X $到$ f^*Y $的同构的集合。在$ \mathscr{B} $中$ (B'\xrightarrow{f} B) $到$ (B''\xrightarrow{g} B) $的态射$ h:B''\to B' $，$ f\circ h=g $，可以定义态射$ Isom_B(X,Y)(h) $：对于$ \phi \in Isom_B(X,Y)(B') $，通过函子$ h^* $得到同构$ h^*\phi :f^*X\xrightarrow{\sim} f^*Y $，复合上由$ g=f\circ h $ 得到的典范同构 $g^*X\xrightarrow{\sim} h^*f^*X  $和$ g^*Y\xrightarrow{\sim}h^*f^*Y  $，就得到$ Isom_B(X,Y)(B'') $的元素。
+$$\xymatrix{
+	g^*X\ar[rr]^-{\sim}\ar[d]_-{Isom_B(X,Y)(h)(\phi)}&&h^*f^*X\ar[d]_-{h^*\phi}\ar[rr]_-{\bar{h}}&&f^*X\ar[d]_-{\phi}\ar[r]_-{\bar{f}}&X\ar@/_4ex/[lllll]_-{\bar{g}}\\
+	g^*Y\ar[rr]^-{\sim}                                     &&h^*f^*Y                      \ar[rr]^-{\bar{h}}&&f^*Y\ar[r]^-{\bar{f}}&Y\ar@/^4ex/[lllll]^-{\bar{g}}\\
+	&&&&&\\
+	& \mathscr{G}(B'')&                      &   &\mathscr{G}(B')\ar[lll]^-{h^*}        &\mathscr{G}(B)\ar[l]^-{f^*}\ar@/_4ex/[llll]_-{g^*} \\
+	& B''\ar[rrr]^-{h}\ar@/_4ex/[rrrr]_-{g}&                      &   &B'\ar[r]^-{f}        &B \\
+} $$
+特别的，当$ X=Y $时，对于$ f:B'\to B $作为$ \mathscr{B} $的对象，$ Isom_B(X,X)(B') $是$ f^*X $的自同构。后续我们会看到这个函子的具体例子。
+
+但是函子范畴和群胚范畴太大了，包含了太多和概型相差甚远的对象，因此要定义更小一些的、更接近概型的概念。概型的几何结构的重点之一在于局部地定义其结构，并且可以把局部信息粘贴起来，包括概型本身、概型上的层、概型间的态射等。例如在Zariski拓扑意义下粘贴概型，如果$ \{X_i\}_{i\in I} $是一族概型，并且1)任意$ i, j\in I $有开子概型$ X_{ij}\subset X_i,X_{ji}\subset X_j $和同构$ f_{ij}:X_{ij}\xrightarrow{\sim}X_{ji} $，且$ f_{ij}=f_{ji}^{-1} $，2)满足上闭链条件（cocycle condition）：任意$ i,j,k\in I $有$ f_{ij}(X_{ij}\cap X_{ik})=X_{ji}\cap X_{jk} $，且在$ X_{ij}\cap X_{ik} $上有$ f_{ik}=f_{jk}\circ f_{ij} $。则可以将这一族概型粘贴起来得到概型$ X $，使得$ X_i $是它的开子概型。类似地粘贴层和态射也需要这两个条件，第一条指出两两之间可以粘贴，第二条则说明这些粘贴是匹配的。
+
+
+现在用范畴语言来描述局部性质，注意到概型$ S $和范畴$ \mathscr{S} $是“等价”的，在$ \mathscr{S} $上可以用态射和纤维积描述拓扑，即概型$ X $的开子集$ U,V $可以用态射$ i:U\to X,j:V\to X $描述，$ U\cap V $可以通过纤维积$ U\times _XV $描述。用特定的态射和它们的纤维积代替开集和交的概念，就得到$ \mathscr{S} $上的Grothendieck拓扑\upcite{MethodsofHA}，例如用\'etale（平展）态射来代替开子集，$ \{f_i:U_i\to U\} $是$ U $的覆盖，如果$ \cup f_i(U_i)=U $，这就称为$ \mathscr{S} $上的\'etale 拓扑。另外仿照Zariski拓扑下的记号，对于$ f:B'\to B $和$ X\in\mathscr{G}(B) $，记$ X|_{B'}=f^*X $。当范畴$ \mathscr{S} $上具有拓扑后，就自然可以定义它上的预层和层，以及层的上同调等，从而研究整个范畴的性质。例如当$ \mathscr{G} $作为反变函子$ \mathscr{G}\in [\mathscr{S}^\circ,\mathfrak{G}] $时，就可以将其看作“拓扑空间”$ \mathscr{S} $上的预层。如果反变函子$ F\in[\mathscr{S}^\circ,\mathfrak{Set}] $可表，则它是\'etale拓扑下的层。如果要使作为预层的群胚$ \mathscr{G} $是层，那么就要讨论一个群胚的“（\'etale）局部粘贴”的性质了：
+\begin{definition}[\cite{DM69}Definition4.1]
+	令$ \mathscr{G}$是$ \mathscr{S} $上的群胚，如果
+	\begin{enumerate}
+		\item 任意的$ B\in\mathscr{S},X,Y\in \mathscr{G}(B) $，函子$ Isom_B(X,Y) $是$ \mathscr{B} $在\'etale拓扑下的层；
+		\item 对$ B\in \mathscr{S} $和\'etale拓扑下的覆盖$ \{B_i\to B\} $，记$ B_{ij}=B_i\times_BB_j $。一族$ X_i\in \mathscr{G}(B_i) $和$ \mathscr{G}(B_{ij}) $中的同构$ f_{ij}:X_i|_{B_{ij}}\to X_j|_{B_{ij}} $，满足上闭链条件，称为$ \{B_i\to B\} $的一个下降资料（descent datum）。任意的覆盖的任意下降资料，都是有效的（effective），即存在$ X\in \mathscr{G}(B) $和同构$ f_i:X|_{B_i}\to X_i $，并且诱导了$ f_{ij} $。
+	\end{enumerate}
+	则称这样的群胚是一个\dotuline{叠（stack）}。
+\end{definition}
+如果在$ \mathscr{S} $上取Zariski拓扑，并取$ \mathscr{G}=\underline{X} $，则概型$ B $的覆盖$ \{B_i\to B\} $就是开子概型的覆盖，它的一个下降资料就是一族满足粘贴条件的态射$ (f_i:B\to X) \in \underline{X}(B_i)$，可以粘贴得到$ f:B\to X \in \underline{X}(B) $。这样的结论换成\'etale拓扑也成立，即叠的下降的性质推广了粘贴的意义，或者说叠 $ \mathscr{G} $是$ \mathscr{S} $上的层。
+
+$ \mathscr{S} $上的叠的范畴和和群胚的范畴一样，也是一个2-范畴；叠的纤维积也是叠。显然，每一个概型$ X $决定的群胚$ \underline{X} $都是一个叠，并且称与之同构的叠为可表的叠，被$ X $表示；可表的叠的1-态射自然诱导了对应概型的态射，反之亦然。对于$ X $决定的范畴$ \mathscr{X}=\mathfrak{Sch}_X $，可表叠 $ \underline{X} $作为层相当于$ \mathscr{X} $上的“结构层”。这样叠的范畴是比概型范畴大一些的范畴，并且与概型有类似的局部性质，但这个新的结构必须和原本概型的结构有更多关系或相似性，才能用它来研究概型。因此需要更多相关的概念：
+\begin{definition}[\cite{DM69}Definition4.2]
+	$ \mathscr{S} $上的叠的1-态射$ f:\mathscr{X}\to \mathscr{Y} $是\dotuline{可表态射}，如果任意的概型$ B $和1-态射$ \underline{B}\to \mathscr{Y} $，纤维积$ \underline{B}\times_{\mathscr{Y}}\mathscr{X} $是可表的叠，这时在本文中记表示它的概型为$ B\times_{\mathscr{Y}}\mathscr{X} $；对于概型间态射的性质$ P $，可表1-态射有性质$ P $，如果任意的概型$ B $和1-态射$ \underline{B}\to \mathscr{Y} $诱导的可表叠的1-态射$  \underline{B}\times_{\mathscr{Y}}\mathscr{X}\to \underline{B} $对应的概型的态射$ B\times_{\mathscr{Y}}\mathscr{X}\to B $有性质$ P $。
+\end{definition}
+可表态射的定义和性质是从概型态射的基变换（base change）得来的，在（\'etale）基变换下稳定的概型间态射的性质都可以良好的定义在叠上。为了定义叠的性质，和概型情况类似的，对角态射（diagonal map）是十分重要的：
+\begin{lemma}[\cite{GeometryAlgCurvesII}\uppercase\expandafter{\romannumeral12}.Lemma8.1]
+	$ \mathscr{S} $上的叠$ \mathscr{X} $，对角态射
+	$$ \mathscr{X}\to \mathscr{X}\times_{\underline{S}}\mathscr{X} $$
+	是可表的，当且仅当任意概型$ B\in\mathscr{S} $和1-态射$ \underline{B}\to \mathscr{X} $是可表的。
+\end{lemma}
+通过对角态射的性质可以定义叠的性质，例如当对角态射是可表、拟紧和分离的时，则称叠是\dotuline{拟分离（quasi-separated）}；如果对角态射是本征的，则称叠是分离的。分离叠的态射$ f: \mathscr{X}\to \mathscr{Y}$定义的对角态射$ \Delta_{\mathscr{X}/\mathscr{Y}} $是可表的。经过这些准备条件，现在可以定义最后需要的模空间的结构：
+\begin{definition}
+	令$ \mathscr{X}$为$\mathscr{S} $上的拟分离叠 ，如果存在一个概型$ X $和满的\'etale态射$ \alpha:\underline{X}\to \mathscr{X} $，
+	则称$ \mathscr{X} $是\dotuline{DM叠}，$\alpha: \underline{X}\to \mathscr{X} $称为$ \mathscr{X} $的\dotuline{图册（atlas）}。
+\end{definition}
+在一些特殊情况下，DM叠有比较简单的判定条件，例如
+\begin{theorem}[\cite{DM69}Theorem4.21]\label{criterionforDM}
+	令$ \mathscr{X} $是诺特概型$ S $上的拟分离叠，且
+	\begin{enumerate}
+		\item 对角态射是非分歧的；
+		\item 存在$ S $上的有限型概型$ X $，和满、光滑1-态射$ \underline{X}\to \mathscr{X} $，
+	\end{enumerate}
+	则$ \mathscr{X} $是DM叠。
+\end{theorem}
+
+和叠一样，DM叠同样在纤维积下保持，但是与叠相比更加接近概型。为了说明此事，下面将一些概型的性质定义在DM叠上。叠间的态射并不总可表，但对于DM叠来说可以通过对角态射和图册来定义。令$ P $是概型间的态射的性质，并且是在起点和终点的\'etale拓扑下局部的性质，即对交换图表族
+$$\xymatrix{
+	X_i \ar[d]_-{f_i} \ar[r]^-{g_i} & Y \ar[d]^-{f} \\
+	Y_i \ar[r]_-{h_i} & Y
+}$$
+其中$ g_i $是$ X $的\'etale覆盖（或$ h_i $是$ Y $的\'etale覆盖），则$ f $有性质$ P $，当且仅当每个$ f_i $有性质$ P $。这样的性质包括平坦、光滑、\'etale、非分歧、局部有限型等。那么对于DM叠的态射$ f:\mathscr{X}\to \mathscr{Y} $，同样可以定义$ f $有性质$ P $：如果存在 $ \underline{X}\to\mathscr{X},\underline{Y}\to\mathscr{Y} $，有交换图
+$$ \xymatrix{
+	\underline{X} \ar[d]_-{\underline{f'}}\ar[r] & \mathscr{X} \ar[d]^-{f} \\
+	\underline{Y} \ar[r] & \mathscr{Y}
+} $$
+使得$ \underline{f'} $对应的概型的态射$ f':X\to Y $有性质$ P $，则称$ f $有性质$ P $。
+。类似的，$ P $是概型上\'etale拓扑下局部的性质，例如正规、正则、局部诺特、约化等，则可以定义DM叠有性质$ P $，如果存在一个（于是所有）$ \underline{X}\to\mathscr{X} $，概型$ X $有性质$ P $。
+
+DM叠$ \mathscr{X} $是拟紧的，如果有一个图册$ \underline{X}\to \mathscr{X} $，其中$ X $是拟紧的；态射$ f:\mathscr{X}\to \mathscr{Y} $是拟紧的，如果对任意拟紧的概型$ B $和$ \underline{B}\to \mathscr{Y} $，纤维积$ \underline{B}\times_{\mathscr{Y}}\mathscr{X} $是拟紧的DM叠；$ f $是有限型态射，如果是局部有限且拟紧；DM叠是诺特的，如果是局部诺特且拟紧的。
+
+最后，本文最关注的性质是本征态射，它是刻画DM叠的“紧性”的性质。为此首先需要说明$ f:\mathscr{X}\to \mathscr{Y} $在$ \mathscr{Y} $局部地有性质$ P $，如果存在满\'etale态射$ g:\underline{Y}\to \mathscr{Y} $，使得$ f $被$ g $拉回的态射$ f' $有性质$ P $。
+
+
+\begin{definition}
+	DM叠的态射$ f:\mathscr{X}\to \mathscr{Y} $是\dotuline{本征态射}，如果它是分离的、有限型态射，并且在$ \mathscr{Y} $上局部地存在交换图表：
+	$$ \xymatrix{
+		\mathscr{Z}\ar[d]_-{g}\ar[rd]^-{h}& \\
+		\mathscr{X} \ar[r]^-{f} & \mathscr{Y}
+	} $$
+	其中$ g $是满射，$ h $可表并且本征。
+\end{definition}
+和概型的情况一样，在一些特殊的DM叠上有通过赋值环的判定方法。令$ f:\mathscr{X}\to \underline{S} $是从DM叠到诺特概型$ S $的有限型态射，且对角态射$ \mathscr{X}\to \mathscr{X}\times_{\underline{S}}\mathscr{X} $是分离、拟紧的。此时对于分离态射的赋值判定准则：
+\begin{theorem}[\cite{DM69},Th(4.18)]\label{Sepforstack}
+	$ f $是分离的，当且仅当任意以代数闭域为剩余域的完备离散赋值环$ R $和交换图表
+	$$ \xymatrix{
+		& \mathscr{X}\ar[d]_-{f}\\
+		\underline{\mathrm{Spec}\,R} \ar@<3pt>[ur]^-{g_1}\ar@<-2pt>[ur]_-{g_2}\ar[r] & \underline{S} 
+	} $$
+	$ g_1,g_2 $如果限制在一般点同构（有同构的2-态射），则同构可以延拓在$ g_1,g_2 $上。
+\end{theorem}
+对于本征态射的赋值判定准则：
+\begin{theorem}[\cite{DM69},Th(4.19)]\label{Properforstack}
+	如果$ f $是分离的，则$ f $是本征的，当且仅当任意离散赋值环$ R $，分式域$ K=\mathrm{Frac}\, R $，和任意交换图表
+	$$ \xymatrix{
+		\underline{\mathrm{Spec}\,K} \ar[d] \ar[r]^-{g} & \mathscr{X} \ar[d]^-{f} \\
+		\underline{\mathrm{Spec}\,R} \ar[r] & \underline{S}
+	} $$
+	存在有限扩张$ K'/K $，和$ R $在$ K' $的整闭包$ R' $，使得$ g $可以延拓在$ \underline{\mathrm{Spec}\,R'} $上
+	$$ \xymatrix{
+		\underline{\mathrm{Spec}\,K'}\ar[r]\ar[d]&\underline{\mathrm{Spec}\,K} \ar[d] \ar[r]^-{g} & \mathscr{X} \ar[d]^-{f} \\
+		\underline{\mathrm{Spec}\,R'}\ar[r] \ar@{-->}[urr]&\underline{\mathrm{Spec}\,R} \ar[r] & \underline{S} }$$
+\end{theorem}
+
+
+以上从函子出发，最终定义了DM叠和它的一些性质，以及一些判定准则。
+\section{Hilbert 概型}
+射影空间中的对象，其中一个重要性质是Hilbert多项式，从这个多项式可以得到很多数值不变量。对于多项式$ p(t)\in \mathbb{Q}[t] $和正整数$ r\geqslant1 $，定义函子
+$$  Hilb_r^{p(t)}(B) =\{ \text{闭子概型} \mathcal{X}\hookrightarrow B\times \mathbb{P}^r |\text{投影}\mathcal{X}\to B\text{平坦，且每个纤维有Hilbert多项式} p(t)  \}  $$
+$ Hilb_r^p $是一个可表函子，对应的概型$ \mathrm{Hilb}_r^p $称为Hilbert概型，并且是后续构造$ \overline{\mathrm{M}_g} $的几何结构的出发点。这一节将构造$ \mathrm{Hilb}_r^p $和它的各种变形，并且研究它的一些性质，如切空间、维数、子概型等，特别是$ p(t)=dt+1-g $的情形。这一节主要参考\cite{GeometryAlgCurvesII,deformation}。
+\subsection{构造Hilbert概型}
+这一小节给出具体构造出概型$ \mathrm{Hilb}_r^p $的主要思路，证明的细节可以参考\cite{GeometryAlgCurvesII,ModuliofCurves}。事实上这个函子也是一个模问题，但要注意它分类的并不是$ \mathbb{P}^r $的子概型，而是态射$ X\hookrightarrow \mathbb{P}^r $，这样$ \mathrm{Hilb}_r^p $就是模问题的细模空间。
+
+我们先构造另一个简单但重要的模空间，即格拉兹曼概型。首先是流形的版本：格拉兹曼流形可以看作是射影空间的推广：域$ K $上的射影空间$ \mathbb{P}^{n-1} $是$ n $维线性空间$ V $中一维线性子空间的等价类的集合，或记为$ \mathbb{P}(V)=V-0/\sim $，而格拉兹曼流形$ \mathrm{Gr}_K(r,V) $即$ n $维线性空间$ V $中$ r $维线性子空间的等价类的集合。设$ V $的一组基为$ e_1,\ldots,e_n $，记$ I=(i_1,\ldots,i_r),i_1<\cdots <i_r $，线性空间$ \bigwedge ^rV $有一组基$ \wedge^Ie_I=e_{i_1}\wedge\cdots\wedge e_{i_r} $。在$ V $的$ r $维子空间$ U $上选取一组基$ u_1,\ldots,u_r $，从$ u_1\wedge\cdots\wedge u_r=\sum_{I}a_I\wedge^Ie_I $可以得到其普朗克坐标$ [a_I] $。当取$ U $的不同基$ u_1',\ldots,u_r' $时普朗克坐标实际只差过渡矩阵的行列式（非零）的倍数，于是可以得到单映射$ i:\mathrm{Gr}_K(r,V)\to \mathbb{P}(\bigwedge ^rV) ,U\mapsto [a_I] $，称为普朗克嵌入。反之，对于$ x=[a_I]\in \mathbb{P}(\bigwedge ^rV) $，考虑映射
+$$f_x:V\to \bigwedge^{r+1}V,v\mapsto v\wedge x $$
+显然$  \dim \ker f_x\geqslant r $，而$ x $是某子空间$ U $的像，当且仅当$ \dim \ker f_x=r $，且此时$ \ker f_x=U $。这里秩的条件可以改写为对应矩阵$ A_x $的行列式条件，即它所有$ r+1 $阶子式的行列式为$ 0 $，也就是射影空间$ \mathbb{P}(\bigwedge ^rV) $上的一组齐次多项式的零点集。这就意味着，$ \mathrm{Gr}_K(r,V) $可以作为$ \mathbb{P}(\bigwedge ^rV) $的闭子流形。换成代数几何的语言，并把线性空间的底域$ K $换成一般的概型$ B $：对于仿射空间（向量丛）$V= \mathbb{A}^n\to \mathrm{Spec}\,\mathbb{Z} $和正整数$ r<n $，可以定义反变函子
+$$ Gr(r,V)(B)=\{i:U\to B|U\text{是}B\text{上秩} n \text{的向量丛}V\times _kB\text{的秩}r\text{的子向量丛} \} $$
+对任意$ \mathrm{Spec}\,\mathbb{Z} $上的概型$ B $，用局部自由丛的语言代替线性空间，重复流形情形的构造可以得到一个
+$ \mathrm{Proj} \,\left (\mathrm{Sym}(\bigwedge^r\mathscr{O}_B^{\oplus n})\right) $的闭子概型，记作$ \mathrm{Gr}_B(r,V) $。事实上$ B=\mathrm{Spec}\,\mathbb{Z} $时$  \mathrm{Gr}(r,V)=\mathrm{Gr}_{B}(r,V) $就表示了函子$ Gr(r,V) $。类似的当$ B=\mathrm{Spec}\,k $时$ \mathrm{Gr}_k(r,V):=\mathrm{Gr}_B(r,V) $则表示了对应的函子$ Gr_k(r,V):\mathfrak{Sch}_k\to \mathfrak{Set} $。具体来说，对任意$ X\in \mathfrak{Sch}_k $，通过$ X\to \mathrm{Spec}\,k $拉回得到$ \mathrm{Gr}_X(r,V):=\mathrm{Gr}_k(r,V)\times_kX$，它的$ k $-点就是集合$ Gr_k(r,V)(X)$：任意$ k $-点$ g:\mathrm{Spec}\,k\to \mathrm{Gr}_X(r,V)=\mathrm{Gr}_k(r,V)\times_kX $，复合上投影得到$ \mathrm{Gr}_k(r,V) $的$ k $-点$ g' $，从构造中知$ g' $对应子线性空间$ U_g\subset V $，把它从$ X\to \mathrm{Spec}\,k $拉回就得到$ Gr_k(r,V)(X) $中元素$ U_g\times_kX \to X$。
+
+回到Hilbert 概型，考虑代数闭域$ k $上概型的情况。对于给定的$ r $和多项式$ p(t)\in \mathbb{Q}[t] $，记射影空间的齐次坐标环$ S=k[x_0,\ldots,x_r] $和多项式$ q(t)=\binom{r+t}{r}-p(t)=\dim_kS_t-p(t) $。对于某一具体的以$ p(t) $为Hilbert多项式的嵌入$ i:X\hookrightarrow \mathbb{P}^r $，记$ L=i^*\mathscr{O}_{\mathbb{P}^r}(1) $为极丰丛，理想层为$ \mathscr{I}_X $，齐次理想$ I(X):=\sum_{n\in\mathbb{Z}}H^0(\mathbb{P}^r,\mathscr{I}_X(n)) $，齐次坐标环$ S(X):=S/I(X) $。对于正合列
+$$0\to \mathscr{I}_X(m)\to \mathscr{O}_{\mathbb{P}^r}(m)\to \mathscr{O}_X(m)\to 0$$
+由Serre的消失定理，对充分大的$ m $，$ H^i(\mathbb{P}^r,\mathscr{I}_X(m))=0,i>0 $，于是有正合列
+$$ 0 \to I(X)_m \to S_m \to H^0(X,L^m) \to 0 $$
+这时候$ p_X(m)=h^0(X,\mathscr{O}_X(m))=\dim_kS(X)_m $，所以$ h^0(\mathbb{P}^r,\mathscr{I}_X(m))=\dim_kI(X)_m=q(m) $。进一步的，由Noetherian性质和齐次性，可以取到更大的$ m $使得$ I(X)_{m+k}=S_k\cdot I(X)_{m}  $，即$ I(X)_n$ 和 $S(X)_n,n\geqslant m $被$ I(X)_m $决定。同时对于射影概型，$ X=\mathrm{Proj} \,S(X)\cong\mathrm{Proj} \,\oplus _{n\geqslant m}S(X)_n $，即$ X $完全被$ I(X)_m $决定。我们先构造$ Hilb_r^p(\mathrm{Spec}\,k)=\mathrm{H} $，即所有以$ p(t) $为Hilbert多项式的嵌入$ X\hookrightarrow \mathbb{P}^r $的集合，并赋予概型结构。
+
+第一步是通过普朗克嵌入定义$ X\in \mathrm{H} $对应到某个格拉兹曼概型中的点，称为Hilbert点：对于$ X $有某一（实际上无穷多）整数$ m $使得它被$ I(X)_m\subset S_m $完全决定，且$ \dim I(X)_m=q(m) $已知，则可以对应于格拉兹曼概型$ \mathrm{Gr}_k(q(m),S_m) $的一个点，称为$ m $-Hilbert点，记作$ [X]_m $。但此时$ m $是与$ X $有关的，如果要参数化$ \mathrm{H} $中全部对象，需要有一个$ m $对全部的$ X $都适用：
+\begin{lemma}[\cite{GeometryAlgCurvesII}\uppercase\expandafter{\romannumeral9}.Lemma4.1]\label{uniform m}
+	对任意的多项式$ p(t)\in \mathbb{Q}[t] $和非负整数$ r $，存在$ m_0 $使得任何$ m>m_0 $和任何以$ p(t) $为Hilbert多项式的$ \mathbb{P}^r $的子概型$ X $，有
+	\begin{enumerate}
+		\item $ h^i(\mathbb{P}^r,\mathscr{I}_X(m))=0,i>0 $;
+		\item 自然的映射$ H^0(\mathbb{P}^r,\mathscr{O}_{\mathbb{P}^r}(1))\times H^0(\mathbb{P}^r,\mathscr{I}_{X}(m))\to H^0(\mathbb{P}^r,\mathscr{I}_{X}(m+1)) $是满射。
+	\end{enumerate}
+\end{lemma}
+
+或者看上去更一般的推论：
+\begin{corollary}[\cite{GeometryAlgCurvesII}\uppercase\expandafter{\romannumeral9}.Corollary4.5]\label{uniform m for families}
+	对任意的多项式$ p(t)\in \mathbb{Q}[t] $和非负整数$ r $，存在$ m_0 $有如下性质：令
+	$$ \mathbb{P}^r\times S\supset X\to S $$
+	是$ \mathbb{P}^r $中以$ p(t) $为Hilbert多项式的子概型的平坦族（即$ Hilb_r^p(S) $中的一个元素），并记投影$ \psi :\mathbb{P}^r\times S\to S $，和$ X $在$ \mathbb{P}^r\times S $中的理想层$ \mathscr{I}_X $，则任意$ m>m_0 $，有：
+	\begin{enumerate}
+		\item $ \psi _*\mathscr{I}_X(m) $是秩$ q(m) $的局部自由层；
+		\item $ R^i\psi _*\mathscr{I}_X(m)=0,i>0 $;
+		\item $ \psi _*\mathscr{I}_X(m)\otimes \psi _*\mathscr{O}_{\mathbb{P}^r\times S}(1)\to \psi _*\mathscr{I}_X(m+1)$是满射；
+		\item 对任意$ f:T\to S $，记$ Y=X\times_S T \subset \mathbb{P}^r\times T $和投影$ \phi : \mathbb{P}^r\times T\to T$，有自然的同构：
+		$$ f^*\psi_*\mathscr{I}_X(m)\xrightarrow{\sim}\phi_*\mathscr{I}_Y(m) $$
+	\end{enumerate}
+\end{corollary}
+综上，可以一致的选取$ m $，使得所有$ X $可以映进同一个格拉兹曼概型$ G=\mathrm{Gr}_k(q(m),S_m) $中的点$ [X]_m $。
+
+第二步是确定$ G $中哪些点对应的概型在$ \mathrm{H} $中。对于$g\in G $，它对应的子空间$ I(g)_m $生成了理想$ I(g) $和对应的概型$ X_g=\mathrm{Proj} \,S/I(g) $，以及理想层$ \mathscr{I}_g $。但这个概型仅仅在$ t=m $时满足$ q(t)=\dim I(g)_t $，而在更高的分次不能保证。若想$ X_g \in\mathrm{H}$，还需要更多限制。记
+$$ \rho_{g,l}:I(g)\otimes S_k \to S_{m+l} $$
+当任意$ l>0 $，像空间维数为$ q(m+l) $，即$ \mathrm{rank}\rho_{g,l}=q(m+l)$
+时，才有$ X_g\in\mathrm{H} $。
+
+把这个条件换成全局的语言，记投影$ \pi: \mathbb{P}^r\times G\to G $，和子丛
+$$  \mathscr{F}\hookrightarrow \pi_*\mathscr{O}_{\mathbb{P}^r\times G}(m) $$
+使得$ \mathscr{F}_{g}\cong I(g)_m $。于是可以定义乘法
+$$ \rho_l: \mathscr{F}\otimes\pi_*\mathscr{O}_{\mathbb{P}^r\times G}(k)\to\pi_*\mathscr{O}_{\mathbb{P}^r\times G}(m+l) $$
+这样$ \mathrm{rank}\rho_k=q(m+l) $的条件定义了$ G $的一个子集，记为$ H_k $。秩的条件在局部上可以写为矩阵所有的$ q(m+l)+1 $阶子式的行列式为$ 0 $，且至少一个$ q(m+l) $阶子式不为$ 0 $，这使得$ H_l $是$ G $的一个局部闭的子集，所以从$ G $可以诱导概型结构。集合意义下有$ \cap_{k\in \mathbb{N}}H_l=\mathrm{H}\subset G $。这里$ \mathrm{H} $这是无穷交，不能直接考虑其概型结构，但事实上我们可以证明这实际上可以通过有限交实现。可以证明类似引理\ref{uniform m}的结论（具体见\cite{GeometryAlgCurvesII}）：存在$ l'>0 $，使得任意的$ g\in G $，和对应的概型$ X_g $，理想层$ \mathscr{I}_g $，对任意$ l>l' $，有
+$$ \mathrm{rank}\rho_{g,l} =h_{\mathscr{I}_g}(m+l)  $$
+其中$ h_{\mathscr{I}_g}(t) $是理想层$ \mathscr{I}_g $的Hilbert多项式。注意到讨论的概型都在空间$ \mathbb{P}^r $中，所以这些多项式次数都不会超过$ r $。因此只要考虑$ \cap_{l=l'}^{l'+r}H_l $，其中的点对应的理想层的Hilbert多项式和$ q(t) $在$ r+1 $个函数值相等，故多项式相等，这样$ \mathrm{H} $就用概型的有限交实现。
+
+进一步，在$ G $上定义$ \mathscr{F}_{l+m}=\mathrm{Im} \rho_k$ ，这样 $\oplus_{j}\mathscr{F}_j\subset \oplus_j\pi _*\mathscr{O}_{\mathbb{P}^r\times G}(j) $是一个分次理想层，进而得到理想层$ \mathscr{J}\subset \mathscr{O}_{\mathbb{P}^r\times G} $和正整数$ N $，使得任意$ j>N $有
+$$ \pi_*\mathscr{J}(j)=\mathscr{F}_j,R^i\pi_*\mathscr{J}(j)=0,i>0 $$
+记$ \mathscr{J} $在$ \mathbb{P}^r\times G$上定义的闭子概型为$ \mathcal{Y} $，并且在$ \mathrm{H}\hookrightarrow G $的拉回记作$ \mathcal{X} $。对于平坦族
+$$ \mathbb{P}^r\times \mathrm{H}\supset \mathcal{X}\to \mathrm{H} $$
+通过推论\ref{uniform m for families}和格莱兹曼概型$ G=\mathrm{Gr}_k(q(m),S_m) $的泛性质（表示函子$ Gr_k(q(m),S_m) $），可以证明实际上$ \mathrm{H} $表示了函子$ Hilb_r^p $，把它记作$ \mathrm{Hilb}_r^p $，而$ \mathcal{X} $称为万有族（universal family）。
+
+除此之外，通过本征性的赋值判别准则\upcite{GTM52}，可以证明$ \mathrm{Hilb}_r^p\to G $是本征态射，因此是闭子概型；而格拉兹曼概型是射影概型，所以Hilbert概型也是射影概型。另一方面Hartshorne还证明了它是连通的。
+
+Hilbert概型的一个简单例子是域$ k $上的射影空间$ \mathbb{P}^r $中的$ d $次超曲面，被$ S=k[x_0,\ldots,x_r] $中的$ d $次多项式决定。这类对象的Hilbert多项式为
+$$ p(t)=\binom{r+t}{r}-\binom{r+t-d}{r} $$
+反之具有此Hilbert多项式的一定是$ d $次超曲面。这时可以取$ m=d $，对应的Hilbert概型是整个格拉兹曼概型，即
+$$ \mathrm{Hilb}_r^p\cong \mathbb{P}(S_d)\cong\mathbb{P}^N $$
+其中$ N=\binom{r+d}{r}-1 $。
+
+
+最后我们调整一下记号，用另一种对偶的$ m $-Hilbert点和普朗克嵌入来构造Hilbert概型。对于$ \mathbb{P}^r $中的闭子概型$ X\hookrightarrow \mathbb{P}^r $，记其Hilbert多项式为$ p(t) $，考虑在充分大的$ m $-分次的正合列
+$$ 0 \to I(X)_m \to S_m \to S(X)_m \to 0 $$
+其中$ \dim S(X)_m=p(m)  $，之前的普朗克嵌入是通过$  I(X)_m $映进格拉兹曼概型$ \mathrm{Gr}_k(q(m),S_m) $中，这里实际处理的是单同态$ I(X)_m \to S_m $，但是也可以通过满同态$$  \phi _m:S_m \to H^0(X,L^m) $$
+来参数化，对满射做外积
+$$ \bigwedge ^{p(m)}\phi_m: \bigwedge ^{p(m)}S_m\to \bigwedge ^{p(m)} S(X)_m $$
+取$ S_1 $的基可以自然做出$ S_m $上$ m $次单项式的基$ M_I $；在$ S(X)_m $中选取一组基，可以通过行列式得到同构$\bigwedge ^{p(m)} S(X)_m\cong k $，这使得$ \bigwedge ^{p(m)}\phi_m $成为$ \mathbb{P}(\bigwedge ^{p(m)}S_m) $上的线性函数，通过$ S_m $的对偶基同样可以得到$ \mathbb{P}(\bigwedge ^{p(m)}S_m) $对偶空间的普朗克坐标
+$$ (\bigwedge ^{p(m)}\phi_m(M_{I_1}\wedge\cdots \wedge M_{I_{p(m)}}))_{(I_1,\ldots,I_{p(m)})} $$
+在取$ S(X)_m $不同的基时，普朗克坐标同样只差一个过度矩阵的行列式，因此作为齐次坐标是良定义的。在此之后记
+$ \mathbb{P}(V)=\mathrm{Hom}(V,k)-0/\sim $，
+并且把Hilbert点和Hilbert概型作为$ \mathbb{P}(\bigwedge^{p(m)}S_m)$的点和闭子概型。这样做的好处是这种定义可以利用到$ S(X)_m=H^0(X,L^m) $，从相对极丰丛$ L $得到$ X $的信息，比理想的分次$ I(X)_m $更直接。
+\subsection{Hilbert概型的变形和性质}
+Hilbert概型还有一些其他变形，和相关的性质，在此列举一些结论\upcite{GeometryAlgCurvesII}：比如考虑$ S $-概型的范畴，并且把参数化的对象限制为射影空间的某一个闭子概型$ X\subset \mathbb{P}^r $内的闭子概型：
+$$ Hilb_{X/S}^p(T/S)=\{X
+\times_ST\supset Y\xrightarrow{flat}T|Y\text{在}T\text{上的纤维的Hilbert多项式为}p(t) \} $$
+这个函子也是可表的，对应概型记作$ \mathrm{Hilb}_{X/S}^p $。显然$ \mathrm{Hilb}_{\mathbb{P}^r/S}^p $就是$ \mathrm{Hilb}_{r}^p\times S $，其万有族是$ \mathrm{Hilb}_{r}^p $万有族$ \mathcal{Z} $的拉回，记作$ \mathcal{Z}_S $；而$ \mathrm{Hilb}_{X/S}^p $是$ X\subset \mathbb{P}^r $决定的$ \mathrm{Hilb}_{\mathbb{P}^r/S}^p $的闭子概型，它的万有族就是$ \mathcal{Z}_S $的拉回，记作$ \mathcal{Y}\to \mathrm{Hilb}_{X/S}^p $：
+$$ \xymatrix{
+	\mathcal{Y} \ar[d] \ar[r] & \mathcal{Z}_S \ar[r]\ar[d]&\mathcal{Z}\ar[d] \\
+	\mathrm{Hilb}_{X/S}^p\times X \ar[r]\ar[d] & \mathrm{Hilb}_{\mathbb{P}^r/S}^p\times \mathbb{P}^r\ar[r]\ar[d]&\mathrm{Hilb}_{r}^p\times \mathbb{P}^r\ar[d]\\
+	\mathrm{Hilb}_{X/S}^p\ar[r]&\mathrm{Hilb}_{\mathbb{P}^r/S}^p\ar[r]&\mathrm{Hilb}_{r}^p 
+}$$
+一个比较特别而简单的例子是$ S=\mathrm{Spec}\,K\to\mathrm{Spec}\,k $，其中$ K/k $是域扩张，这样就改变了所讨论的概型的基域。还可以考虑全部的Hilbert多项式，进而得到
+$$ \mathrm{Hilb}_{X/S}=\underset{p\in \mathbb{Q}[t]}{\coprod}\mathrm{Hilb}_{X/S}^p $$
+但这并不是一个有限型的概型，它的性质并不好。
+
+记$ H= \mathrm{Hilb}_{X/S}^p $，进一步通过形变理论可以研究它的切空间和维数：$ H $在$ h\in H $的切空间$ T_hH $的元素可以用态射$ \Sigma=\mathrm{Spec}\,k[\epsilon] \to H $表示，再复合$ \mathrm{Spec}\,k\to \Sigma $并拉回：
+$$ \xymatrix{
+	Y_h \ar[d] \ar[r] & \mathcal{Y}\times_H\Sigma \ar[r]\ar[d]&\mathcal{Y}\ar[d] \\
+	X \ar[r]\ar[d] & \Sigma\times_H X\ar[r]\ar[d]&H\times X\ar[d]\\
+	\mathrm{Spec}\,k\ar[r]&\Sigma\ar[r]&H
+}$$
+通过更具体的计算可以得到：
+\begin{theorem}[\cite{deformation}Theorem1.1]
+	\begin{enumerate}
+		\item 闭点$ h\in H $对应的概型$ Y_h\hookrightarrow X $，则$ H $在点$ h $的切空间$ T_hH $由$ H^0(Y_h,\mathscr{N}_{Y_h/X}) $给出，其中$ \mathscr{N}_{Y_h/X}  $是$ Y_h $在$ X $中的法丛（normal bundle）;
+		\item 可以得到$ \dim H $的一个上界$ \dim_hH\leqslant\dim T_hH=h^0(Y_h,\mathscr{N}_{Y_h/X}) $，并且还有下界$ \dim_hH\geqslant  h^0(Y_h,\mathscr{N}_{Y_h/X})-h^1(Y_h,\mathscr{N}_{Y_h/X})$
+		\item 如果 $ H^1(Y_h,\mathscr{N}_{Y_h/X})=0 $，则$ H $在点$ h $处光滑，且$ \dim_hH=h^0(Y_h,\mathscr{N}_{Y_h/X})=\dim T_hH $
+	\end{enumerate}
+\end{theorem}
+
+接下来我们讨论曲线的Hilbert概型：给定正整数$ g\geqslant2 $和$ n\geqslant 5 $，将亏格$ g $的光滑射影曲线$ C $用$ n $-典范嵌入到$ \mathbb{P}^r $中，其中$ r=(2n-1)(g-1)-1=h^0(C,\omega_C^{\otimes n}) $，曲线$ C $在射影空间的次数为$ d=\deg C=\deg \omega_C^{\otimes n}=2n(g-1) $，因此有Hilbert多项式$ p(t)=dt+1-g $。记$ \mathcal{H}=\mathcal{H}_{d,g,r}=\mathrm{Hilb}_r^p $，万有族为$ \mathcal{C} $。显然$ \mathcal{H} $中的点包含了全部亏格$ g $的光滑射影曲线，但是同时也包含了许多别的对象。这是因为Hilbert多项式是一个很弱的限制条件，例如次数$ d $亏格$ g+1 $的曲线并上一个单独的点，就可以有相同的Hilbert多项式，而且即使是一条光滑曲线，它也可能不是通过$ \omega_C^{\otimes n} $嵌入在$ \mathbb{P}^r $中。因此考虑$ \mathcal{H} $中的一个子集，即亏格$ g $的DM稳定曲线的$ n $-典范嵌入对应的点的集合，记作$ \mathcal{K}\subset \mathcal{H} $，它是$ \omega_\mathcal{C}^{\otimes n} $与$ \mathscr{O}_\mathcal{C}(1) $相等的部分的子集。注意到DM稳定实际上是一个开条件，因此$ \mathcal{K} $是$ \mathcal{H} $中的局部闭的概型，具有概型结构。取一条DM稳定曲线$ C $，在$ \mathcal{K} $中对应的点记为$ h $，则由$ C $的一阶形变和$ \mathcal{K} $的切空间的关系，可以得到正合列：
+$$ \xymatrix{0 \ar[r] & H^0(C,\mathscr{O}_C(1))^{\oplus(r+1)}/H^0(C,\mathscr{O}_C(1)) \ar[r] & T_h\mathcal{K} \ar[r] & \mathrm{Ext}^1(\Omega_C,\mathscr{O}_C) \ar[r] & 0}$$
+因此有$ \dim T_h\mathcal{K}=3g-3+(r+1)^2-1\geqslant \dim_h \mathcal{K} $；另一方面，从曲线相关的形变理论得到的DM稳定曲线的万有族 universal versal formal family，可以代数化得到$ \mathcal{X}\to B $，且$ \dim B=3g-3 $。考虑$ B $上的$ \mathrm{SL}(r+1) $-主丛（principal bundle）$ \mathcal{B}\to B $，可以构造$ \mathcal{B}\to \mathcal{K} $，并得到
+$$ \dim T_h=\dim \mathcal{B}=3g-3+(r+1)^2-1 $$
+综上所述，可以得到$ \mathcal{K} $光滑，并有维数$ 3g-3+(r+1)^2-1 $。
+
+
+通过Hilbert概型除了可以参数化各种嵌入，还可以参数化概型间的态射。对闭子概型$ X\subset \mathbb{P}^s\times S $和$ Y\subset\mathbb{P}^t\times S $，并且$ X $在$ S $上平坦，可以定义函子
+$$ Hom_S(X,Y):T/S\to \mathrm{Hom}_T(X\times_ST,Y\times_ST) $$
+这个函子可以通过$ \mathrm{Hilb}_{X\times_SY} $的一个开子概型来表示，记作$ \mathrm{Hom}_S(X,Y) $；如果$ Y $也在$ S $上平坦，那么$ \mathrm{Hom}_S(X,Y) $和$ \mathrm{Hom}_S(Y,X) $在$ \mathrm{Hilb}_{X\times_SY} $中的交将表示函子$ Isom_S(X,Y) $，这个概型记为$ \mathrm{Isom}_S(X,Y) $。如果$ X,Y $是$ S $上DM稳定的曲线族，Deligne和Mumford在\cite{DM69}中声明$ \mathrm{Isom}_S(X,Y) $是$ S $上有限非分歧的拟射影概型。特别的，对于光滑射影曲线的模问题$ M_g $和群胚$ \mathscr{M}_g $，取$ \mathscr{M}_g(S) $中的两个截影（$ S $上的两个光滑射影曲线族）$ X,Y\in \mathscr{M}_g(S) $，那么反变函子$ Isom_S(X,Y) $就是群胚$ \underline{M_g} $上的同构反变函子的例子。因为这个函子可表，因而是一个层。
+
+
+\section{GIT理论}
+对于一般的群$ G $和群作用$ G\curvearrowright X $，轨道空间$ X/G=\{ Gx|x\in X \} $。但是从范畴角度考虑，用泛性质来定义是更容易推广的：群作用$ G\curvearrowright X $的商是映射$ f : X\to X/G $，使得任意$ G $-不变态射$ f ' :X\to Y $，存在唯一$ \pi :X/G\to Y $，$ f'=\pi \circ f $：
+$$
+\xymatrix{
+	G\times X \ar[d]_-{p_2} \ar[r]^-{\sigma} & X \ar[d]^-{f }\ar@/^3ex/[ddr]^-{f'} &   &&(g,x) \ar[d]_-{p_2} \ar[r]^-{\sigma} & gx \ar[d]^-{f }\ar@/^3ex/[ddr]_{f'}\\
+	X \ar[r]_-{f}\ar@/_3ex/[rrd]_-{f'} & X/G \ar@{-->}[dr]|-{\pi }& &&x \ar[r]_-{f}\ar@/_3ex/[rrd]_{f'} & Gx=Ggx \ar@{-->}[dr]_{\pi }& \\
+	& & Y && && y
+}
+$$
+几何不变量理论（Geometric invariant theory, GIT）讨论的是概型意义下的群作用$ G\curvearrowright X $和商$ X/G $。这一节的主要内容来自\cite{GIT,GeometryAlgCurvesII,ModuliofCurves}，但部分概念为了适用本文讨论的问题而略作调整。
+
+\subsection{定义与性质}
+首先定义一些基本概念，为了体现GIT的一般性，这里先考虑$ \mathrm{Spec}\,\mathbb{Z} $上的概型，定义这类概型意义下的群概型、群作用等概念。首先是群概型：
+\begin{definition}
+	对于概型$ S $上的概型$ \pi : G\to S $，若存在$ S $-态射$ e:S\to G,\mu:G\times_S G \to G,i:G\to G$，满足
+	\begin{enumerate}
+		\item $ \mu\circ 1_G\times \mu=\mu \circ\mu\times 1_g:G\times_S G\times_S G\to G $：
+		$$\xymatrix{
+			G\times_S G\times_S G\ar[d]_-{\mu \times 1_G}\ar[r]^-{1_G\times \mu} & G\times_S  G\ar[d]_-{\mu} \ar[d]_-{\mu}\\
+			G\times_S G\ar[r]^-{\mu} & G 
+		}$$
+		\item $ \mu \circ (e \times1_G )\circ (\pi \times 1_G)=1_G:G\to S\times_S G\to G\times_S G\to G $，
+		
+		$ \mu \circ (1_G \times e)\circ ( 1_G\times \pi)=1_G:G\to G\times_S S\to G\times_S G\to G $;
+		\item $ \mu \circ (i \times 1_G ) \circ \Delta=e\circ \pi : G\to G\times_S G\to G\times_S G \to G $，
+		
+		$ \mu \circ ( 1_G\times i ) \circ \Delta=e\circ \pi : G\to G\times_S G\to G\times_S G \to G $。
+		
+	\end{enumerate}
+	则$ G $是\dotuline{$ S $上的群概型}。
+\end{definition}
+
+上述三条实际对应了结合律、幺元和逆元。接着是群作用和相关的概念：
+\begin{definition}
+	对于群概型$ \pi :G\to S $和概型$p: X\to S $，\dotuline{群作用}$ G\curvearrowright X $是$ S $-态射$ \sigma :G\times_S X\to X $，满足：
+	\begin{enumerate}
+		\item $ \sigma \circ (\mu \times 1_G)=\sigma \circ ( 1_G\times\sigma  ):G\times_S G\times_S X\to G $;
+		\item $ \sigma \circ (e\times 1_X)\circ (p\times 1_X)=1_X:X\to S\times_S X \to G\times_S X \to X $
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	对于作用$ \sigma :G\times_S X\to X $和$ X $ 上$ T $-点$ f:T\to S $，定义映射$$ \psi_f^G=(\sigma\circ (1_G\times f))\times p_2:G\times _S T\to X\times_ST  $$
+	则$ \psi_f^G $的像称为$ f $的\dotuline{轨道}，记为$ G(f) $；当$ f=1_X $时，记之为$ \Psi $：
+	$$ \Psi=(\sigma,p_2):G\times_SX\to X\times_SX $$	
+	记$ G_f=(G\times_S T)\times_{X\times_S T} T $，这是$ T $上的群概型，称为$ f $的\dotuline{稳定子群}：
+	$$\xymatrix{
+		G_f \ar[d] \ar[r] & T \ar[d]^-{f\times 1_T} \\
+		G\times_S T \ar[r]_-{\psi _f} & X\times_S T
+	}$$
+	
+	特别的，当$ T=\mathrm{Spec}\,k $时，$ f $对应$ X $的$ k $-点$ x\in X $，这时记$ G(f)=Gx,G_f=G_x $。
+\end{definition}
+
+在这之后仅考虑代数闭域上的概型，容易看到对于$ G,X $的闭点，轨道、稳定子群等就都和一般的群在集合上的作用是一致的。
+
+在定义商概型时，如果考虑遗忘概型结构得到轨道空间$ X/G $，然后在其上定义概型结构，并且和$ G\curvearrowright X $的概型结构、态射相匹配，这是相对困难的；但另一方面，可以直接在概型范畴中用泛性质定义：
+\begin{definition}
+	群作用$ \sigma :G\times_S X\to X $的\dotuline{范畴商}是态射$ f : X\to X/G $使得任意G-不变态射$ f ' :X\to Y $存在唯一$ \pi :X/G\to Y $，$ f'=\pi \circ f $：
+	$$
+	\xymatrix{
+		G\times X \ar[d]_-{p_2} \ar[r]^-{\sigma} & X \ar[d]^-{f }\ar@/^3ex/[ddr]^-{f'}\\
+		X \ar[r]_-{f}\ar@/_3ex/[rrd]_-{f'} & X/G \ar@{-->}[dr]|-{\pi } \\
+		& & Y 
+	}
+	$$
+\end{definition}
+
+这样的定义在概型范畴中被概型的态射限制，作为集合并没有很好的性质。注意到概型在局部上都是仿射概型，所以首先考虑仿射概型的商概型和它的性质。对于$ G\curvearrowright X=\mathrm{Spec}\,A $，由于仿射概型范畴和环范畴是等价的，所以要把群作用过渡到环$ A $上，也就是$ X=\mathrm{Spec}\,A $上的正则函数。群$ G $在$ A $上的作用应当和$ G\curvearrowright X $匹配：对于$g\in G ,f\in A, \mathrm{V}(f) \subset X $，在作用下得到另一个子集$ g(\mathrm{V}(f))\subset X $，它应该满足$ g(\mathrm{V}(f))=\mathrm{V}(g(f)) $。从这个性质我们可以对偶地定义$ G $在$ A $的作用：
+$$ g(f):X\to k,x\mapsto f(g^{-1}(x)) $$
+通过范畴等价和范畴商的定义，很容易得到
+\begin{proposition}
+	对仿射概型的作用$ G\curvearrowright X=\mathrm{Spec}\,A $，范畴商$ f:X\to X/G=\mathrm{Spec}\,A^{G} $由子环的嵌入$ A^{G}\hookrightarrow A $给出，其中$ A^G=\{f\in A| \forall g\in G ,g(f)=f\} $为$ G $-不变子环。
+\end{proposition}
+
+当$ G $是有限群时，这个范畴商有很好的性质：
+\begin{proposition}[\cite{EtaleCohomologyTheory}Proposition3.1]
+	有限群在仿射概型的作用$ G\curvearrowright X=\mathrm{Spec}\,A $，其范畴商$ f:X\to Y=X/G=\mathrm{Spec}\,A^G $有：
+	\begin{enumerate}
+		\item $ f $是满射，且是仿射态射，$ \mathscr{O}_Y\cong (f_*\mathscr{O}_X)^G $；
+		\item $ f $的闭点的纤维是群作用的轨道
+	\end{enumerate}
+\end{proposition}
+
+可以看到这样的商的性质非常好，如果只考虑$ k $-点则还原了一般群在集合上作用的性质，相当于轨道空间上赋予概型结构。但是这样的群作用只是一部分，从Hilbert 14问题来看，还可以考虑更大一类的作用：$ G $是约化群（reductive group），通过群同态$ G\to GL(n) $作用在仿射空间$ \mathbb{A}^n $的作用，以及在 $ \mathbb{A}^n $的$ G $-稳定闭子集$ X\subset \mathbb{A}^n $的限制。记$ A=\mathscr{O}(X) $，根据Hilbert-Weyl-Haboush定理，此时$ A^G $仍是有限生成的，因此对于$ X\subset \mathbb{A}^n $这样的有限型仿射概型，其范畴商仍然是有限型仿射概型。具体来说，这个范畴商还有更多性质：
+\begin{proposition}[\cite{GIT}]
+	在上述仿射概形的作用$ G\curvearrowright X=\mathrm{Spec}\,A $下，每个轨道的闭包$ Gx\subset \overline{Gx} $中有唯一的闭轨道，且恰是$ \overline{Gx} $的轨道中维数最低的一条。对于范畴商$ f:X\to X/G $，$ G $-稳定闭子集$ Z\subset{X} $，有$ f(Z) $是$ X/G $的闭子集，且无交的G稳定闭子集$ Z_1,Z_2\subset X,Z_1\cap Z_2=\varnothing  $，有$ f(Z_1)\cap f(Z_2)=\varnothing $；$ f $在每个闭点$ y\in X/G $的纤维$ f^{-1}(y) $恰包含一个闭轨道。
+\end{proposition}
+
+这个定理说明仿射情形下范畴商$ X/G $可以区分不同轨道，且闭点和闭轨道一一对应。例如域$ k $上的群$ G=\mathbb{G}_m=k^* $在$ X=\mathbb{A}^2=\mathrm{Spec}\,A,A=k[x,y] $的作用：$$ t (x,y)=(tx,ty),t\in k^* $$
+直观来看它的轨道有两类：$ G(a,b)=\{(ta,tb)|a,b \text{不全为}0,t\in k^*\} $，即过原点但不包含原点的射线，是一个“局部闭”（locally closed）的轨道；另一类轨道只有一条，即原点$ O $，是唯一的闭轨道，维数最低。第一类轨道的闭包都包含原点，即唯一的闭轨道。事实上容易计算$ A^G=k $，即$ X/G=\mathrm{Spec}\,k $是单点集，它的原像的唯一闭轨道就是原点$ O $。
+
+改变这个例子中的作用：$$ t (x,y)=(tx,t^{-1}y),t\in k^* $$
+这时它的轨道有三类：第一类$ G(a,b)=\{(ta,t^{-1}b)|a,b\text{都不为}0,t\in k^*\} $，实际就是仿射平面上的双曲线$ \mathrm{V}(xy-ab)\subset X $，是闭轨道；第二类是不含原点的坐标轴$ G(0,b)={(0,t^{-1}b)|t\in k^* },b\neq 0 $和$ G(a,0)={(ta,0)|t\in k^* },a\neq 0 $，它们不是闭轨道，闭包包含原点；第三类同t样是原点。此时$ A^G=k[xy]\cong k[z] $，即$ X/G\cong \mathrm{Spec}\,k[z]\cong \mathbb{A}^1 $。对于其闭点的纤维，$ z=c\neq 0 $时，纤维是闭轨道双曲线$ \mathrm{V}(xy-ab)\subset X $；原点$ z=0 $的纤维是坐标轴$ \mathrm{V}(xy)\subset X $，包含三条轨道，但只有一条闭轨道。
+
+为了描述商概型的各种性质，我们再引入两个定义：
+\begin{definition}
+	一个范畴商$ f : X\to X/G=Y $（$ X $不一定仿射）称为\dotuline{良好商（good quotient）}，如果
+	\begin{enumerate}
+		\item $ f  $是满的仿射态射，且$ f_*(\mathcal{O}_X)^G=\mathcal{O}_Y $；
+		\item 对$ G$-不变闭集 $ Z\subset X $，有$ f (Z) $是$ Y $中闭集，且对$ G$-不变闭集$ Z_1,Z_2\subset X,Z_1\cap Z_2=\varnothing $，有$ f(Z_1)\cap f(Z_2)=\varnothing $；
+	\end{enumerate}
+	如果还满足每个纤维$ f^{-1}(y)\subset X $是一个$ G$-轨道，并且是闭集，则称为\dotuline{几何商(geometrical quotient)}。
+\end{definition}
+
+显然几何商是性质最好的商，尤其是纤维的性质正是在构造模空间所需要的。从之前的定理和例子可以看到，只有一部分好的轨道可以有这样的对应，这里所谓的好，是用稳定性描述的：
+\begin{definition}
+	在仿射情形下，$ x\in X $称为稳定的，如果
+	\begin{enumerate}
+		\item $ Gx\subset X $是闭轨道；
+		\item 稳定子群$ G_x $是有限群。
+	\end{enumerate}
+	稳定点的集合记作$ X^s $。
+\end{definition}
+
+
+仿射情形下考虑$ f|_{X^s}:X^s \to f(X^s)\subset X/G $，这个商实际是几何商。注意到$ G_x $是有限群的定义可以改写成$ \dim G_x=0 $，从半连续性可以得到$ Z=\{x\in X| \dim G_x>0\}\subset X $是闭集，进一步的有$ X^s=X-f^{-1}(f(Z)) $，是$ X $中开集\upcite{GIT}。另一方面，当$ G $是有限群时，$ X $的每个点都满足上述性质 ，即这时是几何商。
+
+仿射情形之后就是处理特定的一类射影概型上的群作用和商，也是后面主要用到的群作用和商。$ \mathbb{P}^r $的自同构群$ \mathrm{PGL}(r+1) $自然的作用在$ \mathbb{P}^r $，但为了后续计算的方便，我们用$ G=\mathrm{SL}(r+1)\to \mathrm{PGL}(r+1) $在$ \mathbb{P}^r $的作用代替，它们的轨道是一致的。$ \mathbb{P}^r $中以$ p(t) $为的闭子概型$ X \subset \mathbb{P}^r$，在$ g\in G $的作用下$ gX\subset \mathbb{P}^r $仍然以$ p(t) $为Hilbert多项式。通过普朗克嵌入得到$ \mathbb{P}^N=\mathbb{P}(\bigwedge^{p(m)}S_m) $中的$ m $-Hilbert点，$ G $的作用可以自然的过渡到射影空间$ \mathbb{P}^N $或它的$ G $-稳定闭子概型上，比如格拉兹曼概型和Hilbert概型，使得这个作用满足
+$$ [gX]_m=g([X]_m) $$
+这样$ [X]_m $的轨道就自然是$ X $用同一极丰丛在$ \mathbb{P}^r $的不同嵌入。接下来考虑的就是群作用$ G\curvearrowright \mathbb{P}^N $下的商。
+对于$ G $-稳闭子概型$ i:X\hookrightarrow \mathbb{P}^N$，令$ L=i^*\mathscr{O}_{\mathbb{P}^N}(1) $是$ X $的极丰线丛，有理想层$ \mathscr{I}_X $，定义理想$ I_X=\bigoplus_{n\in \mathbb{N}}H^0(\mathbb{P}^N,\mathscr{I}_X(n)) $，齐次坐标环$ S(X)=S/I_X $，和$ R(X,L)=\bigoplus_{n\in \mathbb{N}}H^0(X,L^n) $，$ X=\mathrm{Proj} \, \,S(X) \cong \mathrm{Proj} \, R(X,L) $。类比仿射的情况，$ \mathrm{Proj} \,S(X)^G \cong \mathrm{Proj} \,R(X,L)^G $是$ X/G $候选者，但实际上$ S(X)^G\hookrightarrow S(X) $对应的$ X=\mathrm{Proj} \,S(X)\dashrightarrow \mathrm{Proj} \,S(X)^G $只是有理映射而不是态射。为了解决这个问题，我们考虑$ X $的$ G $-稳定仿射覆盖，和部分好的轨道，因此引出稳定性的定义：
+\begin{definition}
+	在上述作用$ G\curvearrowright X\hookrightarrow \mathbb{P}^N $下，
+	\begin{enumerate}
+		\item $ x\in X $ 是\dotuline{半稳定的(semistable)}，如果存在非常值$ G $-不变齐次多项式$ f\in H^0(\mathbb{P}^N,\mathscr{O}(d)) $，使得$ f(x)\neq 0 $，并记这样点的集合为$ X^{ss} $；
+		\item 半稳定的点$ x $称为\dotuline{稳定(stable)}，如果$ x $的轨道是闭集，且稳定子群$ G_x $是有限群，并记这样的点的集合为$ X^s $。显然$ X^s\subset X^{ss} $。
+	\end{enumerate}
+\end{definition}
+注意到，对于半稳定点$ x\in X^{ss} $，由于对应的多项式$ f $是$ G $-不变的，所以$ G $在$ X_f=X\cap D_+(f) $上的作用是稳定的，即可以限制在其：$ G\curvearrowright X_f $，并且有$ X_f/G=\mathrm{Spec}\,S(X) _{(f)}^G$，把这些粘起来就能得到$ X^{ss} $对G的商。而稳定点的定义可以改写为存在$ x $的$ G $-稳定仿射领域$ x\in U $，使得$ G $在$ U $的作用是闭的：$ \forall y\in U $，轨道$ Gy $是$ U $中的闭轨道。从这些性质可以得到：
+\begin{theorem}
+	\begin{enumerate}
+		\item 	$ f :X^{ss} \to  X^{ss}/G=\mathrm{Proj} \,S(X)^G $是良好商，记作$ X//G $，称为GIT商；
+		\item 存在开集$ U\subset X^{ss}/G $使得$ f^{-1}(U)=X^s\subset X^{ss} $，并且$ f|_{X^s} :X^{s}\to  X^{s}/G  $是几何商。
+	\end{enumerate}
+\end{theorem}
+
+这样对于$ G\to \mathrm{SL}(r+1)\curvearrowright\mathbb{P}^N\supset X $这类群作用，我们定义了好的研究对象$ X//G=X^{ss}/G $和$ X^s/G $。
+\subsection{稳定性的判定}
+接下来要讨论的问题就是就是稳定性的判定，来确定哪些轨道在几何商中，亦即哪些闭子概型$ X\subset \mathbb{P}^r $可以被GIT理论很好的处理。从表达式$ \mathrm{Proj} \,S(X)^G $的构造中可以看到，可以通过仿射锥$ C(X)=\mathrm{Spec}\,S(X) $过渡。在射影空间$ \mathbb{P}^r $对应的仿射空间$ \mathbb{A}^{r+1} $中，对$ x=[a_0:\ldots:a_r]\in\mathbb{P}^r  $可以取其对应射线中的一个点，记为$ \bar{x}=(a_0,\ldots,a_r)$，称为$ x $的提升，$ G $可以自然的作用在$ \mathbb{A}^{r+1} $和$ C(X) $上。$ x $的稳定性可以通过$ \bar{x} $得到等价定义：
+\begin{lemma}
+	对$ x \in  X  $的提升$ \bar{x}\in C(X) $，
+	\begin{enumerate}
+		\item $ x $是半稳定的，当且仅当$ 0\notin \overline{G\bar{x}} $；
+		\item $ x $是稳定的，当且仅当$ \overline{G\bar{x}} $是闭的，且稳定子群$ G_{\bar{x}} $有限群。
+	\end{enumerate}
+\end{lemma}
+接下来类似李群在微分流形上的作用，通过“单参数变换群”来考察$ G $的作用。在GIT中代替单参数变换群的是\dotuline{单参数子群（1-parametric subgroup of $ G $，1-ps）}，即群概型同态
+$$ \lambda: \mathbb{G}_m\to G $$
+其中$ \mathbb{G}_m $是一维乘法群概型（也记为$ \mathbb{A}^* $），通过群同态作用在$ C(X) $上：
+$$ tx=\lambda(t)x,t\in \mathbb{G}_m $$
+取定一个点$ \bar{x}\in C(X) $，可以定义态射
+$$ f_{\bar{x}}:\mathbb{G}_m\to C(X),t\mapsto tx $$
+注意到$ C(X) $是分离的，而$ \mathbb{G}_m $是光滑曲线，因此可以考虑$ f_{\bar{x}} $的延拓$ \bar{f}_{\bar{x} } $，如果可以延拓则$ \bar{f}_{\bar{x} }(0) $唯一。当基域为复数域$ \mathbb{C} $时这和取极限是一致的，因此记为$ \lim _{t\to 0}\lambda(t)\bar{x}=\bar{f}_{\bar{x} }(0) $。通过坐标变换，可以使$ \lambda(t)=\mathrm{diag}(t^{r_0},\ldots,t^{r_N})$为对角阵，且$\sum_{i=0}^{N}r_i=0 $，其中$ r_i $称为对第$ i $个分量的权重。对于点$ x=[a_0:...:a_N] $，定义$ \lambda $对$ x $的权重
+$$ \mu_\lambda(x)=\max\{-r_i|a_i\neq 0\} $$
+注意到对任意$ \mu \in \mathbb{Z} $，
+\begin{equation*}
+\lim _{t\to 0}t^\mu (\lambda(t)\bar{x})=\left\{
+\begin{array}{rcl}
+\text{不存在} & & {\mu <\mu_\lambda(x)}\\
+(\delta_{0,\mu_\lambda(x)+r_i}a_i)\neq 0 & & {\mu =\mu_\lambda(x)}\\
+0 & & {\mu >\mu_\lambda(x)}
+\end{array} \right.
+\end{equation*}
+由此可见$ \mu_\lambda(x) $与基的选取无关，是良定义的。通过这样的语言，可以得到重要的关于稳定性的数值判定准则（ numerical criterion for stability ）:
+\begin{theorem}[\cite{ModuliofCurves}Theorem4.17]
+	$ x\in X $是半稳定的，当且仅当任意的1-ps $ \lambda $，都有$ \mu_\lambda(x)\geqslant0 $；$ x $是稳定的，当且仅当任意的1-ps $ \lambda $，都有$ \mu_\lambda(x)>0 $
+\end{theorem}
+半稳定的条件是指$ x $的非$ 0 $分量的权重都非正，即极限$ \lim _{t\to 0} (\lambda(t)\bar{x}) $不存在或存在但不为$ 0 $；稳定性的条件是指$ x $的非$ 0 $分量的权重都为负，即极限$ \lim _{t\to 0} (\lambda(t)\bar{x}) $不存在。注意到对某个1-ps $ \lambda $可以定义一个新的$ \lambda'(t)=\lambda(t^{-1}) $，这样对各分量的权重成为相反数，所以实际上在判定中改变不等号方向，判定依然成立。或者说，$ x $是稳定的，当且仅当任意1-ps的非零分量的权重总有正有负。这个判定方法来处理$ G=\mathrm{SL}(r+1) $在Hilbert概型或商的作用时，可以用加权坐标的语言叙述。任意给定非平凡1-ps $ \lambda $，坐标变换后为对角阵$ \mathrm{diag}(\rho_0,\ldots,\rho_r) $，$ \rho_i $不全为$ 0 $，称对应的$ \mathbb{P}^r $的齐次坐标$ x_0,\ldots,x_r $有权重$ \rho_0,\ldots,\rho_r $，进而$ S_m $有自然的单项式的基$ M_I=x^I $，其中$ I$ 是$ (r+1) $元非负整数组$ (i_0,\ldots,i_r) $，满足 $ \sum i_l=m $，单项式$ x^I=\prod_{l=0}^{r}x^{i_l} $。定义对应的权重
+$$ \rho_I=\sum_{l=0}^{r}i_l\rho_l $$
+而$ S_m $中任意一个元素的权重定义为组成它的单项式中权重最大的那个。接着考虑$ X\subset \mathbb{P}^r $的$ m $-Hilbert点的普朗克坐标的权重，在满射
+$$ \phi_m:S_m\to S(X) $$
+中，普朗克坐标
+$$ (\bigwedge ^{p(m)}\phi_m(M_{I_1}\wedge\cdots \wedge M_{I_{p(m)}}))_{(I_1,\ldots,I_{p(m)})} $$
+的分量的权重自然定义为$ \sum_{j=1}^{p(m)}\rho_{I_j} $，这样$ \lambda \to G$作用在$ \mathbb{P}^N=\mathbb{P}(\bigwedge^{p(m)} S_m) $仍然是对角阵，各分量的幂次恰是普朗克坐标的权重。普朗克坐标的某一分量$ \bigwedge ^{p(m)}\phi_m(M_{I_1}\wedge\cdots \wedge M_{I_{p(m)}}) $非$ 0 $当且仅当$ \phi_m(M_{I_j}),j=1,\ldots,p(m) $在$ S(X)_m $中成为一组基；反之对于$ S(X)_m $任意元素，定义其权重为其在$ \phi_m $下原像中权重最小的那个。最后定义$ S(X)_m $的一组基的权重是指它们的权重的和。综上所述，稳定性的判定可以写成
+\begin{theorem}
+	任意$ X\subset \mathbb{P}^r $的$ m $-Hilbert点是稳定的（半稳定的），当且仅当$ \mathbb{P}^r $的任意一组基$ x_0,\ldots,x_r $，和任意为不全为$ 0 $、满足$ \sum_{i=0}^{r}\rho_i=0 $的整数$ \rho_i $作为权重，都可以找到$ S(X)_m $的一组基，权重为负（非正）。即存在$ S(X)_m $的一组基$ (y_1,\ldots,y_{p(m)}) $，每个具有权重$ \rho_{I_j} $（对应一个单项式$ M_{I_j} $），满足不等式：
+	$$ \sum_{j=1}^{1}\rho_{I_j}<(\leqslant)0 $$
+\end{theorem}
+为了后续构造中的方便，还可以引入另一种判定。每一个$ \lambda \to \mathrm{GL}(r+1) $，对角化为$ \mathrm{diag}\,(t^{\rho_0},\ldots,t^{\rho_r}) $，可以定义对应的$ \lambda'\to G $，权重为$ \rho'_i=(r+1)\rho-\sum_{i=0}^{r}\rho_i $，使得$ \sum_{i=0}^{r}\rho'_i=0 $。这样在加权基的判定中，可以去掉$ \sum_{i=0}^{r}\rho_i=0 $的限制，而把最后的不等式换为
+$$ \frac{\sum_{j=1}^{1}\rho_{I_j}}{mp(m)}<(\leqslant)\frac{\sum_{i=0}^{r}\rho_i}{r+1} $$
+
+同之前一样，由于任意的$ g\in G $，都有$ g^{-1}\in G $，因此$ G $在$ \mathbb{P}^N $的作用和权重的正负的选取是很灵活的。
+
+\subsection{光滑曲线的稳定性}
+GIT理论的最后通过证明一个引理来说明后续应用GIT判断稳定性的主要技术。引理的证明涉及诸多细节，这里只保留关键思路，完整过程可以参考\cite{GeometryAlgCurvesII,ModuliofCurves,LecturesonModuliofCurves}。
+\begin{theorem}[\cite{GeometryAlgCurvesII}\uppercase\expandafter{\romannumeral14}.Theorem3.2]\label{smstable}
+	在Hilbert概型$ \mathcal{H}_{d,g,r} $中，存在无穷多的正整数$ m $，使得对于$ G=\mathrm{SL}(r+1) $通过$ \mathbb{P}(\bigwedge^{p(m)}S_m) $在$ \mathcal{H}_{d,g,r} $的作用，如果亏格$ g $的光滑射影曲线$ X $上有极丰丛$ L $，且$ h^0(X,L)=r+1,\deg L=d $，则
+	$$ |L|:X\hookrightarrow \mathbb{P}^r $$
+	被$ \mathcal{H}_{d,g,r} $参数化，$ [X]_m\in \mathcal{H}_{d,g,r} $是稳定的。
+\end{theorem}
+我们用上一节的加权坐标的判定方法证明。记$ V=S_1=H^0(X,L) $，它的任意一组加权基$ x_0,\ldots,x_r $和权重$ \rho_0,\ldots,\rho_r,\sum_{i=0}^{r}\rho_i=0 $，我们将证明存在无穷多$ m $，使得$ S(X)_m $存在一组负权重的基，并且这样的$ m $不依赖于$ X $的选取。首先假设有整数$ p,N $和$ 0=h_0<\cdots<h_l=r $（在后面说明它们如何得到），对任意的$ V $的加权基$ x_0,\ldots,x_r $，不妨设权重$ \rho_0\leqslant\cdots \leqslant \rho_r $，令$ L_i $是$ L $中由$ x_0,\ldots,x_i $生成的子层，记$ d_i=\deg L_i $，$ V_i=H^0(X,L_i)\subset V $。我们用$ V_i^n $表示$ \mathrm{Sym}^nV_i $，它是$ \mathrm{Sym}^nV=S_n $的子线性空间，及$ V_i^nV_j^m $是对称积，是$ \mathrm{Sym}^{m+n}V=S_{m+n} $的子线性空间。定义一组线性空间：
+$$ W_{j,k}=\mathrm{Im}\left(  V_{h_j}^{N(p-k)}V_{h_{j+1}}^{Nk}V^N\to H^0(X,L^{N(p+1)})   \right) $$
+这样$ W_{j,k} $中元素的权重最大不超过$ N(p-k)\rho_{h_j}+Nk\rho_{h_{j+1}}+N\rho_r $，这个上界记为$ q_{j,k} $。因为$ L $极丰，对充分大$ N $，有
+\begin{equation*}
+\begin{array}{rcl}
+W_{l,0}&=&\mathrm{Im}\left( V^{Np}V^N\to H^0(X,L^{N(p+1)})\right) \\
+&=&H^0(X,L^{N(p+1)})=S(X)_{N(p+1)}    
+\end{array}
+\end{equation*}
+因此可以得到一组滤链：
+\begin{equation*}
+\begin{array}{rl}
+& W_{0,0}\subset W_{0,1}\subset\cdots \subset W_{0,p-1}\\
+\subset &W_{1,0}\subset W_{1,1}\subset\cdots \subset W_{1,p-1}\\
+\subset&\cdots\\
+\subset&W_{l-1,0}\subset W_{l-1,1}\subset\cdots \subset W_{l-1,p-1}\\
+\subset&W_{l,0}=H^0(X,L^{N(p+1)})
+\end{array}
+\end{equation*}
+记$ w_{j,k}=\dim W_{j,k} $，对充分大的$ N $，通过滤链$ W_{j,k} $的基可以得到$ H^0(X,L^{N(p+1)}) $的一组基，并且可以估计其权重，记为$ w $：
+\begin{equation*}
+\begin{array}{rcl}
+w&\leqslant& q_{0,0}w_{0,0}+ q_{0,1}(w_{0,1}-w_{0,0})+\cdots + q_{0,p-1}(w_{0,p-1}-w_{0,p-2})\\
+&+ &q_{1,0}(w_{1,0}-w_{0,p-1})+ q_{1,1}(w_{1,1}-w_{1,0})+\cdots + q_{1,p-1}(w_{1,p-1}-w_{1,p-2})\\
+&+&\cdots\\
+&+&q_{l-1,0}(w_{l-1,0}-w_{l-2,p-1})+ q_{l-1,1}(w_{l-1,1}-w_{l-1,0})+\cdots + q_{l-1,p-1}(w_{l-1,p-1}-w_{l-1,p-2})\\
+&+ &q_{l,0}(w_{l,0}-w_{l-1,p-1})\\
+&=&w_{0,0}(q_{0,0}-q_{0,1})+\cdots+w_{l-1,p-1}(q_{l-1,p-1}-q_{l,0})+N(p+1)\rho_rw_{l,0}
+\end{array}
+\end{equation*}
+要估计$ w $，就需要估计$ w_{j,k} $，这里需要一个相关引理：
+\begin{lemma}[\cite{GeometryAlgCurvesII}\uppercase\expandafter{\romannumeral14}.Lemma3.3]
+	令$ X $是亏格$ g\geqslant1 $的光滑射影曲线，$ L $是一个极丰丛，并且
+	$$ h^0(X,L)=r+1 ,\deg L=d$$
+	给定正整数$ p $，则存在正整数$ N_0 $仅取决于$ d,g,p $而与$ X $无关，使得任意的$ N\geqslant N_0$ ， $0\leqslant k \leqslant p $，和任意的非零线性子空间$ U,V\subset H^0(X,L) $，有不等式
+	$$ \dim \mathrm{Im}\left( U^{N(p-k)}V^{Nk}H^0(X,L)^N\to H^0(X,L)^{N(p+1)}  \right)\geqslant N(p-k)\deg L_U+Nk\deg L_V  $$	
+	其中$ L_U,L_V $为$ U,V $对应生成的子层。
+\end{lemma}
+将这个不等式带入$ w $的估计中，再经过放缩得到新的估计
+\begin{equation*}
+\begin{array}{rcl}
+w&\leqslant&-\sum_{j=0}^{l+1}\sum_{k=0}^{p-1}N^2((p-k)d_{h_j}+kd_{h_{j+1}})(\rho_{h_{j+1}}-\rho_{h_j})\\
+&&+N(p+1)\rho_r( N(p+1)d+1-g  )\\
+&=&-N^2p^2\sum_{j=0}^{l-1}\frac{    d_{h_{j+1}}+ d_{h_j}   }{2}(\rho_{h_{j+1}}-\rho_{h_j})\\
+&&+N^2p\sum_{j=0}^{l-1}\frac{  d_{h_{j+1}} -  d_{h_j}  }{2}(\rho_{h_{j+1}}-\rho_{h_j})\\
+&&+N^2(p+1)^2\rho_rd+N(p+1)\rho_r(1-g)
+\end{array}
+\end{equation*}
+现在利用$ X $的光滑性条件：之前证明了$ \mathbb{P}^r $中的$ X $是线性稳定的，因此有不等式
+$$ \frac{hd}{r}\leqslant d_h $$
+对任意$ 0\leqslant h \leqslant r $成立。记$ m_h $为大于$ \frac{hd}{r} $的最小整数，并令$ \varepsilon=\underset{0\leqslant h \leqslant r}{\min}(m_h-\frac{dh}{r})>0 $，这样有不等式
+$$ d_h\geqslant \dfrac{hd}{r}+\varepsilon $$
+利用这个不等式继续放缩$ w $的估计，得到
+\begin{equation*}
+\begin{array}{rcl}
+w&\leqslant&-N^2p^2\frac{d}{r}\sum_{j=0}^{l-1}\frac{    {h_{j+1}+ {h_j} }  }{2}(\rho_{h_{j+1}}-\rho_{h_j})-N^2p^2\varepsilon(\rho_r-\rho_0)\\
+&&+N^2pd(\rho_r-\rho_0)\\
+&&+N^2(p+1)^2\rho_rd
+\end{array}
+\end{equation*}
+最后再对这个表达式放缩。这里需要一个纯粹关于不等式的放缩的引理：
+\begin{lemma}[\cite{GeometryAlgCurvesII}\uppercase\expandafter{\romannumeral14}.Lemma3.7]
+	对任意实数$ \rho_0\leqslant\cdots \leqslant \rho_r $，有不等式
+	$$ \underset{l,h}{\max}\left(  \sum_{j=0}^{l-1}\frac{    {h_{j+1}+ {h_j} }  }{2}(\rho_{h_{j+1}}-\rho_{h_j})  \right)\geqslant r\rho_r-\frac{r}{r+1}\sum_{i=0}^{r}\rho_i  $$
+	其中$ 1\leqslant l \leqslant r $，$ h $是序列$ 0=h_0<h_1<\cdots <h_l=r $
+\end{lemma}
+利用这个不等式进一步放缩$ w $，得到
+$$ w\leqslant -N^2(\rho_r-\rho_0)( p(p\varepsilon-d)-2pd-d  ) $$
+只要取充分大$ p $使得$ ( p(p\epsilon-d)-2pd-d  ) >0$，就可以得到$ w<0 $，而这显然是可以做到的。综上所述，$ p,N $的选取仅与$ d,g,r $有关，对任意的光滑曲线$ X $和$ V $的一组加权基，都可以选取序列$ 0=h_0<h_1<\cdots <h_l=r $，并从它构造滤链$ W_{j,k} $，进而得到$ H^0(X,L^{N(p+1)}) $的一组基，通过不等式放缩得到它们的权重为负。取$ m=N(p+1) $，这就证明了引理。
+
+注意在这个引理的证明中并没有直接使用$ X $的光滑性条件，而是用它嵌入到$ \mathbb{P}^r $后的线性稳定性，这说明GIT稳定性处理的并不是抽象的曲线，而是某个射影空间的曲线；另一方面，线性稳定性可以对高维的对象定义，这说明这部分讨论可以延申到高维的情形，指导高维模空间的研究。例如考虑Chow簇参数空间，并考虑Chow稳定性和线性稳定性。

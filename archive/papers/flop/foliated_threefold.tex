@@ -1,0 +1,665 @@
+\documentclass[12pt]{amsart}%%%%%%%%%%%%{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{amscd}
+\usepackage{epic}
+%\usepackage{comment}
+\usepackage[alphabetic]{amsrefs}
+%\usepackage{setspace}
+\usepackage{xypic}
+\usepackage[colorlinks, citecolor=blue]{hyperref}
+\usepackage[left=1.5in,right=1.5in,top=1.5in,bottom=1.5in]{geometry}
+\usepackage{soul}
+%\usepackage{tikz}
+\usepackage[pagewise]{lineno}%\linenumbers
+%\usepackage[inline]{showlabels}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+%\input{diagrams.sty}
+%\topmargin=-5mm
+%\topmargin=0mm
+%\textwidth=150mm \textheight=220mm \oddsidemargin=5mm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exc}[theorem]{Exercise}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition-lemma}[theorem]{Definition-Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{question}[theorem]{Question}
+
+\newtheorem{axiom}[theorem]{Axiom}
+%%%  JK commands
+\newcommand{\Lk}[0]{\operatorname{Lk}}
+\newcommand{\lk}[0]{\operatorname{Lk}}
+%\newcommand{\st}[0]{\operatorname{St}}
+\newcommand{\cst}[0]{\overline{\operatorname{St}}}
+\newcommand{\St}[0]{\overline{\operatorname{St}}}
+\newcommand{\ex}[0]{\operatorname{Ex}}
+\newcommand{\spec}[0]{\operatorname{Spec}}
+\newcommand{\red}[0]{\operatorname{red}}
+\newcommand{\supp}[0]{\operatorname{Supp}}
+\newcommand{\map}{\dasharrow}
+\newcommand{\cone}[0]{\operatorname{Cone}}
+\newcommand{\dlt}[0]{\operatorname{dlt}}
+\newcommand{\Aut}[0]{\operatorname{Aut}}
+\newcommand{\Spr}[0]{\operatorname{Spr}}
+\newcommand{\Tr}[0]{\operatorname{Tr}}
+\newcommand{\Pic}[0]{\operatorname{Pic}}
+
+%%% end JK commands
+
+\def\ddbar{\partial\bar\partial}
+\def\ve{\varepsilon}
+\def\mcS{\mathcal{S}}
+\def\NE{\overline{\operatorname{NE}}}
+\def\NS{\operatorname{NS}}
+\def\NF{\operatorname{\overline{NF}}}
+\def\NM{\operatorname{\overline{NM}}}
+\def\BC{\overline{\operatorname{BC}}}
+\def\NA{\overline{\operatorname{NA}}}
+\def\Null{\operatorname{Null}}
+\newcommand{\<}{\leq}
+\def\>{\geq}
+\newcommand{\mbQ}{\mathbb{Q}}
+\newcommand{\mbR}{\mathbb{R}}
+
+\def\mcO{\mathcal{O}}
+\newcommand{\num}{\equiv}
+\newcommand{\Fut}{{\rm DF}}
+\newcommand{\MO}{\mathcal{O}}
+%\newcommand{\dbar}{\bar{\partial}}
+\newcommand{\bX}{{\mathbbl{X} }}
+\newcommand{\Z}{{\mathbb{Z} }}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\sM}{{\mathcal{M}}}
+\newcommand{\sL}{{\mathcal{L}}}
+\newcommand{\mJ}{{\mathcal{J}}}
+\newcommand{\mX}{{\mathcal{X}}}
+\newcommand{\mY}{{\mathcal{Y}}}
+\newcommand{\mZ}{{\mathcal{Z}}}
+\newcommand{\kX}{{\mathfrak{X}}}
+\newcommand{\kY}{{\mathfrak{Y}}}
+\newcommand{\bM}{{\bar{\mathcal{M}}}}
+\newcommand{\bH}{{\bar{\mathcal{H}}}}
+\newcommand{\bY}{{\bar{\mathcal{Y}}}}
+\newcommand{\DMR}{{\mathcal{DMR}}}
+\newcommand{\DR}{{\mathcal{DR}}}
+%\newcommand{\Star}{{\rm St}}
+\newcommand{\D}{{\mathcal{D}}}
+\newcommand{\OO}{{\mathcal{O}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\mop}{{\mathcal{O}_{\mathbb{P}^1}(1)}}
+\newcommand{\mot}{{\mathcal{O}_{\mathbb{P}^1}(-1)}}
+%\newcommand{\Lk}{{\rm Lk}}
+%\newcommand{\St}{{\rm St}}
+%\newcommand{\st}{{\rm st}}
+\newcommand{\mld}{{\rm mld}}
+\newcommand{\mult}{{\rm mult}}
+\newcommand{\Supp}{{\rm Supp}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\sm}{{\rm sm}}
+\newcommand{\stringy}{{\rm st}}
+\newcommand{\topo}{{\rm top}}
+\newcommand{\ord}{{\rm ord}}
+\newcommand{\moti}{{\rm mot}}
+\newcommand{\Link}{{\rm Link}}
+
+
+
+
+
+%\newcommand{\mbR}{\mathbb{R}}
+\newcommand{\mbC}{\mathbb{C}}
+\newcommand{\mbZ}{\mathbb{Z}}
+%\newcommand{\mbQ}{\mathbb{Q}}
+\newcommand{\mbK}{\mathbb{K}}
+\newcommand{\bir}{\dashrightarrow}
+\newcommand{\vphi}{\varphi}
+\def\injective{\hookrightarrow}
+\def\surjective{\twoheadrightarrow}
+\newcommand{\del}{\partial}
+\def\lrd{\lfloor}
+\def\rrd{\rfloor}
+
+
+\def\mbF{\mathbb{F}}
+\def\mbN{\mathbb{N}}
+\def\mbP{\mathbb{P}}
+\def\>{\geq}
+\def\ve{\varepsilon}
+\def\mcA{\mathcal{A}}
+\def\mcO{\mathcal{O}}
+\def\mcB{\mathcal{B}}
+\def\mcC{\mathcal{C}}
+\def\mcD{\mathcal{D}}
+\def\mcE{\mathcal{E}}
+\def\mcF{\mathcal{F}}
+\def\mcG{\mathcal{G}}
+\def\mcH{\mathcal{H}}
+\def\mcK{\mathcal{K}}
+\def\mcL{\mathcal{L}}
+\def\mcM{\mathcal{M}}
+\def\mcN{\mathcal{N}}
+\def\mcP{\mathcal{P}}
+\def\mcR{\mathcal{R}}
+\def\mcS{\mathcal{S}}
+\def\mcT{\mathcal{T}}
+\def\mcI{\mathcal{I}}
+\def\mcJ{\mathcal{J}}
+\def\mcV{\mathcal{V}}
+\def\mcW{\mathcal{W}}
+\def\mcZ{\mathcal{Z}}
+\def\msE{\mathscr{E}}
+\def\msF{\mathscr{F}}
+\def\msG{\mathscr{G}}
+\def\msH{\mathscr{H}}
+\def\msI{\mathscr{I}}
+\def\msL{\mathscr{L}}
+\def\msM{\mathscr{M}}
+\def\msN{\mathscr{N}}
+
+\def\eps{\epsilon}
+\def\bfP{\textbf{P}}
+\def\bfQ{\textbf{Q}}
+
+
+\def\lru{\lceil}
+\def\rru{\rceil}
+\def\lrd{\lfloor}
+\def\rrd{\rfloor}
+%\newcommand{\mot}{{\rm mot}}
+%\begin{CJK*}{GBK}{Song}
+% \theoremstyle{plain}
+% \newtheorem{thm}[thm]{Theorem}%[section]
+% \newtheorem{prop}[thm]{Proposition}%[section]
+% \newtheorem{cor}[thm]{Corollary}
+% \newtheorem{lem}[thm]{Lemma}
+% \newtheorem{conj}[thm]{Conjecture}
+% \theoremstyle{definition}
+% \newtheorem{defn}{Definition}%[section]
+% \newtheorem{rem}{Remark}
+% \newtheorem{que}{Question}
+% \newtheorem{exmp}{Example}%[section]
+% \newtheorem{claim}{Claim}
+% \newtheorem{assum}{Assumption}
+
+
+\def\mult{\operatorname{mult}}
+\def\pt{\operatorname{pt}}
+\def\Ex{\operatorname{Ex}}
+\def\dim{\operatorname{dim}}
+\def\codim{\operatorname{codim}}
+\def\sing{\operatorname{\textsubscript{sing}}}
+\def\sm{\operatorname{\textsubscript{sm}}}
+\def\NS{\operatorname{NS}}
+\def\NA{\operatorname{\overline{NA}}}
+\def\NAA{\operatorname{NA}}
+\def\NE{\operatorname{\overline{NE}}}
+\def\Nef{\operatorname{Nef}}
+\def\Im{\operatorname{Im}}
+\def\Chow{\operatorname{Chow}}
+\def\EnK{\operatorname{EnK}}
+\def\rank{\operatorname{rank}}
+\def\Div{\operatorname{Div}}
+\def\lct{\operatorname{lct}}
+\def\LCT{\operatorname{LCT}}
+
+
+
+
+%\newtheorem{thm}{Theorem}[section]
+%\newtheorem{mainthm}[thm]{Main Theorem}
+%\newtheorem{question}[thm]{Question}
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{cors}[thm]{Corollaries}
+%\newtheorem{prop}[thm]{Proposition}
+%\newtheorem{crit}[thm]{Criterion}
+%\newtheorem{conj}[thm]{Conjecture}
+%\newtheorem{principle}[thm]{Principle} %!!!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{complem}[thm]{Complement}%!!!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{pitfall}[thm]{Pitfall}%!!!!!!!!!!!!!!!!!!!!!!
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{definition}
+\newtheorem{notation}[theorem]{Notation}
+\numberwithin{equation}{section}
+
+% \theoremstyle{definition}
+% \newtheorem{claim}[theorem]{Claim}
+
+
+
+%\theoremstyle{definition}
+%\newtheorem{defn}[thm]{Definition}
+%\newtheorem{condition}[thm]{Condition}
+%\newtheorem{say}[thm]{}
+%\newtheorem{exmp}[thm]{Example}
+%\newtheorem{hint}[thm]{Hint}
+%\newtheorem{exrc}[thm]{Exercise}
+%\newtheorem{prob}[thm]{Problem}
+%\newtheorem{const}[thm]{Construction}   %!!!!!!!!!!!!!!!!
+%\newtheorem{ques}[thm]{Question}    %!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{que}[thm]{Question}    %!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{alg}[thm]{Algorithm}
+%\newtheorem{rem}[thm]{Remark}
+%\newtheorem{aside}[thm]{Aside}
+%\renewcommand{\theremark}{}
+%\newtheorem{note}[thm]{Note}            %\renewcommand{\thenote}{}
+%\newtheorem{summ}[thm]{Summary}         %\renewcommand{\thesumm}{}
+%\newtheorem*{ack}{Acknowledgments}      % \renewcommand{\theack}{}
+%\newtheorem{notation}[thm]{Notation}
+%\newtheorem{warning}[thm]{Warning}
+%\newtheorem{defn-thm}[thm]{Definition--Theorem}  %!!!!!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{defn-prop}[thm]{Definition--Proposition}  %!!!!!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{defn-lem}[thm]{Definition--Lemma}  %!!!!!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{convention}[thm]{Convention}  %!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%\newtheorem{keyidea}[thm]{Key idea}
+%\newtheorem{expl}[thm]{Explanation}
+%\newtheorem{meth}[thm]{Method}
+%\newtheorem{assumption}[thm]{Assumption}
+%\newtheorem{assertion}[thm]{Assertion}
+%\newtheorem{comp}[thm]{Complement}
+
+\theoremstyle{remark}
+%\newtheorem{theorem}[Theorem]
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{case}{Case}
+\newtheorem{subcase}{Subcase}
+\newtheorem{step}{Step}
+\newtheorem{approach}{Approach}
+%\newtheorem{principle}{Principle}
+\newtheorem{fact}{Fact}
+\newtheorem{subsay}{}
+
+
+
+\author{Roktim Mascharak}
+\address{Physics Building, UCL, Gower St, London WC1E 6BT}
+\email{roktim.mascharak.23@ucl.ac.uk}
+
+\title{ On the Log Sarkisov Program for foliations on projective $3$-folds}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+    The classical Sarkisov Program aims to decompose the induced birational map between any two Mori fiber spaces obtained as end results of different minimal model program ( starting from same projective variety ), in terms of finitely many Sarkisov links. In this article we prove the Sarkisov Program for co-rank one foliation with suitable singularities on normal projective threefolds. We also relate two foliated Mori fiber spaces with rank one foliations on normal projective threeefolds in the spirit of Sarkisov Program.  
+\end{abstract}
+\tableofcontents
+
+\section{Introduction}
+In birational geometry MMP conjecture states that starting with a projective variety the MMP terminates with either a minimal model ( i.e having nef canonical divisor) or a Mori fiber space (i.e. a fibration $f:X\rightarrow Z$ such that the anti-canonical divisor is relatively ample). In general these end products are not unique. The aim of Sarkisov Program is to write the rational map between two Mori fiber spaces ( which are end results of different MMP starting from same variety) in a more concrete manner. More precisely decompose this map in terms of compositions of "Sarkisov Links".\\
+For dimension $3$ normal projective varieties with co-rank $1$ foliation we know the existence and termination of MMP for F-dlt foliated pair $(\mathcal{F},\Delta)$ due to \cite{CS21}. Note that $K_{\mathcal{F}}+\Delta$-negative Mori fiber space contraction is also a $K_X$-negative Mori fiber space, where $X$ is a normal projective $3$ fold and $(\mathcal{F},\Delta)$ is a co-rank $1$ F-dlt pair. By \cite[lemma $3.16$]{CS21} $X$ has klt singularities if $(\mathcal{F},\Delta)$ has F-dlt singularities with $\lfloor \Delta\rfloor=0$. Hence by \cite{HM09} we can write the rational map between two Mori fiber spaces which are results of two MMP starting from Same variety in terms of " Classical Sarkisov Links". In this article we show that we can also decompose the above mentioned map in terms of foliated Sarkisov Links, which is our main theorem.
+\begin{theorem}\label{MT}
+ Let $\phi:X\rightarrow S$ and $\psi: Y\rightarrow T$ be two foliated Mori fiber spaces which are end products of two MMPs starting from $(Z,\mathcal{F},\Phi)$, where $X,Y$ and $Z$ are normal projective $\mbQ$-factorial $3$-fold and $(\mathcal{F},\Phi)$ is co-rank $1$ foliated F-dlt pair on $Z$ with $\lfloor \Phi\rfloor =0$. Then the induced rational maps can be written as compositions of the following foliated links
+ \begin{itemize}
+     \item \[
+ \begin{tikzcd}
+& Z \arrow[r, dashrightarrow] \arrow{ld}&  Y\arrow{dd}\\
+X \arrow{d}& &  \\
+S & &  T\arrow{ll}
+\end{tikzcd}
+\] 
+\item  \[
+ \begin{tikzcd}
+& Z \arrow[r, dashrightarrow] \arrow{ld}&  Z'\arrow{rd}&\\
+X \arrow{d}& & & Y \arrow{d}\\
+S & & & T \arrow{lll}
+\end{tikzcd}
+\] 
+\item \[
+ \begin{tikzcd}
+X \arrow[r, dashrightarrow] \arrow{d} & Z' \arrow{rd}\\
+S  \arrow{rd}& & Y \arrow{d}\\
+&T_1 \arrow{r} & T
+\end{tikzcd}
+\]
+\item \[
+ \begin{tikzcd}
+X \arrow[rr, dashrightarrow] \arrow{d}& & Z'=Y \arrow{d}\\
+S  \arrow{rd}& & T \arrow{ld}\\
+&T_1  & 
+\end{tikzcd}
+\]
+ \end{itemize}
+   
+\end{theorem}
+ The main ingredients which will be required to prove theorem \ref{MT} are finiteness of log terminal models of foliations and the log geography of log terminal models, which we develop in the third section of this article ( c.f. theorem \ref{Finiteness} and theorem \ref{LGLCM} ).\\ 
+In the last section we try to deal with the case of rank one foliation with canonical singularities on a normal projetive three-fold, where we proof the following theorem to relate rank one foliated Mori fiber spaces,
+\begin{theorem}\label{MT2}
+    Let $\phi:X\rightarrow S$ and $\psi:Y\rightarrow T$ be two foliated Mori fiber spaces which are end products of two MMPs starting from $(Z,\mathcal{F},\Delta)$, where $X,Y$, and $Z$ are normal projective algebraic $3$-folds and $(\mathcal{F},\Delta)$ is a rank $1$ foliated pair on $Z$ with canonical singularities ( see definition \ref{pairs} ). Then there exists a common open set $U$ of $X$ and $Y$ and a common open set $V$ of $S$ and $T$, such that the restrictions of $\phi$ and $\psi$ to $U$ gives a morphism $U\rightarrow V$ which makes it a open foliated Mori fiber space with respect to the induced rank $1$ foliation. 
+\end{theorem}
+This is the best one can prove in this set-up because, the techniques used in proving theorem \ref{MT} fails in rank one case. For example Bertini type theorems are no longer true in this setup. We can observe this in the following example. Consider the fibration $\mbP^2\times\mbP^1\rightarrow \mbP^1$. Let $X$ be the blow-up $\mbP^2\times \mbP^1$ along a general fiber and $\mathcal{F}$ the rank one foliation induced by $X\rightarrow \mbP^2$. $X$ contains a curve $C$ invariant by $\mathcal{F}$ such that each point of the curve is a canonical center ( also lc center ). As for any ample divisor $H$, $H\cap C$ is non empty, $(\mathcal{F},H)$ can never be log canonical. \\ 
+
+\textit{Acknowledgement}:- The author would like to thank Professor Paolo Cascini for suggesting the question. The author would also like to thank Professor Paolo Cascini and Professor Calum Spicer for many useful discussions. This work was supported by the Engineering and Physical Sciences Research Council [EP/S021590/1]. The EPSRC Centre for Doctoral Training in Geometry and Number Theory (The London School of Geometry and Number Theory), University College London.
+\section{Preliminaries}
+We start by defining basic notions of foliations on a normal variety. For more detailed discussions we encourage the reader to look at \cite{CS21} and \cite{CS20}.
+\begin{definition}
+    A foliation on a normal variety $X$ is a coherent subsheaf $\mathcal{F}\subset T_X$ such that
+    \begin{enumerate}
+        
+    
+    \item $\mathcal{F}$ is saturated, i.e. $T_X/\mathcal{F}$ is torsion free.
+    \item $\mathcal{F}$ is closed under Lie bracket.
+    \end{enumerate}
+    The rank of $\mathcal{F}$ is it's rank as a sheaf and co-rank is co-rank of $\mathcal{F}$ as a subsheaf of $T_X$. We define the canonical divisor of the foliation $K_{\mathcal{F}}$ to be a Weil divisor such that $\mathcal{O}_X(K_{\mathcal{F}})=(det(\mathcal{F}))^*$. Given a foliation $\mathcal{F}$ of rank $r$ on a normal variety $X$ we have a natural map \[
+    \phi: (\Omega^{[r]}_X\otimes \mathcal{O}_{X}(-K_{\mathcal{F}}))^{**}\rightarrow \mathcal{O}_X
+    \]
+    Where $\Omega^{[d]}_X=(\wedge^d \Omega_X)^{**}$. The co-support of $\phi$ is defined to the singular locus of the foliation.\\
+    Let $S$ be a subvariety of a normal variety $X$ and $\mathcal{F}$ be a rank r foliation on $X$. Then $S$ is said to be invariant by $\mathcal{F}$ if for any open set $U\subset X$ and any $\partial\in H^0(U,\mathcal{F}_U)$ we have $\partial (I_{S\cap U})\subset I_{S\cap U}$, where $I_{S\cap U}$ is the ideal sheaf of $S\cap U$.
+\end{definition}
+\begin{definition}[Singularities of the foliated pairs]\label{pairs} 
+   A foliated pair $(\mathcal{F},\Delta)$ on a normal variety $X$ consists of a foliation $\mathcal{F}$ on $X$ and a $\mbR$-divisor $\Delta$ such that $K_{\mathcal{F}}+\Delta$ is $\mbR$-Cartier. Given a birational morphism $\pi:X'\rightarrow X$ and a foliated pair $(\mathcal{F},\Delta)$ on $X$, let $\mathcal{F}'$ be the pull back foliation on $X$. We may write
+   \[
+   K_{\mathcal{F}'}+\pi_*^{-1}\Delta=\pi^*(K_{\mathcal{F}}+\Delta)+\sum a(E,\mathcal{F},\Delta)E
+   \]
+   Where the sum runs over all $\pi$ exceptional divisor $E$. We say that $(\mathcal{F},\Delta)$ is terminal (resp. canonical, log terminal, log caonical) if $a(E,\mathcal{F},\Delta)>0$ ( resp $\geqslant 0$, $>-\epsilon(E)$, $\geqslant -\epsilon(E)$ ) for any birational map $\pi:X'\rightarrow X$ and any $\pi$ exceptional divisor $E$ on $X'$. Here $\epsilon(E)=0$ if $E$ is invariant by $\mathcal{F}'$ and $\epsilon(E)=1$ otherwise.\\
+   Now consider $X$ to be a dimension $3$ normal projective variety and $\mathcal{F}$ to be a co-rank one foliation on $X$. A pair $(\mathcal{F},\Delta)$ is called foliated divisorial log terminal ( F-dlt ) if 
+   \begin{enumerate}
+       \item each irreducible component of $\Delta$ is generically transverse to $\mathcal{F}$ and has coefficient at most one, and
+       \item there exists a foliated log resolution ( in the sense of \cite[Definition $3.1$]{CS21} ) $\pi:Y\rightarrow X$ of $(\mathcal{F},\Delta)$ which only extract divisors $E$ of discrepency $>-\epsilon (E)$.
+   \end{enumerate}
+\end{definition}
+\textit{Remark}:- Due to \cite{CS20} we know that F-dlt singularities for corank one foliation on normal three folds have only non-dicritical singularities.\\
+We define some classical definitions in terms of foliation which are analogous to \cite{BCHM}.
+\begin{definition}
+    Let $(\mathcal{F},\Delta)$ be a foliated pair on a normal projective variety $X$, and $\phi:X\dashrightarrow Y $ be a proper birational contraction. We say that $\phi$ is $K_{\mathcal{F}}+\Delta$-negative if for some common resolution $p:W\rightarrow X$ and $q:W\rightarrow Y$ we may write\[
+    p^*(K_{\mathcal{F}}+\Delta)=q^*(K_{\mathcal{F}'}+\Delta')+E
+    \]
+    where $\mathcal{F}'$ and $\Delta'$ are the transformed foliation and strict transform of $\Delta$ respectively on $Y$, and $E\geqslant 0$ is $q$-exceptional divisor whose support contains strict transform of all the $q$-exceptional divisors.
+\end{definition}
+Next we define ample model and log terminal model.
+\begin{definition}
+    Let $\pi:X\rightarrow U$ be a morphism of normal projective varieties and $(\mathcal{F},\Delta)$ be a foliated pair with log canonical singularities. Let $\phi:X\dashrightarrow Y$ be a rational contraction of normal varieties over $U$.
+    \begin{enumerate}
+        \item If $\phi$ is birational, $K_{\mathcal{F}}+\Delta$-negative and $\phi_*(K_{\mathcal{F}}+\Delta)$ is a nef divisor over $U$ then we say that $\phi:X\dashrightarrow Y$ is a log terminal model of $(\mathcal{F},\Delta)$ over $U$.
+        \item $\phi:X\rightarrow Y$ is the ample model over $U$ for any divisor $D\subset X$ if there is an ample divisor $H\subset Y$ over $U$ such that if $p:W\rightarrow X$ and $q:W\rightarrow Y$ resloves $\phi$ then $q$ is projective contraction and we may write $p^*D\sim_{\mbR,U}q^* H+E$, where $E\geqslant 0$ and for every $B\in|p^*D/U|_{\mbR}$, $B\geqslant E$.
+    \end{enumerate}
+\end{definition}
+\textit{Remark}:- Notice that in the definition of log terminal model we are not imposing the transformed pair on $Y$ to have F-dlt singularity.\\
+Now we finally define some important polytopes for Sarkisov program and the MMP relation for co-rank one foliation on normla projective three fold.
+\begin{definition}
+    Let $\pi:X\rightarrow U$ be a morphism between normal projective varieties, and let $V$ be a finite dimensional affine subspace of $\text{WDiv}_{\mbR}(X)$ of Weil divisors on $X$. Fix an $\mbR$-divisor $A\geqslant 0$. Let $\mathcal{F}$ be a foliation on $X$. Then we define
+    \begin{enumerate}
+        \item $V_A=\lbrace \Delta|\Delta=A+B, B\in V\rbrace$
+        \item $\mathcal{L}_A(V)=\lbrace \Delta=A+B\in V_A|K_{\mathcal{F}}+\Delta \text{ is log canonical and } B\geqslant 0\rbrace$
+        \item $\mathcal{E}_{A,\pi}(V)=\lbrace \Delta\in \mathcal{L}_A(V)|K_{\mathcal{F}}+\Delta\text{ is pseudo-effective over $U$ }\rbrace$
+        \item $\mathcal{N}_{A,\pi}(V)=\lbrace \Delta\in \mathcal{L}_{A}(V)|K_{\mathcal{F}}+\Delta \text{ is nef over $U$ }\rbrace$
+        \item Given a birational map $\phi:X\dashrightarrow Y$ over $U$, define \[ 
+        \mathcal{L}_{\phi,A,\pi}(V)=\lbrace \Delta\in \mathcal{E}_{A,\pi}(V)| \phi \text{ is a log terminal model for $(\mathcal{F},\Delta)$ over $U$}\rbrace\]
+        \item And finally given a rational map $\psi:X\dashrightarrow Z$ over $U$, we define
+        \[
+        \mathcal{A}_{\psi,A,\pi}(V)=\lbrace \Delta\in \mathcal{E}_{A,\pi}(V)| \psi \text{ is the ample model for $K_{\mathcal{F}}+\Delta$ over $U$}\rbrace
+        \]
+        
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Two Mori fiber space $\phi:X\rightarrow S$ and $\psi:Y\rightarrow T$ are said to be log MMP related if they are results of running a $(\mathcal{F},\Phi)$-MMP, where $\mathcal{F}$ is a corank-$1$ foliation on $Z$ and $(\mathcal{F},\Phi)$ is F-dlt with $\lfloor \Phi\rfloor =0$ and $Z$ is potentially klt.
+\end{definition}
+In this article we assume $X,Y,Z$ in the above defintion are all $3$-fold.
+
+\begin{theorem}\label{CGT1}
+    Let $\pi:X\rightarrow U$ be a morphism of normal projective varieties . Let $(\mathcal{F},\Delta=A+B)$ be a foliated log canonical pair, where $\mathcal{F}$ is a corank 1 foliation on $X$, and $A\geqslant 0$ is ample and $B\geqslant 0$ and all the components of $\Delta$ is generically transverse to $\mathcal{F}$.\\
+    If  there is a F-dlt pair $(\mathcal{F},\Delta_0)$,with $\lfloor\Delta_0\rfloor=S$. Then we may find a general ample $\mbQ$-div $A'$ over $U$, an affine subspace $V'$ of $Wdiv_{\mbR}(X)$, which is defined over rationals, a divisor $\Delta'\in \mathcal{L}_{S+A'}(V')$ and a rational affine linear isomorphism $L:V_{S+A}\rightarrow V'_{S+A'}$, such that
+   \begin{enumerate}
+        \item $L$ preserves $\mbQ$-linear equivalence over $U$,
+        \item $L(\mathcal{L}_{S+A}(V))$ is contained in the interior of $\mathcal{L}_{S+A'}(V')$,
+        \item $K_{\mathcal{F}}+\Delta'$ is F-dlt 
+        
+    \end{enumerate}
+    In Particular we may find a F-dlt pair $(\mathcal{F},\Delta'=A'+B')$ where $A'\geqslant 0$ is a general ample $\mbQ$-divisor over $U$, $B'\geqslant 0$ and $K_{\mathcal{F}}+\Delta'\sim_{\mbR ,U} K_{\mathcal{F}}+\Delta$, with $\lfloor \Delta'\rfloor=\lfloor \Delta_0\rfloor$.
+\end{theorem}
+%First we need the following lemma\footnote{add citation}
+%\begin{lemma}
+%    Let $\pi:X\rightarrow U$ be a projective morphism of normal projective varieties, with $\mathcal{F}$ a corank 1 foliation on $X$, with $\dim X=3$. Let $V$ be a finite dimensional affine subspace of $WDiv_{\mbR}(X)$, which is defined over the rationals, and let $A$ be a general ample $\mbQ$-divisor over $U$. Suppose there is a klt pair $(\mathcal{F},\Delta_0)$, and let $G\geqslant 0$ be any divisor.\\
+  %  Then we may find a general ample $\mbQ$-div $A'$ over $U$, an affine subspace $V'$ of $Wdiv_{\mbR}(X)$, which is defined over rationals, a divisor $\Delta_0\in \mathcal{L}_{A'}(V')$ and a rational affine linear isomorphism $L:V_{A}\rightarrow V'_{A'}$, such that
+ %   \begin{enumerate}
+        %\item $L$ preserves $\mbQ$-linear equivalence over $U$,
+        %\item $L(\mathcal{L}_{A}(V))$ is contained in the interior of $\mathcal{L}_{A'}(V')$,
+        %\item $K_{\mathcal{F}}+\Delta_0'$ is klt, and 
+        %\item for any $\Delta\in L(\mathcal{L}_{A}(V))$, the support of $\Delta$ contains the support of $G$.
+    %\end{enumerate}
+%\end{lemma}
+\begin{proof}
+Let $W$ be the vector space spanned by the components of $\Delta_0\in \mathcal{L}(W)$ and note that $\mathcal{L}(W)$ is a non-empty rational polytope. But then $\mathcal{L}(W)$ contains a rational point and so, possibly replacing $\Delta_0$, we may assume that $K_{\mathcal{F}}+\Delta_0$ is $\mbQ$-Cartier. We first prove the result in the case that $K_{\mathcal{F}}+\Delta$ is $\mbR$-Cartier for every $\Delta\in V_{S+A}$. By compactness, we may pick $\mbQ$-divisors $\Delta_1,\Delta_2,..,\Delta_l\in V_{S+A}$ such that $\mathcal{L}_{S+A}(V)$ is contained in the simplex spanned by $\Delta_1,\Delta_2,...,\Delta_l$. Pick a rational number $\epsilon\in (0,1/4]$ such that $\epsilon(\Delta_i-\Delta_0)+(1-2\epsilon)A$ is an ample $\mbQ$-divisor over $U$, for $1\leqslant i\leqslant l$. Pick $A_i\sim_{\mbQ,U}\epsilon(\Delta_i-\Delta_0)+(1-2\epsilon)A$, general ample $\mbQ$-divisor over $U$. Pick $A'\sim_{\mbQ,U}\epsilon A$ a general ample $\mbQ$-divisor over $U$. If we define $L:V_{S+A}\rightarrow WDiv_{\mbR}(X)$ by \[
+L(\Delta_i)=(1-\epsilon)\Delta_i+A_i+\epsilon\Delta_0+A'-(1-\epsilon)A\sim_{\mbQ,U} \Delta_i,
+\] 
+and extend to the whole of $V_{S+A}$ by linearity, then $L$ is an injective rational linear map which preserves $\mbQ$-linear equivalence over $U$. We let $V'$ be the rational affine subspace of $WDiv_{\mbR}(X)$ defined by $V'_{S+A'}=L(V_{S+A})$. Note that $K_{\mathcal{F}}+\Delta_0'$ is F-dlt, where $\Delta_0'=A'+\Delta_0$. $L$ is the composition of $L_1(\Delta_i)=\Delta_i+A_i/(1-\epsilon)+A'-A$ and $L_2(\Delta)=(1-\epsilon)\Delta+\epsilon\Delta_0'$. If $\Delta\in \mathcal{L}_A(V)$ then $K_{\mathcal{F}}+\Delta+A'-A$ is log canonical, and as $A_i$ is a general ample $\mbQ$-divisor over $U$ it follows that $K_{\mathcal{F}}+\Delta+A'-A+4/3 A_i$ is log canonical. As $1/(1-\epsilon)<4/3$, it follows that if $\Delta\in \mathcal{L}_A(V)$ then $K_{\mathcal{F}}+L_1(\Delta)$ is log canonical. Therefore, if $\Delta\in \mathcal{L}_A(V)$ then $K_{\mathcal{F}}+L(\Delta)$ is F-dlt.\\
+Now as $(\mathcal{F},\Delta_0)$ is F-dlt, there are only finitely many log canonical centres of co-dimension at-least two out side $\lfloor \Delta\rfloor$. So we can choose a divisor $G'$ which does not contain any lc centres of $(\mathcal{F},\Delta_0)$ and $S+A'+G'$ belongs to the interior of $\mathcal{L}_{A'+S}(V')$. By the choice of $G'$ and as $X$ is smooth at the generic point of each lc centre we can choose a $\mbQ$-Cartier divisor $H\geqslant G'$ which contains no lc centre of $(\mathcal{F},\Delta_0)$. Pick a rational number $\eta>0$ such that $A'-\eta H$ is ample over $U$. Pick $A''\sim_{\mbQ,U} A'-\eta H$ a general $\mbQ$-divisor over $U$. Let $\delta$ be a rational number and let $T:Wdiv_{\mbR}(X)\rightarrow Wdiv_{\mbR}(X)$ be the translation by $\delta(\eta H+A''-A')\sim_{\mbQ,U}0$. If $V''$ is the span of $V'$, $A'$ and $H$ and $\delta>0$ is sufficiently small then $T(L(\mathcal{L}_{S+A}(V))$ is contained in the interior of $\mathcal{L}_{\delta A''+S}(V'')$, and $(\mathcal{F},T(\Delta_0'))$ is F-dlt with $\lfloor T(\Delta'_0)\rfloor=S$. Now we replace $L$ by $T\circ L$, $V'_{S+A'}$ by $T(L(V_{S+A}))$, $A$ by $\delta A''$ and $\Delta_0$ by $T(\Delta_0')$ and we are done for the case $K_{\mathcal{F}}+\Delta$ $\mbR$-Cartier for $\Delta\in V_{S+A}$. \\
+
+We now turn to the general case. If $W_0=\lbrace B\in V|K_{\mathcal{F}}+A+B$ is $\mbR$-Cartier$\rbrace$, then $W_0\subset V$ is an affine subspace of $V$, which is defined over rationals. Note that $\mathcal{L}_{S+A}(V)=\mathcal{L}_{S+A}(W_0)$. By what we already proved, there is an affine linear isomorphism $L_0:W_0\rightarrow W_0'$, which preserves $\mbQ$-linear equivalence over $U$, a general ample divisor $A'$ over $U$ such that $L_0(\mathcal{L}_{S+A}(W_0)$ is contained in the interior of $\mathcal{L}_{S+A'}(W'_0)$, and there is a divisor $\Delta_0'\in \mathcal{L}_{S+A'}(W_0')$ such that $K_{\mathcal{F}}+\Delta_0'$ is F-dlt. \\
+Let $W_1$ be any subspace of $WDiv_{\mbR}(X)$, which is defined over the rationals, such that $V=W_0+W_1$ and $W_0\cap W_1=\lbrace 0\rbrace $. Let $V'=W_0'+W_1$. Since $L_0$ preserves $\mbQ$-linear equivalence over $U$, $W_0'\cap W_1=W_0\cap W_1$ and $\mathcal{L}_{A'}(V')=\mathcal{L}_{A'}(W_0')$. If we define $L:V_A\rightarrow V_{A'}'$, by sending $A+B_0+B_1$ to $L_0(A+B_0)+B_1$, where $B_i\in W_i$, then $L$ is a rational affine linear isomorphism, which preserves $\mbQ$-linear equivalence over $U$, and $\Delta_0'\in \mathcal{L}_{A'}(V')$.
+ 
+
+    
+\end{proof}
+Next we need the idea of Shokurov polytope in foliated set-up. 
+\begin{theorem}\label{SPT}
+    Given a ray $R\subset \overline{NE}(X)$, let \[
+    R^{\bot}=\lbrace \Delta\in \mathcal{L}(V)| (K_{\mathcal{F}}+\Delta)\cdot R=0\rbrace.
+    \]
+    Let $\pi:X\rightarrow U$ be a morphism of normal projective varieties with, and let $\mathcal{F}$ be a corank $1$ foliation on $X$. Let $V$ be a finite dimensional affine subspace of $WDiv_{\mbR}(X)$, which is defined over rationals, such that support of all elements of $V$ is generically transverse to the foliation. Fix an ample $\mbQ$-divisor $A$ over $U$. Suppose there is a F-dlt pair $(\mathcal{F},\Delta_0)$.\\
+    Then the set of hyperplanes $R^{\bot}$ is finite in $\mathcal{L}_A(V)$ as $R$ ranges over the set of extremal rays of $\overline{NE}(X/U)$. In particular $\mathcal{N}_{A,\pi}(V)$ is a rational polytope.\\
+    Also let $\phi:X\dashrightarrow Y$ be any birational contraction over $U$. Then $\mathcal{L}_{\phi,A,\pi}(V)$ is a rational polytope. Moreover there are finitely many morphism $f_i:Y\rightarrow Z_i$ over $U$, $1\leqslant i\leqslant k$, such that if $f:Y\rightarrow Z$ is any contraction morphism over $U$ and there is a divisor $D$ on $Z$ ample over $U$, such that $K_{\mathcal{F}_Y}+\Gamma=\phi_*(K_{\mathcal{F}}+\Delta)\sim_{\mbR,U}f^*D$ for some $\Delta\in\mathcal{L}_{\phi,A,\pi}(V)$, then there is an index $1\leqslant i\leqslant k$ and an iso morphism $\eta: Z_i\rightarrow Z$ such that $f=\eta\circ f_i$.
+\end{theorem}
+\begin{proof}
+ The proof is almost same as \cite[Theoem $3.11.1$ and Corollary $3.11.2$]{BCHM} as the foliation $\mathcal{F}$ does not hinder the structure of $\overline{NE}(X)$. We present an outline of the proof. Since $\mathcal{L}_{A}(V)$ is compact it is sufficient to prove this locally about any point $\Delta\in \mathcal{L}_A(V)$. By theorem \ref{CGT1} we may assume that $K_{\mathcal{F}}+\Delta$ is F-dlt. Choose $\Delta'$ sufficiently close to $\Delta$ such that $\Delta'-\Delta+A/2$ is ample over $U$. Let $R$ be an extremal ray over $U$ such that $(K_{\mathcal{F}}+\Delta')\cdot R=0$, where $\Delta'\in \mathcal{L}_A(V)$. We have\[
+ (K_{\mathcal{F}}+\Delta-A/2)\cdot R=(K_{\mathcal{F}}+\Delta')\cdot R-(\Delta'-\Delta+A/2)\cdot R<0
+ \]
+Since $\Delta=A+B$, for some ample divisor $A$ and effective divisor $B$, there are only finitely many such rays. $\mathcal{N}_{A,\pi}(V)$ is a closed subset of $\mathcal{L}_A(V)$. If $K_{\mathcal{F}}+\Delta$ is not nef over $U$ then by cone theorem we have that $K_{\mathcal{F}}+\Delta$ is negative on a rational curve $\Sigma$ tangent to $\mathcal{F}$ which generate an extremal ray $R$ of $\overline{NE}(X)$. Thus $\mathcal{N}_{A,\pi}(V)$ is intersection of $\mathcal{L}_A(V)$ with the half-spaces determined by finitely many extremal rays of $\overline{NE}(X/U)$.\\
+Similarly as in \cite[Corollary $3.11.2$]{BCHM} we can proof that $\mathcal{L}_{\phi,A,\pi}(V)$ is a polytope. We present the outline of the proof of finiteness of ample models. Let $f:Y\rightarrow Z$ be a contraction morphism over $U$, such that \[
+K_{\mathcal{F}_Y}+\Gamma=K_{\mathcal{F}_Y}+\phi_*\Delta\sim_{\mbR,U}f^*D
+\]
+Where $\Delta\in \mathcal{L}_{\phi,A,\pi}(V)$ and $D$ is an ample $\mbR$-divisor over $U$. $\Gamma$ belongs to the interior of unique face $G=R^{\bot}$ of $\mathcal{N}_{C,\psi}(W)$, where $W$ is image of $V$ under $\phi$ and $C=\phi_*A$, and the curves in $R$ are all the curves contracted by $f$. Now $\Delta$ belongs to interior of unique face $F$ of $\mathcal{L}_{\phi,A,\pi}(V)$ and $G$ is determined by $F$. But as $\mathcal{L}_{\phi,A,\pi}(V)$ is a rational polytope it has finitely many faces. By rigidity lemma $f$ is determined by $R$, hence we are done.
+\end{proof}
+\begin{corollary}\label{SPT2}
+    With the same setup as theorem $\ref{SPT}$ let $(\mathcal{F},\Delta_0)$ be a dlt pair with $\lfloor \Delta\rfloor=0$, let $f:X\rightarrow Z$ be a morphism over $U$ such that $\Delta_0\in \mathcal{L}_A(V)$ and $K_{\mathcal{F}}+\Delta_0\sim_{\mbR,U}f^* H$, where $H$ is an ample divisor over $U$. Let $\phi:X\dashrightarrow Y$ be a birational map over $Z$.\\
+    Then there is a neighbourhood $P_0$ of $\Delta_0$ in $\mathcal{L}_A(V)$ such that for all $\Delta\in P_0$ if $\phi$ is a log terminal model for $K_{\mathcal{F}}+\Delta$ over $Z$ then $\phi$ is a log terminal model for $K_{\mathcal{F}}+\Delta$ over $U$.
+\end{corollary}
+\begin{proof}
+    The proof is same as \cite[Corollary $3.11.3$]{BCHM}.
+\end{proof}
+Now to define some morphisms we will need a basepoint-free theorem for for some particular kind of divisors which we proof below.
+\begin{lemma}\label{BPF}
+    Let $X$ be a normal projective $3$-fold and let $\mathcal{F}_X$ be a corank-$1$ foliation. Suppose that $X$ is potentially klt( alternatively $X$ has $\mbQ$-factorial singularities ). Let $\Delta$ be a divisor such that $\Delta=f_*(A+B)$, where $f:Z\dashrightarrow X$ is birational, $A$ is ample and $B$ is effecective. Also suppose $f$ is $K_{f^{-1}\mathcal{F}_X}+A+B$-negative, $(\mathcal{F}_X,\Delta)$ is F-dlt and $K_{\mathcal{F}_X}+\Delta$ is nef. Then $K_{\mathcal{F}_X}+\Delta$ is semi-ample.
+\end{lemma}
+\begin{proof}
+     Let $f^{-1}\mathcal{F}_X=\mathcal{F}$. By \cite[Lemma $3.26$]{CS21} we can assume $\lfloor \Delta\rfloor=0$. Let $H$ be a general ample $\mbQ$-divisor on $X$. After possibly replacing $H$ by a smaller multiple we may assume that if $H_Z$ is the strict transform of $H$ on $Z$ then $A-H_Z$ is ample. By \cite[Lemma $3.24$]{CS21}, there exists an effective $\mbQ$-divisor $C\sim A-H_Z$ and $\epsilon>0$ sufficiently small such that $(\mathcal{F},A+B+\epsilon C)$ is F-dlt and $f$ is still $K_{\mathcal{F}}+\Delta+\epsilon C$-negative. Thus by negativity lemma and proof of \cite[Lemma $3.11$]{CS21} it follows that $(\mathcal{F},\Delta+f_*\epsilon C)$ is also F-dlt. Now $f_*A\sim_{\mbQ}f_*C+H$. Thus for sufficiently small rational number $\delta>0$, we may choose $A'=\delta H$ and $C'=(1-\delta) f_*A+\delta f_*C$. So we have $\Delta':=A'+C'+f_*B$ with $\Delta'\sim_{\mbQ}f_*\Delta$ and $(\mathcal{F}',\Delta')$ is F-dlt. Hence by \cite[Theorem $9.4$]{CS21} we have $K_{\mathcal{F}}+\Delta$ is semi ample.
+\end{proof}
+\section{Log Geography of log terminal models}
+Due to \cite[Theorem $2.1$]{SS19} we have existence of Mori fiber space for $(\mathcal{F},\Delta)$ F-dlt pair where $\mathcal{F}$ is a co-rank one foliation on a $\mbQ$-factorial normal projective $3$-fold $X$. By \cite[Theorem $1.2$]{CS21} and \cite[Theorem $2.6$]{SS19} we know the existence of log terminal models. Let us proceed to proof the finiteness of log terminal models. We will need one lemma first.
+\begin{theorem}\label{Finiteness}
+ Let $\pi:X\rightarrow U$ be a morphism of normal projective varieties with $\dim X=3$ and $X$ has $\mbQ$-factorial singularities, and $\mathcal{F}$ be a co-rank 1 foliation on $X$. Let $V$ be a finite dimensional affine subspace of $WDiv_{\mbR}(X)$, which is defined over rationals. Fix a general ample $\mbQ$-divisor $A$ over $U$. Let $\mathcal{C}\subset \mathcal{L}_A(V)$ be a rational polytope. Suppose there exists a divisor $D_0$ with $\lfloor D\rfloor=0$ such that $(\mathcal{F},D_0)$ is F-dlt.\\
+ Then there are finitely many rational maps $\phi_i:X\dashrightarrow Y_i$ over $U$, $1\leqslant i\leqslant k$, with the property that if $\Delta\in \mathcal{C}\cap \mathcal{E}_{A,\pi}(V)$ then there is an index $1\leqslant i\leqslant k$ such that $\phi_i$ is a log terminal model of $K_{\mathcal{F}}+\Delta$ over $U$.    
+\end{theorem}
+\begin{proof}
+Suppose $\Delta\in \mathcal{C}$ and $K_{\mathcal{F}}+\Delta'\sim_{\mbR,U}K_{\mathcal{F}}+\Delta$ is F-dlt by theorem \ref{CGT1}. If $\psi:X\dashrightarrow Z$ is a log terminal model of $K_{\mathcal{F}}+\Delta$ over $U$ if and only if $\psi$ is a log terminal model of $K_{\mathcal{F}}+\Delta'$ over $U$ by application of negativity lemma. So we can assume that if $\Delta\in \mathcal{C}$ then $K_{\mathcal{F}}+\Delta$ is F-dlt. Possibly replacing $V_A$ by span of $\mathcal{C}$ we can assume that $\mathcal{C}$ spans $V$.\\
+Suppose that $\Delta_0\in \mathcal{C}\cap\mathcal{E}_{A,\pi}(V)$. By non vanishing and existence of log terminal model, we have a log terminal model $\phi:X\dashrightarrow Y$ over $U$ for $K_{\mathcal{F}}+\Delta_0$. In particular we may assume $\dim \mathcal{C}>0$. Now we proceed by induction on dimension of $\mathcal{C}$.\\
+First assume that there is a divisor $\overline{\Delta}\in \mathcal{C}$ such that $K_{\mathcal{F}}+\overline{\Delta}\sim_{\mbR,U}0$. Pick $\Theta\in\mathcal{C}$, $\Theta\neq \overline{\Delta}$. Then there is a divisor $\Delta$ on the boundary of $\mathcal{C}$ such that $\Theta=\lambda\Delta+(1-\lambda)\overline{\Delta}$ for some $0<\lambda\leqslant 1$. Now $K_{\mathcal{F}}+\Theta=\lambda(K_{\mathcal{F}}+\Delta)+(1-\lambda)(K_{\mathcal{F}}+\overline{\Delta})\sim_{\mbR,U}\lambda (K_{\mathcal{F}}+\Delta)$. In particular $\Delta\in\mathcal{E}_{A,\pi}(V)$ if and only if $\Theta\in\mathcal{E}_{A,\pi}(V)$, also $K_{\mathcal{F}}+\Delta$ and $K_{\mathcal{F}}+\Theta$ have same log terminal model over $U$. On the other hand the boundary of $\mathcal{C}$ is contained in finitely many affine hyperplanes defined over the rationals, we are done by induction on the dimension of $\mathcal{C}$.\\
+We now prove the general case. By linear isomorphism we may assume that $\mathcal{C}$ is contained in interior of $\mathcal{L}_A(V)$. Since $\mathcal{L}_A(V)$ is compact and $\mathcal{C}\cap \mathcal{E}_{A,\pi}(V)$ is closed, it is sufficient to prove the result locally about any divisor $\Delta$ in the set. Let $\phi:X\dashrightarrow Y$ be a log terminal model over $U$ for $K_{\mathcal{F}}+\Delta_0$. Let $\Gamma=\phi_*\Delta_0$.
+Pick a neighbourhood $\mathcal{C}_0\subset \mathcal{L}_A(V)$ of $\Delta_0$, which is a rational polytope. As $\phi$ is $(K_{\mathcal{F}}+\Delta_0)$-negative we may pick $\mathcal{C}_0$ such that for any $\Delta\in\mathcal{C}_0$, $a(F,\mathcal{F},\Delta)<a(F,\mathcal{F}_Y,\Gamma)$ for all $\phi$-exceptional divisor $F\subset X$ satisfying $a(F,\mathcal{F},\Delta)>-\epsilon(F)$, where $\Gamma=\phi_*\Delta$. Since $K_{\mathcal{F}_Y}+\Gamma_0$ is F-dlt and $Y$ is $\mbQ$-factorial, possibly shrinking $\mathcal{C}_0$ we may assume that $K_{\mathcal{F}_Y}+\Gamma$ is F-dlt for all $\Delta\in \mathcal{C}_0$. In particular, replacing $\mathcal{C}$ by $\mathcal{C}_0$ we may assume that the rational polytope $\mathcal{C}'=\phi_*(\mathcal{C})$ is contained in $\mathcal{L}_{\phi_* A}(W)$, where $W=\phi_*(V)$. By \ref{CGT1}, there is a affine linear isomorphism $L:W\rightarrow V'$ and a general ample $\mbQ$-divisor $A'$ over $U$ such that $L(\mathcal{C}')\subset \mathcal{L}_{A'}(V')$, $L(\Gamma)\sim_{\mbQ,U}\Gamma$ for all $\Gamma\in \mathcal{C}'$ and $K_{\mathcal{F}_Y}+\Gamma$ is F-dlt for any $\Gamma\in L(\mathcal{C}')$.\\
+Note that $\dim V'\leqslant \dim V$. As $L(\Gamma)\sim_{\mbQ,U}\Gamma$ and $\phi$ is $K_{\mathcal{F}}+\Delta$ negative, we have that any log terminal model of $(\mathcal{F}_Y,L(\Gamma))$ over $U$ is a log terminal model of $(\mathcal{F},\Delta)$ for any $\Delta\in \mathcal{C}$. Replacing $\mathcal{F}$ by $\mathcal{F}_Y$ and $\mathcal{C}$ by $L(\mathcal{C}')$ we may therefore assume that $K_{\mathcal{F}}+\Delta_0$ is $\pi$-nef.\\
+By lemma \ref{BPF}, $K_{\mathcal{F}}+\Delta_0$ is semi-ample, hence $K_{\mathcal{F}}+\Delta_0$ has an ample model $\psi:X\rightarrow Z$ over $U$. In particular $K_{\mathcal{F}}+\Delta_0\sim_{\mbR,Z} 0$. By what we have already proved there are finitely many birational maps $\phi_i:X\dashrightarrow Y_i$ over $Z$, $1\leqslant i\leqslant k$, such that for any $\Delta\in \mathcal{C}\cap \mathcal{E}_{A,\pi}(V)$, there is an index $i$ such that $\phi_i$ is a log terminal model for $K_{\mathcal{F}}+\Delta$ over $Z$. Since there are only finitely many indices $1\leqslant i\leqslant k$, possibly shrinking $\mathcal{C}$, corollary \ref{SPT2} implies that if $\Delta\in \mathcal{C}$ then $\phi_i$ is a log terminal model for $K_{\mathcal{F}}+\Delta$ over $Z$ if and only if it is log terminal for $K_{\mathcal{F}}+\Delta$ over $U$. Suppose that $\Delta\in \mathcal{C}\cap \mathcal{E}_{A,\pi}(V)$. Then $\Delta\in \mathcal{C}\cap \mathcal{E}_{A,\psi}(V)$ and so there is an index $1\leqslant i\leqslant k$ such that $\phi_i$ is a log terminal model for $K_{\mathcal{F}}+\Delta$ over $Z$. But then $\phi$ is a log terminal model for $K_{\mathcal{F}}+\Delta$ over $U$.
+
+
+
+
+
+
+
+
+
+
+    
+\end{proof}
+
+Now we come the main theorem of this section which is counter part of \cite[Corollary $1.1.5$]{BCHM}.
+\begin{theorem}\label{LGLCM}
+    Let $\pi:X\rightarrow U$ be a morphism of normal projective varieties, with $\mathcal{F}$ is a co-rank one foliation on $X$, with $\dim X=3$, and $X$ is potentially klt. Let $V$ be a finite dimensional affine subspace of $WDiv_{\mbR}(X)$ defined over the rationals. Suppose there is a divisor $\Delta_0\in V$ such that $K_{\mathcal{F}}+\Delta_0$ is F-dlt. Let $A$ be a general ample $\mbQ$-divisor over $U$, which has no components in common with any elements of $V$.
+    \begin{enumerate}
+        \item There are finitely many birational contractions $\phi_i:X\dashrightarrow Y_i$ over $U$,
+        $1\leqslant i\leqslant p$ such that \[
+        \mathcal{E}_{A,\pi}(V)=\cup_{i=1}^{p} \mathcal{L}_i
+        \]
+        where each $\mathcal{L}_i=\mathcal{L}_{\phi_i,A,\pi}(V)$ is a rational polytope. Moreover, if $\phi:X\rightarrow Y$ is a log terminal model of $(X,\Delta)$ over $U$, for some $\Delta\in \mathcal{E}_{A,\pi}(V)$, then $\phi=\phi_i$, for some $1\leqslant i\leqslant p$
+        \item There are finitely many rational maps $\psi_j:X\dashrightarrow Z_j$ over $U$, $1\leqslant j\leqslant q$ which partitions $\mathcal{E}_{A,\pi}(V)$ into subsets $\mathcal{A}_j=\mathcal{A}_{\psi_j,A,\pi}(V)$
+        \item For every $1\leqslant i\leqslant p$ there is a $1\leqslant j\leqslant q$ and a morphism $f_{i,j}:Y_i\rightarrow Z_j$ such that $\mathcal{L}_i\subset \overline{A}_j$.
+    \end{enumerate}
+    in particular $\mathcal{E}_{A,\pi}(V)$ and each $\overline{A}_j$ are rational polytopes.
+\end{theorem}
+
+\begin{proof}
+  To prove $(1)$ and $(2)$, by theorem \ref{Finiteness} and \ref{SPT} and since ample models are unique by rigidity lemma, it suffices to prove that if $\Delta\in \mathcal{E}_{A,\pi}(V)$ then $K_{\mathcal{F}}+\Delta$ has both a log terminal model over $U$ and an ample model over $U$. By theorem \ref{CGT1} we may assume that $K_{\mathcal{F}}+\Delta$ is F-dlt. \cite{CS21} and \cite{SS19} implies the existence of log terminal model and and ample model over $U$.\\
+  Proof of $(3)$ follows from the proof of theorem \ref{SPT}. 
+
+
+
+
+    
+    \end{proof}
+\section{Sarkisov Program}
+Now we move on to prove that birational maps between two foliated log MMP mori fiber spaces can be factored in to composition of Sarkisov links, namely Sarkisov program. In this section we take the approach of \cite{HM09}.\\
+First let us set some notation. Given a rational contraction $f:Z\dashrightarrow X$, define
+$\mathcal{A}_{A,f}(V)=\lbrace \Theta\in \mathcal{E}_{A}(V)|f$ is the ample model of $(\mathcal{F},\Theta)\rbrace$, where $\mathcal{F}$ is a co-rank $1$ foliation on $Z$ with $\dim Z=3$ and $Z$ has $\mbQ$-factorial singularities. Let $\mathcal{C}_{A,f}(V)$ denote the closure of $\mathcal{A}_{A,f}(V)$. Also assume there is a $\mbQ$-divisor $D_0$ with $\lfloor D_0\rfloor=0$ such that $(\mathcal{F},D_0)$ is F-dlt.
+
+
+\begin{theorem}\label{Lsm1}
+ There are finitely many $1\leqslant i\leqslant m$ rational contractions $f_i:Z\rightarrow X_i$ with the following properties:
+ \begin{enumerate}
+     \item $\lbrace \mathcal{A}_i=\mathcal{A}_{A,f_i}|1\leqslant i\leqslant m$ is a partition of $\mathcal{E}_A(V)$. $\mathcal{A}_i$ is a finite union of interior of rational polytopes. If $f_i$ is birational then $\mathcal{C}_i=\mathcal{C}_{A,f_i}$ is a rational polytope. 
+     \item If $1\leqslant i\leqslant m$ and $1\leqslant j\leqslant m$ are two indices such that $\mathcal{A}_j\cap \mathcal{C}_i\neq \varnothing$ then there is a contraction morphism $f_{i,j}:X_i\rightarrow X_j$ and a factorisation $f_j=f_{i,j}\circ f_i$.
+     \item Now suppose in addition that $V$ spans the N\'eron-Severi group of $Z$. Pick $1\leqslant i\leqslant m$ such that a connected component $\mathcal{C}$ of $\mathcal{C}_i$ intersects the interior of $\mathcal{L}_A(V)$. The following are equivalent 
+     \begin{enumerate}
+         \item $\mathcal{C}$ spans $V$.
+        \item If $\Theta\in \mathcal{A}_i\cap \mathcal{C}$ then $f_i$ is a log terminal model of $K_{\mathcal{F}}+\Theta$.
+        \item $f_i$ is birational and $X_i$ is $\mbQ$-factorial.
+        
+     \end{enumerate}
+     \item If $1\leqslant i\leqslant m$ and $1\leqslant j\leqslant m$ are two indices such that $\mathcal{C}_i$ spans $V$ and $\Theta$ is general point of $\mathcal{A}_j\cap \mathcal{C}_i$ which is also a point of the interior of $\mathcal{L}_A(V)$ then $\mathcal{C}_i$ and $\overline{NE}(X_i/X_j)^*\times \mbR^k$ are locally isomorphic in a neighbourhood of $\Theta$, for some $k\geqslant 0$. Further the relative Picard number of $f_{i,j}:X_i\rightarrow X_j$ is equal to the difference in the dimensions of $\mathcal{C}_i$ and $\mathcal{C}_j\cap \mathcal{C}_i$. 
+     
+ \end{enumerate}
+\end{theorem}
+\begin{proof}
+ Part $(1)$ follows from theorem \ref{LGLCM}. We begin our proof by proving $(2)$.\\
+Pick $\Theta\in \mathcal{A}_j\cap\mathcal{C}_i$ and $\Theta'\in \mathcal{A}_i$ so that $\Theta_t= t\Theta'+(1-t)\Theta$ if $t\in (0,1]$. By finiteness of log terminal models we may find a positive constant $\delta>0$ and a birational contraction $f:Z\rightarrow X$ which is a log terminal model of $K_{\mathcal{F}}+\Theta_t$ for $t\in (0,\delta]$. Replacing $\Theta'=\Theta_1$ by $\Theta_{\delta}$ we may assume $\delta=1$. If we set $\Delta_t=f_*\Theta_t$ then $K_{\mathcal{F}_X}+\Delta_t$ is F-dlt and nef, and $f$ is $K_{\mathcal{F}}+\Theta_t$ non positive for $t\in [0,1]$. Theorem \ref{BPF} implies that $K_{\mathcal{F}_X}+\Delta_t$ is semiample and so there is a induced contraction morphism $g_i:X\rightarrow X_i$ together with ample divisors $H_{1/2}$ and $H_1$ such that $K_{\mathcal{F}_X}+\Delta_{1/2}=g_i^*H_{1/2}$ and $K_{\mathcal{F}}+\Delta_1=g_i^*H_1$. If we set $H_t=(2t-1)H_1+2(1-t)H_{1/2}$ then $K_{\mathcal{F}_X}+\Delta_t=g_i^*H_t$, for all $t\in [0,1]$.
+As $K_{\mathcal{F}_X}+\Delta_0$ is semiample, it follows that $H_0$ is semiample and the associated contraction $f_{i,j}:X_i\rightarrow X_j$ is the required morphism.\\
+Now we move on to prove part $(3)$. Suppose $V$ spans the N\'eron-Severi group of $Z$. Suppose that $\mathcal{C}$ spans $V$. Pick $\Theta$ in the interior of $\mathcal{C}\cap \mathcal{A}_i$. Let $f:Z\dashrightarrow X$ be a log terminal model of $K_{\mathcal{F}}+\Theta$. by \ref{Finiteness} $f=f_j$ for some $j$ and $\Theta\in \mathcal{C}_j$. But then $\mathcal{A}_i\cap \mathcal{A}_j\neq \varnothing$ so that $i=j$. If $f_i$ is a log terminal model of $K_{\mathcal{F}}+\Theta$ then $f_i$ is birational and $X_i$ is $\mbQ$-factorial.\\
+Fiannly suppose that $f_i$ is birational and $X_i$ is $\mbQ$-factorial. Fix $\Theta\in \mathcal{A}_i$. Pick any divisor $B\in V$ such that $-B$ is ample and $K_{\mathcal{F}_{X_i}}+f_{i*}(\Theta+B)$ is ample and $\Theta+B\in\mathcal{L}_A(V)$. Then $f_i$ is $K_{\mathcal{F}}+\Theta+B$-negative and $\Theta+B\in \mathcal{A}_i$. But as we can find a basis of N\'eron-Severi group of $Z$ consisted of ample divisor, $\mathcal{C}$ spans $V$. So we have $(3)$.\\
+Proof of $(4)$ is exactly same as the proof of \cite[$(4)$ of Theorem $3.3$]{HM09}. We will just need to replace \cite[Corollary $3.11.3$]{BCHM} by corollary \ref{SPT2}.
+
+ 
+\end{proof}
+From now on in this section we assume $V$ has dimension two that satisfies all the conditions of the previous theorem.
+\begin{lemma}\label{LSM2}
+    Let $f:Z\dashrightarrow X$ and $g:Z\dashrightarrow Y$ be two rational contraction such that $\mathcal{C}_{A,f}$ is two dimensional and $\mathcal{O}=\mathcal{C}_{A,f}\cap\mathcal{C}_{A,g}$ is one dimensional. Assume that $\rho(X)\geqslant \rho(Y)$ and that $\mathcal{O}$ is not contained in the boundary of $\mathcal{L}_A(V)$. Let $\Theta$ be an interior point of $\mathcal{O}$ and let $\Delta=f_*\Theta$.\\
+    Then there is a rational contraction $\pi:X\dashrightarrow Y$ which factors $g=\pi\circ f$ and either 
+    \begin{enumerate}
+        \item $\rho(X)=\rho(Y)+1$ and $\pi$ is a $(K_{\mathcal{F}_X}+\Delta)$-trivial morphism in which case, either 
+        \begin{enumerate}
+            \item $\pi$ is birational and $\mathcal{O}$ is not contained in the boundary of $\mathcal{E}_A(V)$, in which case, either
+            \begin{enumerate}
+                \item $\pi$ is divisorial contraction and $\mathcal{O}\neq \mathcal{C}_{A,g}$ or
+                \item $\pi$ is a small contraction and $\mathcal{O}=\mathcal{C}_{A,g}$
+            \end{enumerate}
+            \item $\pi$ is a mori fiber space and $\mathcal{O}=\mathcal{C}_{A,g}$ is contained in the boundary of $\mathcal{E}_A(V)$, or
+        \end{enumerate}
+        \item $\rho(X)=\rho(Y)$, in which case, $\pi$ is a $K_{\mathcal{F}_X}+\Delta$-flop and $\mathcal{O}\neq \mathcal{C}_{A,g}$ is not contained in the boundary of $\mathcal{E}_A(V)$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    By assumtion $f$ is birational and $X$ is $\mbQ$-factorial. Let $h:Z\dashrightarrow W$ be the ample model corresponding to $K_{\mathcal{F}}+\Theta$. Since $\Theta$ is not a point of the boundary of $\mathcal{L}_A(V)$ if $\Theta$ belongs to the boundary of $\mathcal{E}_A(V)$ then $K_{\mathcal{F}}+\Theta$ is not big and so $h$ is not birational. As $\mathcal{O}$ is a subset of both $\mathcal{C}_{A,f}$ and $\mathcal{C}_{A,g}$ there are morphisms $p:X\rightarrow W$ and $q:Y\rightarrow W$ of relative picard number at most one by theorem \ref{Lsm1} part $4$. So there are only two possibilities
+    \begin{enumerate}
+        \item $\rho(X)=\rho(Y)+1$
+        \item $\rho(X)=\rho(Y)$
+    \end{enumerate}
+    Suppose we are in the first case. Then $q$ is the identity map and $\pi=p:X\rightarrow Y$ is a contraction morphism such that $g=\pi\circ f$. Suppose that $\pi$ is birational. Then $h$ is birational and $\mathcal{O}$ is not contained in boundary of $\mathcal{E}_A(V)$. If $\pi$ is divisorial then $Y$ is $\mbQ$-factorial and so $\mathcal{O}\neq \mathcal{C}_{A,g}$ by $(3)$ of theorem \ref{Lsm1}. If $\pi$ is small contraction then $Y$ is not $\mbQ$-factorial so $\mathcal{C}_{A,g}=O$ is one dimensional. If $\pi$ is a Mori fibre space then $\mathcal{O}$ is contained in the boundary of $\mathcal{E}_A(V)$ and $\mathcal{O}=\mathcal{C}_{A,g}$. \\
+    Now suppose we are in case $(2)$. We have $\rho(X/W)=\rho(Y/W)=1$. Again by theorem \ref{Lsm1} $p$ and $q$ can not be divisorial as $\mathcal{O}$ is one dimensional hence it can not generate $V$. So $W$ is not $\mbQ$-factorial. Hence $p$ and $q$ are small contractions and $\pi$ is a $K_{\mathcal{F}}+\Delta$-flop. 
+\end{proof}
+Now we define the further set up. Let $\Theta=A+B$ be a point of the boundary of $\mathcal{E}_A(V)$ in the interior of $\mathcal{L}_A(V)$. Let $\mathcal{T}_, \mathcal{T}_2,..\mathcal{T}_k$ be the polytoes $\mathcal{C}_i$ of dimension $2$ which contain $\Theta$. Possibly reordering assume that the intersections $\mathcal{O}_0$ and $\mathcal{O}_k$ of $\mathcal{T}_1$ and $\mathcal{T}_k$ with the boundary of $\mathcal{E}_A(V)$ and $\mathcal{O}_i=\mathcal{T}_i\cap \mathcal{T}_{i+1}$ are all one dimensional. Let $f_i=Z\dashrightarrow X_i$ be the rational contractions associated to $\mathcal{T}_i$ and $g_i:Z\dashrightarrow S_i$ be the rational contractions associated $\mathcal{O}_i$. Set $f=f_1:Z\dashrightarrow X$, $g=f_k:Z\dashrightarrow Y$, $X'=X_2$, $Y'=X_{k-1}$. Let $\phi:X\rightarrow S=S_0$, $\psi:Y\rightarrow T=S_k$ be the induced morphisms and let $Z\dashrightarrow R$ be the ample model of $K_{\mathcal{F}}+\Theta$. \\
+Next in this setup we provide conditions when two Mori fibre spaces are connected by Sarkisov links.
+\begin{theorem}
+    Suppose $\Phi$ is any divisor on $Z$ such that $K_{\mathcal{F}}+\Phi$ is F-dlt with $\lfloor \Phi\rfloor=0$ and $\Theta-\Phi$ is ample. Then $\phi$ and $\psi$ are two Mori fibre spaces which are outputs of the $(K_{\mathcal{F}}+\Phi)$-MMP which are connected by a Sarkisov link if $\Theta$ is contained in more than two polytopes.
+\end{theorem}
+\begin{proof}
+    Let us assume that number of polytopes, $k\geqslant 3$. The incidence relations between the corresponding polytopes yields following birational maps $p:X'\dashrightarrow X$ and $q:Y':\dashrightarrow Y$, since both $X$ and $X'$ are nef models of $K_{\mathcal{F}}+\Delta$ for $\Delta\in\mathcal{O}_1$ and $Y$ and $Y'$ are both nef models of $K_{\mathcal{F}}+\Delta$ for $\Delta\in \mathcal{O}_{k-1}$. $\phi:X\rightarrow S$ and $\psi:Y\rightarrow T$ are mori fibre spaces by lemma \ref{LSM2}. Pick $\Theta_1$ and $\Theta_k$ in the interior of $\mathcal{T}_1$ and $\mathcal{T}_k$ sufficiently close to $\Theta$ so that $\Theta_1-\Phi$ and $\Theta_2-\Phi$ are both ample.  Now we can find an ample divisor $H$ such that $K_{\mathcal{F}}+\Phi+H$ is F-dlt and ample and a positive real number $t<1$ such that $tH\sim_{\mbR}\Theta_1-\Phi$. Note that $f_1=f$ is the ample model of $K_{\mathcal{F}}+\Theta_1+tH$. Pick any $s<t$ sufficiently close to $t$ so that $f$ is $K_{\mathcal{F}}+\Phi+sH$-negative and $f$ is still the ample model for $K_{\mathcal{F}}+\Phi+sH$. Then $f$ is the unique log terminal model of $K_{\mathcal{F}}+\Phi+sH$, and if we run the $(K_{\mathcal{F}}+\Phi)$-MMP with the scaling of $H$ then when the value of the scalar is $s$, the induced rational map is $f$. As $X$ and $Y$ are both $\mbQ$-factorial varieties, we have $\phi$ and $\psi$ are outcomes of $(K_{\mathcal{F}}+\Phi)$-MMP. Let $\Delta=f_*\Theta$. Then $K_{\mathcal{F}_X}+\Delta$ is numerically trivial over $R$.\\
+    by theorem \ref{Lsm1} part $(4)$ we have that for the contraction morphisms $X_i\rightarrow R$, $\rho(X_i/R)\leqslant 2$. If $\rho(X_i/R)=1$ then $X_i\rightarrow R$ is a Mori fiber space since it can not be a flop. By lemma \ref{LSM2} there is a facet of $\mathcal{T}_i$ which is contained in the boundary of $\mathcal{E}_A(V)$ and so $i=1$ or $k$. Thus $X_i\dashrightarrow X_{i+1}$ is a flop for $1\leqslant i\leqslant k-1$. Note that $\rho(X_i/R)=2$ for all $2\leqslant i\leqslant k-1$. So again from part $(1)$ of lemma \ref{LSM2} we have that either $p$ is a divisorial contraction and $s$ is the identity ( if $\rho(X/R)=1$ ) or $p$ is a flop and $s$ is not the identity (if $\rho(X/R)=2$). We have similar dicotimy for $q:Y'\rightarrow T$ and $t:T:\rightarrow R$.\\
+    So we have four cases. If $s$ and $t$ are identity then $p$ and $q$ are divisorial contraction, hence we have a sarkisov link of type $2$.\\
+    If $s$ is identity and $t$ is not then $p$ is divisorial contraction and $q$ is a flop and we have link of type $1$. Similarly if $t$ is identity and $s$ is not then we have a link of type $3$.\\
+    Finally suppose neither $s$ nor $t$ is the identity. Then both $p$ and $q$ are flops. Suppose $s$ is a divisorial contraction. Let $F$ be the divisor contracted by $s$ and let $E$ be it's inverse image in $X$. Since $\rho(X/S)=1$ we have $\phi^*(F)=mE$ for some natural number $m$. Then $K_{\mathcal{F}_X}+\Delta+\delta E$ is F-dlt for sufficiently small $\delta>0$ and $E= \bold{B}(K_{\mathcal{F}_X}+\Delta+\delta E/R)=E$, as $K_{\mathcal{F}_X}+\Delta$ is semiample. If we run the $(K_{\mathcal{F}_X}+\Delta+\delta E)$-MMP over $R$ then we get a birational contraction $X\dashrightarrow W$, which is a Mori fiber space over $R$. Since $\rho(X/R)=2$, $W=Y$ and we have a link of type $3$, a contradiction. Similarly  $t$ is never a divisorial contraction. If $s$ is a Mori fiber space then $R$ is $\mbQ$-factorial and so $t$ must be a Mori fiber space as well. This is a link of type $4_m$. If $s$ is small then so is $t$. Thus we have a link of type $4_s$.
+    
+\end{proof}
+Now we finally proof that we can set up such a 2 dimensional $V$ such that all the desired property holds.
+\section{Proof of Main Theorem}
+In this section we prove the main theorem \ref{MT}. 
+\begin{lemma}\label{FL}
+    Let $\phi:X\rightarrow S$ and $\psi:Y\rightarrow T$ be two Sarkisov related Mori fiber spaces corresponding to two $\mbQ$-factorial F-dlt pair $(\mathcal{F}_X,\Delta)$ and $(\mathcal{F}_Y,\Gamma)$. Then we may find a smooth projective variety $Z$ with a co-rank 1 foliation $\mathcal{F}$ on $Z$, two birational contraction $f:Z\dashrightarrow X$ and $g:\dashrightarrow Y$, a F-dlt pair $(\mathcal{F},\Phi)$, an ample divisor $A$ on $Z$ and a two dimensional rational affine subspace $V$ of $Wdiv_{\mbR}(Z)$ such that 
+    \begin{enumerate}
+        \item if $\Theta\in \mathcal{L}_A(V)$ then $\Theta-\Phi$ is ample
+        \item $\mathcal{A}_{A,\phi\circ f}$ and $\mathcal{A}_{A,\psi\circ g}$ are not contained in the boundary of $\mathcal{L}_A(V)$,
+        \item $\mathcal{C}_{A,f}$ and $\mathcal{C}_{A,g}$ are two dimensional, and 
+        \item $\mathcal{C}_{A,\phi\circ f}$ and $\mathcal{C}_{A,\psi\circ g}$ are one dimensional.
+        \item $V$ satisfies $(1-4)$ of $(3.3)$.
+        
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    As $\phi$ and $\psi$ are Sarkisov related we can find a $\mbQ$-factorial $3$-fold $Z$ with a corank-$1$ foliation $\mathcal{F}$ on it such that there is a $\Phi$ with $(\mathcal{F},\Phi)$ is a F-dlt pair with $\lfloor \Phi\rfloor=0$, and $f:Z\dashrightarrow X$ and $g:Z\dashrightarrow Y$ are both outcomes of $K_{\mathcal{F}}+\Phi$-MMP.\\
+    Let $p:W\rightarrow Z$ be any foliated log resolution of $(\mathcal{F},\Phi)$ which resolves the indeterminacy of $f$ and $g$ and $a(E,\mathcal{F},\Phi)>-\epsilon(E)$, for all $p$-exceptional divisor. Let $\mathcal{G}$ be the pullback of the foliation $\mathcal{F}$ on $W$. We may write \[
+    K_{\mathcal{G}}+p_*^{-1}\Phi+\sum \delta_i\epsilon(E_i)E_i=p^*(K_{\mathcal{F}}+\Phi)+E'+\sum \delta_i\epsilon(E_i)E_i
+    \] 
+    Were $E_i$s are all the $p$ exceptional divisors, with sufficiently small $\delta_i>0$ such that $E'+\sum\delta_i\epsilon(E_i)E_i>0$. Now if we run the $(W,p_*^{-1}\Phi+\sum\delta_i\epsilon(E_i)E_i)$ MMP over $Z$ then we end up contracting $E'+\sum\delta_i\epsilon(E_i)E_i$, so the map from the end product to $Z$ is an isomorphism and we get back the pair $(\mathcal{F},\Phi)$ as the end product. So replacing $(Z,\Phi)$ with $(W,p_*^{-1}\Phi+\sum \delta_i\epsilon(E_i)E_i)$ for all $p$-exceptional divisor $E_i$, such that $E'+\sum \delta_i\epsilon(E_i)>0$, we may assume that $(\mathcal{F},\Phi)$ is foliated log smooth and $f$ and $g$ are morphism.
+    Pick ample $\mbQ$-divisors $A,H_1,H_2,....H_k$ such that each of $(\mathcal{F},\Phi+A+\sum_{i=0}^n H_i)$ and $(\mathcal{F},\sum_{i=1}^m H_i)$ are F-dlt, where $0\leqslant m,n\leqslant k$ and $H_0=0$. Let $H=A+H_1+H_2+...+H_k$. Pick sufficiently ample divisor $C$ on $S$ and $D$ on $T$ such that $-(K_{\mathcal{F}_{X}}+\Delta)+\phi*C$ and $-(K_{\mathcal{F}_Y}+\Delta)+\psi^*D$ are both ample. Pick a rational number $1>\delta>0$ such that $-(K_{\mathcal{F}_X}+\Delta+\delta f_*H)+\phi^*C$ and $-(K_{\mathcal{F}_Y}+\Delta+\delta g_*H)+\psi^*D$ are both ample and $K_{\mathcal{F}}+\Phi+\delta H$ is both $f$ and $g$-negative. Replacing $H$ by $\delta H$ we may assume that $\delta=1$. Now pick a $\mbQ$-divisor $\Phi_0\geqslant \Phi$ such that $A+(\Phi_0-\Phi)$, $-(K_{\mathcal{F}_X}+f_*\Delta+f_*H)+\phi^*C$ and $-(K_{\mathcal{F}_Y}+g_*\Phi_0+g_*H)+\psi^*D$ are all ample and $K_{\mathcal{F}}+\Phi_0+H$ is both $f$ and $g$-negative.\\
+    Pick general ample $\mbQ$-divisors $F_1\geqslant 0$ and $G_1\geqslant 0$ such that $F_1\sim_{\mbQ}-(K_{\mathcal{F}_X}+f_*\Phi_0+f_*H)+\Phi^*C$ and $G_1\sim_{\mathcal{Q}}-(K_{\mathcal{F}_Y}+g_*\Phi_0+g_*H)+\psi^*D$. Then $K_{\mathcal{F}}+\Phi_0+H+F+G$ is F-dlt, where $F=f^*F_1$ and $G=g^*G_1$ (We can do this by choosing $F_1$ and $G_1$ in a suitable manner as in \cite[Lemma $3.24$]{CS21}).\\
+    Let $V_0$ be the affine subspace of $Wdiv_{\mbR}(Z)$ which is the translate by $\Phi_0$ of the vector subspace spanned by $H_1,H_2,.....H_k,F,G$. Suppose that $\Theta=A+B\in \mathcal{L}_A(V_0)$. Then \[
+    \Theta-\Phi=(A+\Phi_0-\Phi)+(B-\Phi_0)
+    \]
+    is ample, as $B-\Phi_0$ is nef as it is positive linear combination of ample and nef divisor, and $A+\Phi_0-\Phi$ is ample by construction. Note that $\Phi_0+G+H\in \mathcal{A}_{A,\psi\circ g}(V_0)$, and $f$ and $g$ are weak log canonical models of $K_{\mathcal{F}}+\Phi_0+F+H$ and $K_{\mathcal{F}}+\Phi_0+G+H$ respectively.  So the $V_0$ satisfies the conditions $(1-4)$ of \ref{Lsm1}.\\
+    Since $H_1,H_2,..H_k$ generate the Neron-Severi group of $Z$ we may find constants $h_1,h_2,.....,h_k$ such that $G$ is numerically equivalent to $\sum h_i H_i$. Then $\Phi_0+F+\delta G+H-\delta(h_i H_i)$ is numerically equivalent to $\Phi_0+F+H$ and if $\delta>0$ is small enough $\Phi_0+F+\delta G+H-\delta(\sum h_i H_i)\in \mathcal{L}_A(V_0)$. Thus $\mathcal{A}_{A,\phi\circ f}(V_0)$ is not contained in the boundary of $\mathcal{L}_A(V_0)$. Similarly $\mathcal{A}_{A,\psi\circ g}(V_0)$ is not contained in the boundary of $\mathcal{L}_A(V_0)$. In particular $\mathcal{A}_{A,f}(V_0)$ and $\mathcal{A,g}(V_0)$ spans $V_0$ and $\mathcal{A}_{A,\phi\circ f}(V_0)$ and $\mathcal{A}_{A,\psi\circ g}(V_0)$ span affine hyperplanes of $V_0$, since $\rho(X/S)=\rho(Y/T=1)$.\\
+    Let $V_1$ be the translate by $\Phi_0$ of the two dimensional vector space spanned by $F+H-A$ and $F+G-A$. Let $V$ be the small general perturbation of $V_1$, which is defined over rationals. So $(2)$ holds for $V$. $(1)$ holds by the construction of $V_0$. As $V$ is a subspace of $V_0$ defined over rational, $(3)$ is satisfied. Finally as $V$ has dimension $2$, $(4)$ and $(5)$ are satisfied. Which concludes the proof
+\end{proof}
+Finally we prove that if two Mori fiber space are log MMP related then they are connected by Sarkisov links in our situation.
+\begin{proof}
+    Pick $(\mathcal{F},Z,\Phi)$ as in \ref{FL}. Pick $\Theta_0\in \mathcal{A}_{A,\phi\circ f}(V)$ and $\Theta_1\in \mathcal{A}_{A,\psi\circ g}(V)$ belonging to the interior of $\mathcal{L}_A(V)$. As $V$ is two dimensional, removing $\Theta_0$ and $\Theta_1$ divides the boundary of $\mathcal{E}_A(V)$ into two parts. The parts which consists entirely of divisors which are not big is contained in the interior of $\mathcal{L}_A(V)$. Consider tracing the boundary from $\Theta_0$ to $\Theta_1$. Then there are finitely many $2\leqslant i\leqslant l$ points $\Theta_i$ which are contained in more than two polytopes $\mathcal{C}_{A,f_i}(V)$.
+\end{proof}
+\section{Sarkisov for rank one Foliation}
+In this section our target is to relate two rank one foliated Mori fiber spaces in the spirit of Sarkisov Program. But as explained in the introduction, Bertini type theorem is not true for rank one foliations on normal projective three-folds ( this is not true even for algebraically intergrable rank one foliations! ). Hence the techniques used to proof the Sarkisov Program for co-rank one foliations in previous section fail as they are heavily dependent upon Bertini type theorems for foliation (c.f. \cite[Lemma $3.26$ and Lemma $3.27$ ]{CS21 } and lemma \ref{FL}).\\
+We take a different approach for rank one foliated Mori fiber spaces and proof theorem \ref{MT2}
+
+\begin{proof}[Proof of theorem \ref{MT2}]
+   consider the birational maps $p:Z\dashrightarrow X$ and $q:Z\dashrightarrow Y$. Since this maps are composition of divisorial contractions and flips, the locus of indeterminacies of these two maps consists of surfaces and curves which are tangent to the foliation $\mathcal{F}$. We blowing up this locus we get a morphism $W\rightarrow Z$ which resolves indeterminacy locus of both $p$ and $q$. So we have birational morphism $p':W\rightarrow X$ and $q':W\rightarrow Y$, with $E_p$ and $E_q$ being the exceptional locus. As $(\mathcal{F},\Delta)$ on $Z$ has canonical singularities, $\mathcal{F}$ is non-dicritical by \cite[Corrollary III.i.4 ]{MP13}. Hence $E_p$ and $E_q$ are both invariant by $\mathcal{F}_W$.\\
+  Suppose $E_{p'}\cup E_{q'}$ dominates $S$ ( or $T$ ). By the construction of $W$ we know $E_{p'}\cup E_{q'}$ consists of exceptional divisors over flipping curves ( we needed to blow-up the flipping curves in $Z$ ) and strict transform of divisors contracted by the two MMPs. If any of the exceptional divisor over flipping curves dominates $S$ or $T$, then that would imply existence of a flipped curve along which the foliation on $X$ ( or $Y$ ) is singular. By \cite{CS20} flipped locus is disjoint from singular locus of the foliation, hence contradiction. If strict transform of any divisor getting contracted by MMP intersects the general fiber of $W\rightarrow S$ or $W\rightarrow T$, then the divisor contains a subset open in the divisor where the foliation is singular at each of the points of this subset, which is a contradiction.\\
+  Hence the general fiber of $W\rightarrow S$ and $W\rightarrow T$ are disjoint from $E_{p'}\cup E_{q'}$. This implies there exists an open set $V\subset S$ such that for all $s\in V$, $W_s$ is isomorphically mapped to a fiber of the Mori fiber space $\psi:Y\rightarrow T$. Let $U=\phi^{-1}(V)$, then $U\rightarrow V$ is our required common open foliated Mori fiber space.
+   %Consider the morphisms $\phi\circ p':W\rightarrow S$ and $\psi\circ q':W\rightarrow T$. Ler $C'$ be an $\mathcal{F}_W$ invariant curve which is getting contracted by $\phi\circ p'$ such that $E_{p'}\cup E_{q'}\cap C'$ is non empty. Then as $E_{p'}$ and $E_{q'}$ are both invariant and $C'$ is tangent to the foliation, $C'$ is contained in $E_{p'}$ and $E_{q'}$. So we have that if a curve in the fiber of $\phi$ ( resp. $\psi$) intersects $p'(E_{p'}\cup E_{q'})$ then it is contained in $p(E_{p'}\cup E_{q'})$ ( resp. $q(E_{p'}\cup E_{q'})$ ). Hence $W\setminus (E_{p'}\cup E_{q'})=X\setminus p'(E_{p'}\cup E_{q'})=Y\setminus q'(E_{p'}\cup E_{q'}) $ is our required common open set $U$ and its image is required $V$. 
+\end{proof}
+\textit{Remark}:- If we consider our foliated pair $(\mathcal{F},\Delta)$ on $Z$ to be terminal ( on a three fold  which is same as smooth foliation ) we might be able to have the usual Sarkisov program as in theorem \ref{MT} by using the exact same technique as \cite{BM97}. The main ingredients are existence and termination of MMP, ACC for Log canonical threshold etc which we already have due to \cite{CS20} and \cite{YC22}. But if $(\mathcal{F},\Delta)$ has canonnical singularity it is not clear how to define the Sarkisov Triplet ( c.f. \cite[Definition $1.4$]{BM97} ). Hence this technique fails for rank one foliations with caonical singularities.
+
+
+
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
